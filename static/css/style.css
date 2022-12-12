@@ -97,3 +97,16 @@
     text-decoration-line : none;
     text-align: center;
 }
+.signup-form {
+    text-align: center;
+    position:absolute;
+    left:50%;
+    top:30%;
+    margin-left:-150px;
+    margin-top:-150px;
+}
+.signup-p {
+    color: #B2CCFF;
+    font-weight: bold;
+    font-size: 30px;
+}

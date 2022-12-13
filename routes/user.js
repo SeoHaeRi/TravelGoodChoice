@@ -12,7 +12,7 @@ const upload = multer({
     filename(req, file, done) {
       console.log("filename: ", req.body);
       const ext = path.extname(file.originalname);
-      const filename = req.body.name + ext;
+      const filename = req.body.id + ext;
       done(null, filename);
     }
   })

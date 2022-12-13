@@ -6,6 +6,8 @@ dotenv.config()
 
 const port = process.env.PORT;
 
+// dotenv.config({path: './controller/.env'});
+
 app.set("view engine", "ejs");
 app.use( "/static", express.static( "static" ) );
 app.use(express.urlencoded({extended: true}));

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MinsunCho-dev/TravelGoodChoice/issues"
   },
-  "homepage": "https://github.com/MinsunCho-dev/TravelGoodChoice#readme"
+  "homepage": "https://github.com/MinsunCho-dev/TravelGoodChoice#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

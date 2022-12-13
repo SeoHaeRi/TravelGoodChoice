@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const dotenv = require("dotenv");
-dotenv.config()
+dotenv.config({path:'./controller/process.env'})
 
 const port = process.env.PORT;
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use( express.json() );
 
 const router = require("./routes");
-app.use('/user', router);
+app.use('/', router);
 
 app.get('*', (req,res) =>{
     res.send("접근할 수 없는 주소입니다.");

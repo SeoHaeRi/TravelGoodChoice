@@ -12,29 +12,29 @@
   <script>
     function signUp() {
       let form = document.querySelector(".signup-form");
-      // const formData = new FormData();
-      // const file = document.getElementById("profileImg");
-      // formData.append('name', form.name.value);
-      // formData.append('userfile', file.files[0]);
+      const formData = new FormData();
+      const file = document.getElementById("profileImg");
+      formData.append('id', form.id.value);
+      formData.append('pw', form.pw.value);
+      formData.append('name', form.name.value);
+      formData.append('userfile', file.files[0]);
       axios({
         method: 'post',
         url: '/user/signup',
-        data:
-        {
-          id: form.id.value,
-          pw: form.pw.value,
-          name: form.name.value,
-          profileImg: form.profileImg.value
-        },
+        data: formData,
         headers: {
           'Content-Type': 'multipart/form-data' // enctype
         }
       }).then((res) => {
-        form.id.value = "";
-        form.pw.value = "";
-        form.name.value = "";
-        alert('회원가입 성공!');
-        // document.querySelector('img').src = res.data.path;
+        if (res.data) {
+          form.id.value = "";
+          form.pw.value = "";
+          form.name.value = "";
+          alert('회원가입 성공!');
+          document.location.href = "/login";
+        } else {
+          alert("회원가입 실패!")
+        }
       })
     }
   </script>
@@ -59,7 +59,6 @@
     <br>
     <button type="button" class="login-btn" onclick="signUp();">회원가입</button>
   </form>
-  <img src="">
 </body>
 
 </html>

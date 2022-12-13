@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const dotenv = require("dotenv");
-dotenv.config({path:'./controller/process.env'})
+dotenv.config({path:'./controller/.env'})
 
 const port = process.env.PORT;
 

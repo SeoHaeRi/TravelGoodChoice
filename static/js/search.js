@@ -31,7 +31,7 @@ function search_filter(){
   searchbox= document.addEventListener("keyup",(e)=>{
     const searchfilter = e.target.value.toLowerCase().trim()
     
-s
+
     item.forEach((i)=>{
       if (i.textContent.includes(searchfilter)){
       i.style.display='block'}

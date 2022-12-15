@@ -1,12 +1,12 @@
 function start(){
     const button = document.querySelectorAll(".btn")
-    const item = document.querySelectorAll(".card_filter")
-    const searchbox = document.querySelectorAll(".search_input")
+    var item = document.querySelectorAll(".card_filter")
+    
 
     button.forEach(b=>b.addEventListener("click",(e)=>{
       e.preventDefault()
       const filter = e.target.dataset.filter
-      console.log(filter)
+    
       
       item.forEach(i=>{
         if(filter==='ALL'){
@@ -22,17 +22,24 @@ function start(){
         }
       })
     }))
-    searchbox= document.addEventListener("keyup",(e)=>{
-      const searchfilter = e.target.value.toLowerCase().trim()
-      console.log(searchfilter)
-
-      item.forEach((i)=>{
-        if (i.textContent.includes(searchfilter)){
-        i.style.display='block'}
-        else{
-          i.style.display='none'
-        }
-      })
-    })
   }
+function search_filter(){
+  
+  var item = document.querySelectorAll(".card_filter")
+  var searchbox = document.querySelectorAll(".search_input")
+  
+  searchbox= document.addEventListener("keyup",(e)=>{
+    const searchfilter = e.target.value.toLowerCase().trim()
+    
+s
+    item.forEach((i)=>{
+      if (i.textContent.includes(searchfilter)){
+      i.style.display='block'}
+      else{
+        i.style.display='none'
+      }
+    })
+  })
+
+}
   

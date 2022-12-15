@@ -87,6 +87,7 @@ color:#fff;
     text-decoration-line : none;
     color: white;
     font-weight: bold;
+
 }
 .btn {
     z-index: 1;
@@ -319,4 +320,17 @@ color:#fff;
 #content {
     width: 450px;
     height: 300px;
+}
+.list {
+    text-decoration-line : none;
+    color: black;
+}
+.logout {
+    display: none;
+    position: fixed;
+    top: 65px;
+    right: 100px;
+    text-decoration-line : none;
+    color: white;
+    font-weight: bold;
 }

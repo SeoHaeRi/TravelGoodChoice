@@ -3,6 +3,7 @@ function writeOn(){
 
     var title = document.getElementById("title");
     var content = document.getElementById("content");
+    var region = document.getElementById("region");
     var star1 = document.querySelector('input[name="star"]:checked').value;
 
     if (!title.value )
@@ -18,12 +19,15 @@ function writeOn(){
     cnt = cnt + 1;
 
     var title1 = document.createElement("td");
-    title1.innerHTML = '<a href="http://localhost:8000/" class="list">'+ title.value + "</a>"
+    title1.innerHTML = '<a href="http://localhost:8000/" class="list">'+ title.value + "</a>";
     // title1.innerText = title.value;
 
     var star = document.createElement("td");
     console.log(star1);
     star.innerText = star1;
+
+    var region1 = document.createElement("td");
+    region1.innerHTML = region.value;
 
     var id = document.createElement("td");
     // title.innerText = id;
@@ -40,6 +44,7 @@ function writeOn(){
     tr.appendChild(no);
     tr.appendChild(title1);
     tr.appendChild(star);
+    tr.appendChild(region1);
     tr.appendChild(id);
     tr.appendChild(date);
     tr.appendChild(view);

@@ -75,3 +75,12 @@
     display:block;
     margin:auto
 }
+.logout {
+    display: none;
+    position: fixed;
+    top: 65px;
+    right: 100px;
+    text-decoration-line : none;
+    color: white;
+    font-weight: bold;
+}

@@ -19,6 +19,7 @@
         <a href="http://localhost:8000/community" class="community">커뮤니티</a>
         <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
         <a href="http://localhost:8000/login" class="login">로그인</a>
+        <a href="http://localhost:8000/" class="logout">로그아웃</a>
     </div>
     <div class="table-div">
         <!-- Button trigger modal -->
@@ -32,7 +33,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="form" class="community-form">
@@ -40,17 +40,28 @@
                         <br>
                         <input type="text" id="title" name="title" placeholder="제목을 입력해주세요.">
                         <br>
+                        <input type="radio" class="star" name="star" value="★">★
+                        <!-- <label for="star1">★</label> -->
+                        <input type="radio" class="star" name="star" value="★★">★★
+                        <!-- <label for="star2">★★</label> -->
+                        <input type="radio" class="star" name="star" value="★★★">★★★
+                        <!-- <label for="star3">★★★</label> -->
+                        <input type="radio" class="star" name="star" value="★★★★">★★★★
+                        <!-- <label for="star4">★★★★</label> -->
+                        <input type="radio" class="star" name="star" value="★★★★★">★★★★★
+                        <!-- <label for="star5">★★★★★</label> -->
+                        <br>
                         내용
                         <br>
                         <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
                         <br>
                         이미지
-                        <input type="file">
+                        <input type="file" id="file">
                     </form>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn cancle-btn" data-bs-dismiss="modal" onclick="cancleOn();">취소</button>
-                <button type="button" class="btn table-btn" onclick="writeOn();">작성</button>
+                <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
                 </div>
             </div>
             </div>
@@ -62,16 +73,10 @@
             <tr>
                 <th>NO.</th>
                 <th>제목</th>
+                <th>별점</th>
                 <th>작성자</th>
                 <th>작성일</th>
                 <th>조회수</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>d</td>
-                <td></td>
             </tr>
         </table>
 

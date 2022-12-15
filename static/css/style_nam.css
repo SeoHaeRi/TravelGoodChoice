@@ -27,6 +27,9 @@
     color: white;
     text-align: center;
 }
+a:hover {
+    color: dimgray;
+}
 .banner {
     z-index: 2;
     height: 150px;
@@ -38,6 +41,20 @@
     background-color: #B2CCFF;
     text-align: center;
     
+}
+.community {
+    position: fixed;
+    top: 65px;
+    right: 350px;
+    text-decoration-line : none;
+    color: white;
+}
+.search {
+    position: fixed;
+    top: 65px;
+    right: 220px;
+    text-decoration-line : none;
+    color: white;
 }
 .login {
     position: fixed;

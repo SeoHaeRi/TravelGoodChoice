@@ -14,7 +14,7 @@
       let form = document.getElementById("login-form");
       axios({
         method: 'post',
-        url: 'user/login',
+        url: 'login',
         data: {
           id: form.id.value,
           pw: form.pw.value
@@ -22,6 +22,7 @@
       }).then((res) => {
         if (res.data) {
           alert("로그인 성공")
+          document.location.href = 'http://localhost:8000/';
         } else {
           alert("로그인 실패")
         }
@@ -41,7 +42,7 @@
       <input class="login-input" type="text" name="pw" placeholder="비밀번호">
       <br>
       <br>
-      <button class="login-btn" onclick="login();">로그인</button>
+      <button class="login-btn" type="button" onclick="login();">로그인</button>
       <br>
       <br>
       <a href="http://localhost:8000/signup" style="text-decoration-line : none; color: black;">회원가입</a>

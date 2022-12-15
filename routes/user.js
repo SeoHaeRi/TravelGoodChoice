@@ -18,6 +18,7 @@ const upload = multer({
   })
 })
 
+router.get("/login", controller.view_login)
 router.post('/signup', upload.single("userfile"), controller.signup);
 router.post('/login', controller.login);
 // router.post('/profile', controller.profile);

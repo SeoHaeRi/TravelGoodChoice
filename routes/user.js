@@ -19,7 +19,7 @@ const upload = multer({
 })
 
 router.post('/signup', upload.single("userfile"), controller.signup);
-// router.post('/signin', controller.signin);
+router.post('/login', controller.login);
 // router.post('/profile', controller.profile);
 // router.patch('/profile/edit', controller.edit_user);
 // router.delete('/profile/delete', controller.delete_user);

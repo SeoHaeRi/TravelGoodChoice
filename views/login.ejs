@@ -14,7 +14,7 @@
       let form = document.getElementById("login-form");
       axios({
         method: 'post',
-        url: 'login',
+        url: '/user/login',
         data: {
           id: form.id.value,
           pw: form.pw.value
@@ -22,9 +22,10 @@
       }).then((res) => {
         if (res.data) {
           alert("로그인 성공")
-          document.location.href = 'http://localhost:8000/';
+          document.location.href = '/';
         } else {
           alert("로그인 실패")
+          form.reset();
         }
       })
     }

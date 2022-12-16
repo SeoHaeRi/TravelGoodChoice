@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require('express-session');
 const app = express();
 
 const dotenv = require("dotenv");
@@ -10,6 +11,14 @@ app.set("view engine", "ejs");
 app.use("/static", express.static("static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(session({
+  secret: '1234',
+  resave: false,
+  saveUninitialized: true
+  // cookie: {}
+  // secure:
+}))
 
 const router = require("./routes");
 const userRouter = require("./routes/user");

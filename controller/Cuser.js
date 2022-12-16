@@ -34,11 +34,25 @@ exports.signup = (req, res) => {
     })
 }
 
-exports.login = async (req, res) => {
+exports.login = (req, res) => {
   let data = {
     id: req.body.id,
     pw: req.body.pw
   }
-  let result = await User.findOne({ where: { id: data.id, pw: data.pw } });
-  res.send(result);
+  User.findOne({ where: { id: data.id, pw: data.pw } })
+    .then((result) => {
+      if (result) {
+        req.session.user = req.body.id;
+        res.send(true)
+      } else {
+        res.send(false)
+      }
+    })
+}
+
+exports.logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) throw err;
+    res.send(true);
+  })
 }

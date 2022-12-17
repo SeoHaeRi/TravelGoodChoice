@@ -1,7 +1,7 @@
 var express = require("express")
 var controller = require("../controller/Cfront")
 var router = express.Router()
-
+var app = express()
 router.get("/", controller.front)
 
 router.get("/recommend", controller.recommend)

@@ -3,6 +3,9 @@ exports.front = (req, res) => {
   else res.render("index", { islogin: false })
 }
 
+exports.recommend = (req, res) => {
+  res.render("recommend")
+}
 exports.signup = (req, res) => {
   res.render("signup")
 }
@@ -12,6 +15,10 @@ exports.search = (req, res) => {
 exports.community = (req, res) => {
   res.render("community")
 }
+
 exports.sights = (req, res) => {
   res.render("sights")
+} 
+exports.chat = (req, res) => {
+  res.render("chat")
 }

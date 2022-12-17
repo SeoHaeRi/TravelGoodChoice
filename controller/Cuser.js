@@ -1,4 +1,5 @@
 const { User } = require("../model");
+const { Op } = require('sequelize');
 
 exports.view_login = (req, res) => {
   res.render("login")
@@ -22,7 +23,7 @@ exports.signup = (req, res) => {
     }
   }
 
-  User.findOne({ where: { id: data.id, pw: data.pw } })
+  User.findOne({ where: { [Op.or]: [{ id: data.id }, { name: data.name }] } })
     .then((result) => {
       if (result) res.send(false);
       else {

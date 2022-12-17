@@ -181,7 +181,6 @@ body {
   width: 800px;
   font-family: 'CWDangamAsac-Bold';
   font-size: 70px;
-  background-color: #B2CCFF;
   text-decoration-line: none;
   color: white;
   text-align: center;
@@ -516,4 +515,13 @@ body {
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.center {
+  background-color: #B2CCFF;
+  position: fixed;
+  top: 200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

@@ -4,6 +4,7 @@ const router = express.Router()
 
 router.get("/", controller.front)
 
+router.get("/recommend", controller.recommend)
 router.get("/signup", controller.signup)
 router.get("/search", controller.search)
 router.get("/community", controller.community)

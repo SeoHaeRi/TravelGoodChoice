@@ -3,6 +3,9 @@ exports.front = (req, res) => {
   else res.render("index", { islogin: false })
 }
 
+exports.recommend = (req, res) => {
+  res.render("recommend")
+}
 exports.signup = (req, res) => {
   res.render("signup")
 }

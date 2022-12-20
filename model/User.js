@@ -26,6 +26,7 @@ const User = (Sequelize, DataTypes) => {
       freezeTableName: true,
       timestamps: false
     }
+
   );
 }
 

@@ -94,8 +94,6 @@ exports.kakaoLogin = async (req, res) => {
     res.json(err.data);
   }
 
-
-
   //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
   let user;
   try {

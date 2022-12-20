@@ -13,5 +13,4 @@ router.get("/sights", controller.sights)
 
 router.get("/chat", controller.chat)
 
-
 module.exports = router;

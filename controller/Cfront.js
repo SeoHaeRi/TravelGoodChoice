@@ -2,7 +2,6 @@ exports.front = (req, res) => {
   if (req.session.user) res.render("index", { islogin: true })
   else res.render("index", { islogin: false })
 }
-
 exports.recommend = (req, res) => {
   res.render("recommend")
 }
@@ -17,7 +16,7 @@ exports.community = (req, res) => {
 }
 exports.sights = (req, res) => {
   res.render("sights")
-} 
+}
 exports.chat = (req, res) => {
   res.render("chat")
 }

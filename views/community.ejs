@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="../static/img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <script type="text/javascript" src="../static/js/community.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
     //   function writeOn(){
@@ -81,7 +82,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn cancle-btn" data-bs-dismiss="modal" onclick="cancleOn();">취소</button>
+                <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
                 <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
                 </div>
             </div>
@@ -99,7 +100,6 @@
                 <th>지역</th>
                 <th>작성자</th>
                 <th>작성일</th>
-                <th>조회수</th> 
                 <% for(let i=0; i<data.length; i++) { %> 
                   <tr>
                       <td><%=data[i].index_number%></td>
@@ -115,7 +115,7 @@
         </table>
 
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination" style="justify-content: center;">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>

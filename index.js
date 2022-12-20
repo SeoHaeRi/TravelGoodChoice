@@ -1,7 +1,6 @@
 const express = require("express");
 const socket = require('socket.io');
 const session = require('express-session');
-const fs = require('fs');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
@@ -39,15 +38,16 @@ app.use('/post', postRouter)
 app.use('/css', express.static('./static/css'))
 app.use('/js', express.static('./static/js'))
 
+
 app.get('*', (req, res) => {
   res.send("접근할 수 없는 주소입니다.");
 });
 
-
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', (socket) => {
 
   /* 새로운 유저가 접속했을 경우 다른 소켓에게도 알려줌 */
-  socket.on('newUser', function (name) {
+  socket.on('newUser', (name) => {
+
     console.log(name + ' 님이 접속하였습니다.')
 
     /* 소켓에 이름 저장해두기 */
@@ -77,6 +77,6 @@ io.sockets.on('connection', function (socket) {
   })
 })
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("Server Port : ", port);
 });

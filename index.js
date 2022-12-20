@@ -30,6 +30,7 @@ app.use(session({
 
 const router = require("./routes");
 const userRouter = require("./routes/user");
+const postRouter = require("./routes/post")
 app.use('/', router);
 app.use('/user', userRouter);
 

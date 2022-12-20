@@ -1,4 +1,5 @@
-var cnt = 1;
+const { reset } = require("nodemon");
+
 function writeOn(){
     var form = document.getElementById("community-form")
     const formData = new FormData();
@@ -75,25 +76,14 @@ function writeOn(){
     
         // ----------------------창 닫힌 후 값 초기화 ---------------------------------
     
-        var title = document.getElementById("title");
-        var content = document.getElementById("content");
-        var file = document.getElementById("file");
-    
-        title.value= "";
-        content.value= "";
-        file.value= "";
-    
-        }
-    })
-    
-    
-}
-function cancleOn() {
-    var title = document.getElementById("title");
-    var content = document.getElementById("content");
-    var file = document.getElementById("file");
+    var star = document.getElementsByClassName("star");
 
     title.value= "";
     content.value= "";
     file.value= "";
+    $("input:radio[name='star']:checked").prop("checked", false);
+    region.value = "";
+
+    }
+    
 }

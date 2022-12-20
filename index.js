@@ -31,8 +31,10 @@ app.use(session({
 
 const router = require("./routes");
 const userRouter = require("./routes/user");
+const postRouter = require("./routes/post")
 app.use('/', router);
 app.use('/user', userRouter);
+app.use('/post',postRouter)
 app.use('/css', express.static('./static/css'))
 app.use('/js', express.static('./static/js'))
 

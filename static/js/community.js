@@ -62,15 +62,12 @@ function writeOn(){
         date.innerHTML = response.data.result.createdAt
         date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate()+ " " +dt.getHours() + ":" + dt.getMinutes() +":"+ dt.getSeconds();
     
-      
-    
         tr.appendChild(no);
         tr.appendChild(title1);
         tr.appendChild(star);
         tr.appendChild(region1);
         tr.appendChild(id);
         tr.appendChild(date);
-        
         table.appendChild(tr);
     
         // ----------------------창 닫힌 후 값 초기화 ---------------------------------

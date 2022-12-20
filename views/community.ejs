@@ -41,14 +41,14 @@
     <div class="banner">
         <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
         <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
-        <a href="http://localhost:8000/community" class="community">커뮤니티</a>
+        <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
         <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
-        <a href="http://localhost:8000/login" class="login">로그인</a>
-        <a href="http://localhost:8000/" class="logout">로그아웃</a>
+        <a href="http://localhost:8000/user/login" class="login">로그인</a>
+        <a class="logout">로그아웃</a>
     </div>
     <div class="table-div">
         <!-- Button trigger modal -->
-        <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id ="write_btn">
             글쓰기
         </button>
         
@@ -129,5 +129,32 @@
             </ul>
         </nav>
     </div>
+    <script>
+        if ('<%=user%>') {
+      document.querySelector(".login").classList.add('d-none');
+      document.querySelector(".logout").classList.remove('d-none');
+      document.querySelector("#write_btn").classList.remove('d-none');
+      
+    } else {
+      document.querySelector(".logout").classList.add('d-none');
+      document.querySelector("#write_btn").classList.add('d-none');
+     
+      
+    }
+    document.querySelector('.logout').addEventListener('click', () => {
+      axios({
+        method: 'delete',
+        url: '/user/logout',
+      }).then((result) => {
+        document.location.href = '/';
+      })
+    })
+
+
+
+   
+
+s
+    </script>
 </body>
 </html>

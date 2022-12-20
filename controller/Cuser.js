@@ -71,48 +71,48 @@ exports.view_kakaoLogin = (req, res) => {
   res.redirect(kakaoAuthURL);
 }
 
-// exports.kakaoLogin = async (req, res) => {
-//   let token;
-//   try {//access토큰을 받기 위한 코드
-//     token = axios({//token
-//       method: 'POST',
-//       url: 'https://kauth.kakao.com/oauth/token',
-//       headers: {
-//         'content-type': 'application/x-www-form-urlencoded'
-//       },
-//       data: ({
-//         grant_type: 'authorization_code',//특정 스트링
-//         client_id: kakao.clientID,
-//         client_secret: kakao.clientSecret,
-//         redirectUri: kakao.redirectUri,
-//         code: req.query.code,//결과값을 반환했다. 안됐다.
-//       })//객체를 string 으로 변환
-//     }).then((res) => {
-//       console.log("res : ", res);
-//     })
-//   } catch (err) {
-//     res.json(err.data);
-//   }
+exports.kakaoLogin = async (req, res) => {
+  let token;
+  try {//access토큰을 받기 위한 코드
+    token = axios({//token
+      method: 'POST',
+      url: 'https://kauth.kakao.com/oauth/token',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: ({
+        grant_type: 'authorization_code',//특정 스트링
+        client_id: kakao.clientID,
+        client_secret: kakao.clientSecret,
+        redirectUri: kakao.redirectUri,
+        code: req.query.code,//결과값을 반환했다. 안됐다.
+      })//객체를 string 으로 변환
+    }).then((res) => {
+      console.log("res : ", res);
+    })
+  } catch (err) {
+    res.json(err.data);
+  }
 
 
 
-//   //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
-//   let user;
-//   try {
-//     console.log(token);//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
-//     user = await axios({
-//       method: 'get',
-//       url: 'https://kapi.kakao.com/v2/user/me',
-//       headers: {
-//         Authorization: `Bearer ${token.data.access_token}`
-//       }//헤더에 내용을 보고 보내주겠다.
-//     })
-//   } catch (e) {
-//     res.json(e.data);
-//   }
-//   console.log(user);
+  //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
+  let user;
+  try {
+    console.log(token);//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
+    user = await axios({
+      method: 'get',
+      url: 'https://kapi.kakao.com/v2/user/me',
+      headers: {
+        Authorization: `Bearer ${token.data.access_token}`
+      }//헤더에 내용을 보고 보내주겠다.
+    })
+  } catch (e) {
+    res.json(e.data);
+  }
+  console.log(user);
 
-//   req.session.kakao = user.data;
+  req.session.kakao = user.data;
 
-//   res.send('success');
-// }
+  res.send('success');
+}

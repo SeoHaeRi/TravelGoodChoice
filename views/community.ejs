@@ -12,6 +12,31 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <script type="text/javascript" src="../static/js/community.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+    //   function writeOn(){
+
+      
+    //   var form = document.getElementById("community-form")
+    //   const formData = new FormData();
+    //   const file = document.getElementById("file")
+    //   formData.append('title',form.title.value)
+    //   formData.append('star',form.star.id)
+    //   formData.append('content',form.content.value)
+    //   formData.append('region',form.region.value)
+    //   formData.append('writer',form.writer.value)
+    //   formData.append('postfile',file.files[0]);
+    //   axios({
+    //     method:"post",
+    //     url:"/post/community",
+    //     data: formData
+    //   })
+    //   .then(()=>{
+    //     console.log("성공")
+    //   })
+    // }
+      
+    </script>
 </head>
 <body>
     <div class="banner">
@@ -19,7 +44,7 @@
         <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
         <a href="http://localhost:8000/community" class="community">커뮤니티</a>
         <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
-        <a href="http://localhost:8000/user/login" class="login">로그인</a>
+        <a href="http://localhost:8000/login" class="login">로그인</a>
         <a href="http://localhost:8000/" class="logout">로그아웃</a>
     </div>
     <div class="table-div">
@@ -31,42 +56,44 @@
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
-                  </div>
-                  <div class="modal-body">
-                      <form action="form" class="community-form">
-                          제목
-                          <br>
-                          <input type="text" id="title" name="title" placeholder="제목을 입력해주세요.">
-                          <br>
-                          <input type="radio" class="star" name="star" value="★">★
-                          <input type="radio" class="star" name="star" value="★★">★★
-                          <input type="radio" class="star" name="star" value="★★★">★★★
-                          <input type="radio" class="star" name="star" value="★★★★">★★★★
-                          <input type="radio" class="star" name="star" value="★★★★★">★★★★★
-                          <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주">
-                          <br>
-                          내용
-                          <br>
-                          <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
-                          <br>
-                          이미지
-                          <input type="file" id="file">
-                          <div class="modal-footer">
-                            <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
-                            <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="community-form"class="community-form">
+                        제목
+                        <br>
+                        <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="">
+                        <br>
+                        <input type="radio" class="star" name="star" value="★" id="1">★
+                        <input type="radio" class="star" name="star" value="★★" id="2">★★
+                        <input type="radio" class="star" name="star" value="★★★" id="3">★★★
+                        <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
+                        <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
+                        <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주">
+                        <br>
+                        내용
+                        <br>
+                        <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                        <br>
+                        이미지
+                        <input type="file" name="community_file" id="file">
+                        <input type="text" name="writer">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
+                <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
+                </div>
+            </div>
             </div>
         </div>
 
         <br>
         <br>
         <table class="table table-striped table-hover" id="table">
+          
             <tr>
                 <th>NO.</th>
                 <th>제목</th>
@@ -74,6 +101,17 @@
                 <th>지역</th>
                 <th>작성자</th>
                 <th>작성일</th>
+                <% for(let i=0; i<data.length; i++) { %> 
+                  <tr>
+                      <td><%=data[i].index_number%></td>
+                      <td><%=data[i].title%></td>
+                      <td><%=data[i].star%></td>
+                      <td><%=data[i].region%></td>
+                      <td><%=data[i].writer%></td>
+                      <td><%=data[i].createdAt%></td>    
+                  </tr>
+                  
+                  <% } %>
             </tr>
         </table>
 

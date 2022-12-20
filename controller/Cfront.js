@@ -17,6 +17,9 @@ exports.search = (req, res) => {
 exports.community = (req, res) => {
   res.render("community")
 }
+exports.contents = (req, res) => {
+  res.render("contents")
+}
 
 exports.sights1 = (req, res) => {
   res.render("sights1")

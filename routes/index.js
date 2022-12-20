@@ -8,6 +8,7 @@ router.get("/recommend", controller.recommend)
 router.get("/signup", controller.signup)
 router.get("/search", controller.search)
 router.get("/community", controller.community)
+router.get("/contents", controller.contents)
 
 router.get("/sights1", controller.sights1)
 router.get("/sights2", controller.sights2)

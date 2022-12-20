@@ -1,5 +1,5 @@
 
-const { reset } = require("nodemon");
+
 
 function writeOn(){
 
@@ -10,7 +10,6 @@ function writeOn(){
     formData.append('star', form.star.value)
     formData.append('content', form.content.value)
     formData.append('region', form.region.value)
-    formData.append('writer', form.writer.value)
     formData.append('community_file', file.files[0]);
     axios({
         method: "post",
@@ -18,11 +17,11 @@ function writeOn(){
         data: formData
     })
     .then((response)=>{
-        console.log(response)
+        console.log("리스폰스",response)
         var title = document.getElementById("title");
         var content = document.getElementById("content");
         var region = document.getElementById("region");
-        var star1 = document.querySelector('input[name="star"]:checked').id;
+
     
         if (!title.value )
         alert("제목을 적어주세요.")
@@ -33,39 +32,37 @@ function writeOn(){
         var tr = document.createElement("tr");
     
         var no = document.createElement("td");
+        var cnt = response.data.result.index_number
+
         no.innerText = cnt;
-        cnt = response.data.value
-        //cnt = cnt + 1;
+                //cnt = cnt + 1;
     
         var title1 = document.createElement("td");
-        title1.innerHTML  = response.data.title
+        title1.innerHTML  = response.data.result.title
         //title1.innerHTML = '<a href="http://localhost:8000/" class="list">'+ title.value + "</a>";
         // title1.innerText = title.value;
     
         var star = document.createElement("td");
-        console.log(star1);
-      
             
-        star.innerText =  response.data.star
+        star.innerText =  response.data.result.star
         //star.innerText = star1;
     
         var region1 = document.createElement("td");
-        region1.innerHTML =  response.data.region
+        region1.innerHTML =  response.data.result.region
         //region1.innerHTML = region.value;
     
         var id = document.createElement("td");
-       id.innerHTML= response.data.writer
+       id.innerHTML= response.data.result.writer
         // title.innerText = id;
     
         var date = document.createElement("td");
         var dt = new Date();
         console.log( dt );
         
-        //date.innerHTML = response.data.createdAT
-        date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate();
+        date.innerHTML = response.data.result.createdAt
+        date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate()+ " " +dt.getHours() + ":" + dt.getMinutes() +":"+ dt.getSeconds();
     
-        var view = document.createElement("td");
-        view.innerText = "없음"
+      
     
         tr.appendChild(no);
         tr.appendChild(title1);
@@ -73,7 +70,7 @@ function writeOn(){
         tr.appendChild(region1);
         tr.appendChild(id);
         tr.appendChild(date);
-        tr.appendChild(view);
+        
         table.appendChild(tr);
     
         // ----------------------창 닫힌 후 값 초기화 ---------------------------------

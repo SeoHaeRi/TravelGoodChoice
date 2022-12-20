@@ -17,8 +17,14 @@ exports.community = (req, res) => {
   res.render("community")
 }
 
-exports.sights = (req, res) => {
-  res.render("sights")
+exports.sights1 = (req, res) => {
+  res.render("sights1")
+}
+exports.sights2 = (req, res) => {
+  res.render("sights2")
+}
+exports.sights3 = (req, res) => {
+  res.render("sights3")
 }
 
 exports.chat = (req, res) => {

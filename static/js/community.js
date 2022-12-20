@@ -64,16 +64,12 @@ function writeOn(){
         //date.innerHTML = response.data.createdAT
         date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate();
     
-        var view = document.createElement("td");
-        view.innerText = "없음"
-    
         tr.appendChild(no);
         tr.appendChild(title1);
         tr.appendChild(star);
         tr.appendChild(region1);
         tr.appendChild(id);
         tr.appendChild(date);
-        tr.appendChild(view);
         table.appendChild(tr);
     
         // ----------------------창 닫힌 후 값 초기화 ---------------------------------

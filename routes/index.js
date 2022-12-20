@@ -9,7 +9,9 @@ router.get("/signup", controller.signup)
 router.get("/search", controller.search)
 router.get("/community", controller.community)
 
-router.get("/sights", controller.sights)
+router.get("/sights1", controller.sights1)
+router.get("/sights2", controller.sights2)
+router.get("/sights3", controller.sights3)
 
 router.get("/chat", controller.chat)
 

@@ -71,21 +71,21 @@
   </div>
   <div align="center">
     <div class="map">
-      <img src="../static/img/btn.png" alt="seoul" class="btn seoul-btn" onclick="start()"data-filter="서울/인천/경기">
+      <img src="../static/img/btn.png" alt="seoul" class="btn seoul-btn" onclick="start()" data-filter="서울/인천/경기">
       <p class="seoul-text">서울/인천/경기</p>
-      <img src="../static/img/btn.png" alt="jejudo" class="btn jejudo-btn" onclick="start()"data-filter="제주도">
+      <img src="../static/img/btn.png" alt="jejudo" class="btn jejudo-btn" onclick="start()" data-filter="제주도">
       <p class="jejudo-text">제주도</p>
-      <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn" onclick="start()"data-filter="강원">
+      <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn" onclick="start()" data-filter="강원">
       <p class="gangwon-text">강원</p>
-      <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn" onclick="start()"data-filter="충북/세종">
+      <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn" onclick="start()" data-filter="충북/세종">
       <p class="chungbuk-text">충북/세종</p>
-      <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn" onclick="start()"data-filter="충남/대전">
+      <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn" onclick="start()" data-filter="충남/대전">
       <p class="chungnam-text">충남/대전</p>
-      <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn" onclick="start()"data-filter="전북/전남/광주">
+      <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn" onclick="start()" data-filter="전북/전남/광주">
       <p class="jeonbuk-text">전북/전남/광주</p>
-      <img src="../static/img/btn.png" alt="degu" class="btn degu-btn" onclick="start()"data-filter="경북/대구/울산">
+      <img src="../static/img/btn.png" alt="degu" class="btn degu-btn" onclick="start()" data-filter="경북/대구/울산">
       <p class="degu-text">경북/대구/울산</p>
-      <img src="../static/img/btn.png" alt="busan" class="btn busan-btn" onclick="start()"data-filter="경남/부산">
+      <img src="../static/img/btn.png" alt="busan" class="btn busan-btn" onclick="start()" data-filter="경남/부산">
       <p class="busan-text">경남/부산</p>
     </div>
   </div>
@@ -97,6 +97,7 @@
     } else {
       document.querySelector(".logout").classList.add('d-none');
     }
+
 
     document.querySelector('.logout').addEventListener('click', () => {
       axios({

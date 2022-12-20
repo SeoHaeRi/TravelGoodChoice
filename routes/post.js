@@ -18,10 +18,10 @@ const upload = multer({
   })
 })
 
-router.get('/view_post',controller.view_post)
+router.get('/view_post', controller.view_post)
 router.post('/community', upload.single("community_file"), controller.community);
 // router.post('/profile', controller.profile);
 // router.patch('/profile/edit', controller.edit_user);
-// router.delete('/profile/delete', controller.delete_user);
+
 
 module.exports = router;

@@ -1,19 +1,21 @@
+
 const { reset } = require("nodemon");
 
 function writeOn(){
+
     var form = document.getElementById("community-form")
     const formData = new FormData();
     const file = document.getElementById("file")
-    formData.append('title',form.title.value)
-    formData.append('star',form.star.value)
-    formData.append('content',form.content.value)
-    formData.append('region',form.region.value)
-    formData.append('writer',form.writer.value)
-    formData.append('community_file',file.files[0]);
+    formData.append('title', form.title.value)
+    formData.append('star', form.star.value)
+    formData.append('content', form.content.value)
+    formData.append('region', form.region.value)
+    formData.append('writer', form.writer.value)
+    formData.append('community_file', file.files[0]);
     axios({
-      method:"post",
-      url:"/post/community",
-      data: formData
+        method: "post",
+        url: "/post/community",
+        data: formData
     })
     .then((response)=>{
         console.log(response)

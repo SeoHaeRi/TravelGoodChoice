@@ -1,10 +1,12 @@
-var cnt = 1;
+const { reset } = require("nodemon");
+
 function writeOn(){
 
     var title = document.getElementById("title");
     var content = document.getElementById("content");
     var region = document.getElementById("region");
     var star1 = document.querySelector('input[name="star"]:checked').value;
+    var cnt = 1;
 
     if (!title.value )
     alert("제목을 적어주세요.")
@@ -20,7 +22,6 @@ function writeOn(){
 
     var title1 = document.createElement("td");
     title1.innerHTML = '<a href="http://localhost:8000/" class="list">'+ title.value + "</a>";
-    // title1.innerText = title.value;
 
     var star = document.createElement("td");
     console.log(star1);
@@ -38,37 +39,23 @@ function writeOn(){
     
     date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate();
 
-    var view = document.createElement("td");
-    view.innerText = "없음"
-
     tr.appendChild(no);
     tr.appendChild(title1);
     tr.appendChild(star);
     tr.appendChild(region1);
     tr.appendChild(id);
     tr.appendChild(date);
-    tr.appendChild(view);
     table.appendChild(tr);
 
     // ----------------------창 닫힌 후 값 초기화 ---------------------------------
-
-    var title = document.getElementById("title");
-    var content = document.getElementById("content");
-    var file = document.getElementById("file");
+    var star = document.getElementsByClassName("star");
 
     title.value= "";
     content.value= "";
     file.value= "";
+    $("input:radio[name='star']:checked").prop("checked", false);
+    region.value = "";
 
     }
     
-}
-function cancleOn() {
-    var title = document.getElementById("title");
-    var content = document.getElementById("content");
-    var file = document.getElementById("file");
-
-    title.value= "";
-    content.value= "";
-    file.value= "";
 }

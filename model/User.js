@@ -4,7 +4,7 @@ const User = (Sequelize, DataTypes) => {
     "user",
     {
       id: {
-        type: DataTypes.STRING(20), // varchar(10)
+        type: DataTypes.STRING(40),
         allowNull: false,
         primaryKey: true
       },
@@ -17,7 +17,11 @@ const User = (Sequelize, DataTypes) => {
         allowNull: false,
       },
       profile_img: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(200),
+        allowNull: true,
+      },
+      social_type: {
+        type: DataTypes.STRING(10),
         allowNull: true,
       }
     },

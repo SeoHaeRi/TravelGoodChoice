@@ -1,7 +1,6 @@
 const { User } = require("../model");
 const { Op } = require('sequelize');
-const { axios } = require('axios');
-const { qs } = require('qs');
+const axios = require('axios');
 
 const kakao = {
   clientID: process.env.KAKAO_clientID,
@@ -20,14 +19,13 @@ exports.signup = (req, res) => {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
-      profile_img: req.file.filename
+      profile_img: req.file.filename,
     }
   } else {
     data = {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
-      profile_img: ''
     }
   }
 
@@ -72,45 +70,65 @@ exports.view_kakaoLogin = (req, res) => {
 }
 
 exports.kakaoLogin = async (req, res) => {
-  let token;
-  try {//access토큰을 받기 위한 코드
-    token = axios({//token
-      method: 'POST',
-      url: 'https://kauth.kakao.com/oauth/token',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: ({
-        grant_type: 'authorization_code',//특정 스트링
-        client_id: kakao.clientID,
-        client_secret: kakao.clientSecret,
-        redirectUri: kakao.redirectUri,
-        code: req.query.code,//결과값을 반환했다. 안됐다.
-      })//객체를 string 으로 변환
-    }).then((res) => {
-      console.log("res : ", res);
+  //access토큰을 받기 위한 코드
+  let token = await axios({
+    method: 'POST',
+    url: 'https://kauth.kakao.com/oauth/token',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+    },
+    data: ({
+      grant_type: 'authorization_code',//특정 스트링
+      client_id: kakao.clientID,
+      client_secret: kakao.clientSecret,
+      redirect_uri: kakao.redirectUri,
+      code: req.query.code,//결과값을 반환했다. 안됐다.
     })
-  } catch (err) {
-    res.json(err.data);
-  }
+  }).then((res) => {
+    console.log("토큰 정보 : ", res.data);
+    return userInfo(res.data);
+  }).then((user) => {
+    console.log("user : ", user);
+    console.log(req.data);
 
-  //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
-  let user;
-  try {
-    console.log(token);//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
-    user = await axios({
+
+    // database에 있는 user면 그냥 바로 seswsion, 없으면 create
+    let data = {
+      id: user.kakao_account.email,
+      pw: '',
+      name: user.properties.nickname,
+      profile_img: user.properties.thumbnail_image,
+      social_type: 'kakao'
+    }
+
+    User.findOne({ where: { [Op.or]: [{ id: data.id }, { name: data.name }] } })
+      .then((result) => {
+        if (result) {
+          req.session.user = user.kakao_account.email;
+          res.redirect('/');
+        }
+        else {
+          User.create(data)
+            .then(() => {
+              req.session.user = user.kakao_account.email;
+              res.redirect('/');
+            })
+        }
+      })
+  })
+}
+
+function userInfo(token) {
+  return new Promise((resolve, reject) => {
+    axios({
       method: 'get',
       url: 'https://kapi.kakao.com/v2/user/me',
       headers: {
-        Authorization: `Bearer ${token.data.access_token}`
-      }//헤더에 내용을 보고 보내주겠다.
+        Authorization: `Bearer ${token.access_token}`,
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      }
+    }).then((res) => {
+      resolve(res.data);
     })
-  } catch (e) {
-    res.json(e.data);
-  }
-  console.log(user);
-
-  req.session.kakao = user.data;
-
-  res.send('success');
+  })
 }

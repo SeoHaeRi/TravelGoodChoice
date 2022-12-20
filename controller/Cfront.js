@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 exports.front = (req, res) => {
+  console.log("session : ", req.session.user);
   if (req.session.user) res.render("index", { islogin: true })
   else res.render("index", { islogin: false })
 }

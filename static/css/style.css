@@ -260,14 +260,6 @@
 .comment-form {
     text-align: end;
 }
-.comment-btn {
-  border-color: white;
-  background-color: #B2CCFF;
-  color: white;
-  width: 70px;
-  height: 30px;
-  font-size: 20%;
-}
 .first-comment {
   padding: 0 20px 0 0;
 }
@@ -352,3 +344,11 @@
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: yellow;
 } */
+.comment-box {
+  width: 800px;
+}
+@media (max-width:1250px) {
+  .comment-box {
+    width:300px;
+  }
+}

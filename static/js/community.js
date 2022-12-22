@@ -1,6 +1,4 @@
 
-
-
 function writeOn(){
 
     var form = document.getElementById("community-form")

@@ -9,6 +9,7 @@
       <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <script type="text/javascript" src="../static/js/community.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -46,6 +47,7 @@
         <a href="http://localhost:8000/login" class="login">로그인</a>
         <a href="http://localhost:8000/" class="logout">로그아웃</a>
     </div>
+
 
     <div style="height: 200px;"></div>
 
@@ -111,41 +113,68 @@
                     </div>
                 </div>
                 </div>
-            </div>
-            <!-- -------------------------------------------끝----------------------------------------------------- -->
-          <a href="#" class="btn table-btn">글삭제</a>
-        </div>
-      </div>
 
-    <!-- -------------------------------------------community----------------------------------------------------- -->
-    <div class="small">
-        <h3 class="ui dividing header">Comment</h3>
-        <div class="comment">
-          <a class="avatar">
-            <img src="/static/upload_img/1.jpg">
+            </div>
+        </div>
+        <a href="#" class="btn table-btn">글삭제</a>
+      </div>
+            <!-- -------------------------------------------댓글----------------------------------------------------- -->
+      <hr>
+      <div class="small mx-auto comment">
+        <h6>Comment</h6>
+        <!-- -------------------------------첫댓----------------------------------------- -->
+        <div class="first-comment">
+          <img style="width: 30px; height: 30px;" src="/static/upload_img/1.jpg">
+          <a class="author comment-name">
+            김철수
           </a>
-          <div class="content">
-            <a class="author">이름</a>
-            <div class="metadata">
-              <span class="date">Today at 5:42PM</span>
-            </div>
-            <div class="text">
-              안녕하세요
-            </div>
-            <div class="actions">
+          <span>
+            안녕하세요
+          </span>
+          <div>
+            <div class="comment-form">
+              <span>Today at 5:42PM</span>
+              <br>
               <a class="reply">답글달기</a>
             </div>
+            <div>
+            </div>
           </div>
         </div>
-        <form class="ui reply form">
-          <div class="field">
-            <textarea></textarea>
-          </div>
-          <div class="ui blue labeled submit icon button">
-            <i class="icon edit"></i> Add Reply
-          </div>
+          <!-- -------------------------------대댓----------------------------------------- -->
+        <div class="second-comment">
+            <img style="width: 30px; height: 30px;" src="/static/upload_img/gmldud.jpg">
+            <a class="author comment-name">
+              홍길동
+            </a>
+            <span>
+              안녕하세요 반갑습니다.
+            </span>
+            <div>
+              <div class="comment-form">
+                <span>Today at 5:45PM</span>
+                <br>
+                <a class="reply">답글달기</a>
+              </div>
+              <div>
+              </div>
+            </div>
+        </div>
+
+
+          <!-- ------------------------댓글입력양식------------------------- -->
+        <form class="comment-form">
+          <textarea cols="40" rows="2" placeholder="내용을 입력해주세요."></textarea>
+          <br>
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
+            <button type="button" class="btn comment-btn" data-bs-dismiss="modal">댓글달기</button>
+          <!-- </div> -->
         </form>
+        
       </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
 
 </body>
 </html>

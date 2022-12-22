@@ -23,6 +23,8 @@ router.post('/signup', upload.single("userfile"), controller.signup);
 router.post('/login', controller.login);
 router.delete('/logout', controller.logout);
 router.get('/login/kakao', controller.view_kakaoLogin);
-router.get('/kakao/finish', controller.kakaoLogin)
+router.get('/kakao/finish', controller.kakaoLogin);
+router.get('/logout/kakao', controller.view_kakaoLogout);
+router.get('/kakao/logout', controller.kakaoLogout);
 
 module.exports = router;

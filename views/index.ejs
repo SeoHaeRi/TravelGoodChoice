@@ -12,8 +12,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/css/common.css">
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
   <script type="text/javascript" src="../static/js/search.js"></script>
 </head>
@@ -34,40 +36,32 @@
     </div>
     <div class="snowflake">
       ❅
-      
     </div>
     <div class="snowflake">
       ❆
-      
     </div>
     <div class="snowflake">
       ❄
-      
     </div>
     <div class="snowflake">
       ❅
-      
     </div>
     <div class="snowflake">
       ❆
-      
     </div>
     <div class="snowflake">
       ❄
-      
-    </div>
-    <div class="snowflake">
-      ❅
-      
     </div>
     <div class="snowflake">
       ❆
-      
+    </div>
+    <div class="snowflake">
+      ❆
     </div>
     <div class="snowflake">
       ❄
-      
     </div>
+    
   </div>
   <div align="center">
     <div class="map">
@@ -83,18 +77,34 @@
         <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn" onclick="start()" data-filter="강원">
         <p class="gangwon-text">강원</p>
       </a>
-      <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn" onclick="start()" data-filter="충북/세종">
-      <p class="chungbuk-text">충북/세종</p>
-      <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn" onclick="start()" data-filter="충남/대전">
-      <p class="chungnam-text">충남/대전</p>
-      <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn" onclick="start()" data-filter="전북/전남/광주">
-      <p class="jeonbuk-text">전북/전남/광주</p>
+      <a href="http://localhost:8000/sights4">
+        <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn" onclick="start()" data-filter="충남/대전">
+        <p class="chungnam-text">충남/대전</p>
+      </a>
+      <a href="http://localhost:8000/sights5">
+        <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn" onclick="start()" data-filter="충북/세종">
+        <p class="chungbuk-text">충북/세종</p>
+      </a>
+      <a href="http://localhost:8000/sights6">
+        <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn" onclick="start()" data-filter="전북/전남/광주">
+        <p class="jeonbuk-text">전북/전남/광주</p>
+      </a>
       <img src="../static/img/btn.png" alt="degu" class="btn degu-btn" onclick="start()" data-filter="경북/대구/울산">
       <p class="degu-text">경북/대구/울산</p>
       <img src="../static/img/btn.png" alt="busan" class="btn busan-btn" onclick="start()" data-filter="경남/부산">
       <p class="busan-text">경남/부산</p>
     </div>
+    <div class="popup">
+      <form id="popup-form">
+        <img src="static/img/xmascookie.png" alt="크리스마스 이벤트" class="popup-img">
+        <div class="popup-check">
+          <span><input type="checkbox" name="checkbox" id="check"> 하루동안 다시보지 않기</span>
+          <i class="bi bi-x-circle" onclick="modalClose()"></i>
+        </div>
+      </form>
+    </div>
   </div>
+
 
   <script>
     if ('<%=islogin%>' == 'true') {
@@ -104,15 +114,38 @@
       document.querySelector(".logout").classList.add('d-none');
     }
 
-
+    if ("<%=popup%>" == "none") {
+      document.querySelector(".popup").classList.add('d-none');
+    }
     document.querySelector('.logout').addEventListener('click', () => {
-      axios({
-        method: 'delete',
-        url: '/user/logout',
-      }).then((result) => {
-        document.location.href = '/';
-      })
+      if ('<%=iskakao%>' == 'true') {
+        document.location.href = '/user/logout/kakao'
+      } else {
+        axios({
+          method: 'delete',
+          url: '/user/logout',
+        }).then((res) => {
+          document.location.href = '/';
+        })
+      }
     })
+
+    function modalClose() {
+      let form = document.getElementById("popup-form");
+      let check = document.getElementById("check");
+      axios({
+        method: "post",
+        url: "/setpopup",
+        data: {
+          value: form.checkbox.checked
+        }
+      }).then((result) => {
+        if (result.data) {
+          console.log("성공");
+        }
+        document.querySelector(".popup").classList.add('d-none');
+      })
+    }
   </script>
 </body>
 

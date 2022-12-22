@@ -1,8 +1,9 @@
-var express = require("express")
-var controller = require("../controller/Cfront")
-var router = express.Router()
-var app = express()
+const express = require("express")
+const controller = require("../controller/Cfront")
+const router = express.Router()
+
 router.get("/", controller.front)
+router.post("/setpopup", controller.setpopup)
 
 router.get("/recommend", controller.recommend)
 router.get("/signup", controller.signup)
@@ -13,6 +14,9 @@ router.get("/contents", controller.contents)
 router.get("/sights1", controller.sights1)
 router.get("/sights2", controller.sights2)
 router.get("/sights3", controller.sights3)
+router.get("/sights4", controller.sights4)
+router.get("/sights5", controller.sights5)
+router.get("/sights6", controller.sights6)
 
 router.get("/chat", controller.chat)
 

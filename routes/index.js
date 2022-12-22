@@ -1,8 +1,9 @@
-var express = require("express")
-var controller = require("../controller/Cfront")
-var router = express.Router()
-var app = express()
+const express = require("express")
+const controller = require("../controller/Cfront")
+const router = express.Router()
+
 router.get("/", controller.front)
+router.post("/setpopup", controller.setpopup)
 
 router.get("/recommend", controller.recommend)
 router.get("/signup", controller.signup)

@@ -43,6 +43,12 @@ exports.sights2 = (req, res) => {
 exports.sights3 = (req, res) => {
   res.render("sights3")
 }
+exports.sights4 = (req, res) => {
+  res.render("sights4")
+}
+exports.sights5 = (req, res) => {
+  res.render("sights5")
+}
 
 exports.chat = (req, res) => {
   res.render("chat")

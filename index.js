@@ -1,6 +1,7 @@
 const express = require("express");
 const socket = require('socket.io');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
@@ -19,6 +20,7 @@ app.use('/css', express.static('./static/css'));
 app.use('/js', express.static('./static/js'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(session({
   secret: '1234',

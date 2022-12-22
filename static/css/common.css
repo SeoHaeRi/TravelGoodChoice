@@ -196,6 +196,9 @@ body {
     text-align: center;
 
 }
+.div-padding {
+    padding: 200px;
+}
 
 .community {
     position: fixed;

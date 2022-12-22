@@ -192,7 +192,27 @@
       </div>
     </div>
     <div>
+      <script>
+        if ('<%=islogin%>' == 'true') {
+          document.querySelector(".login").classList.add('d-none');
+          document.querySelector(".logout").classList.remove('d-none');
+        } else {
+          document.querySelector(".logout").classList.add('d-none');
+        }
 
+        document.querySelector('.logout').addEventListener('click', () => {
+          if ('<%=iskakao%>' == 'true') {
+            document.location.href = '/user/logout/kakao'
+          } else {
+            axios({
+              method: 'delete',
+              url: '/user/logout',
+            }).then((res) => {
+              document.location.href = '/';
+            })
+          }
+        })
+      </script>
 </body>
 
 </html>

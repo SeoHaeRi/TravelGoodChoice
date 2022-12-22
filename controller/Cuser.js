@@ -71,7 +71,7 @@ exports.view_kakaoLogout = (req, res) => {
 }
 
 exports.kakaoLogout = (req, res) => {
-  console.log("logout: ", req);
+  // console.log("logout: ", req);
   req.session.destroy((err) => {
     if (err) throw err;
     res.redirect('/');

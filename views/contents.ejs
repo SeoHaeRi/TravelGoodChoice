@@ -59,19 +59,19 @@
             </tr>
             <hr>
             <tr>
-                <td>홍길동</td>
-                <td>서울</td>
-                <td>★★</td>
-                <td>2022-12-20</td>
+                <td><%=post.writer%></td>
+                <td><%=post.region%></td>
+                <td><%=post.star%></td>
+                <td><%=post.createdAt%></td>
             </tr>
         </table>
         <hr>
-        <img src="../static/img/chuncheon.jpg" class="card-img-top w-50 mx-auto" alt="...">
+        <img src="../contents/<%=post.img%>" class="card-img-top w-50 mx-auto" alt="...">
         <hr>
         <div class="card-body">
-            <h5 class="card-title">글제목</h5>
+            <h5 class="card-title"><%=post.title%></h5>
             <hr>
-            <p class="card-text">글내용</p>
+            <p class="card-text"><%=post.maintext%></p>
         </div>
         <div class="card-body d-flex justify-content-end">
             <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->

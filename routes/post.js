@@ -12,16 +12,20 @@ const upload = multer({
     filename(req, file, done) {
       console.log("filename: ", req.body);
       const ext = path.extname(file.originalname);
-      const filename = req.body.writer + ext;
+      const filename = req.body.title + ext;
       done(null, filename);
     }
   })
 })
 
+// community 페이지 렌더
 router.get('/view_post', controller.view_post)
+// commnunity 폼전송
 router.post('/community', upload.single("community_file"), controller.community);
-// router.post('/profile', controller.profile);
-// router.patch('/profile/edit', controller.edit_user);
+
+// community a태그 
+router.get("/:index_number", controller.view_contents)
+
 
 
 module.exports = router;

@@ -17,6 +17,7 @@ app.set("view engine", "ejs");
 app.use("/static", express.static("static"));
 app.use('/css', express.static('./static/css'));
 app.use('/js', express.static('./static/js'));
+app.use('/contents', express.static('./static/post_img'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

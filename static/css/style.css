@@ -546,6 +546,28 @@ body {
   right: 0;
   bottom: 0;
 }
+
+.popup {
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  width: 500px;
+  height: 600px;
+  z-index: 10;
+}
+
+.popup-img {
+  width: 100%;
+}
+
+.popup .popup-check {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+}
+
 /* .star-rating {
   display: flex;
   flex-direction: row-reverse;
@@ -572,3 +594,4 @@ body {
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: yellow;
 } */
+

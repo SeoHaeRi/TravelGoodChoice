@@ -100,14 +100,17 @@
       document.querySelector(".logout").classList.add('d-none');
     }
 
-
     document.querySelector('.logout').addEventListener('click', () => {
-      axios({
-        method: 'delete',
-        url: '/user/logout',
-      }).then((result) => {
-        document.location.href = '/';
-      })
+      if ('<%=iskakao%>' == 'true') {
+        document.location.href = '/user/logout/kakao'
+      } else {
+        axios({
+          method: 'delete',
+          url: '/user/logout',
+        }).then((res) => {
+          document.location.href = '/';
+        })
+      }
     })
   </script>
 </body>

@@ -102,13 +102,18 @@
                 <th>작성자</th>
                 <th>작성일</th>
                 <% for(let i=0; i<data.length; i++) { %> 
-                  <tr>
+
+                  <tr style="cursor:pointer;"onclick= "location.href='http://localhost:8000/post/<%=data[i].index_number%>'">
+
+
                       <td><%=data[i].index_number%></td>
                       <td><%=data[i].title%></td>
                       <td><%=data[i].star%></td>
                       <td><%=data[i].region%></td>
                       <td><%=data[i].writer%></td>
-                      <td><%=data[i].createdAt%></td>    
+                      <td><%=data[i].createdAt%></td>
+                        
+                      
                   </tr>
                   
                   <% } %>
@@ -151,6 +156,7 @@
         document.location.href = '/';
       })
     })
+
     </script>
 </body>
 </html>

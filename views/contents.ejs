@@ -48,67 +48,72 @@
         <a href="http://localhost:8000/" class="logout">로그아웃</a>
     </div>
 
-    <div class="card mx-auto div-padding">
-      <table style="text-align: center;">
-          <tr>
-              <th>작성자</th>
-              <th>지역</th>
-              <th>별점</th>
-              <th>작성시간</th>
-          </tr>
-          <hr>
-          <tr>
-              <td>홍길동</td>
-              <td>서울</td>
-              <td>★★</td>
-              <td>2022-12-20</td>
-          </tr>
-      </table>
-      <hr>
-      <img src="../static/img/chuncheon.jpg" class="card-img-top w-50 mx-auto" alt="...">
-      <hr>
-      <div class="card-body">
-          <h5 class="card-title">글제목</h5>
-          <hr>
-          <p class="card-text">글내용</p>
-      </div>
-      <div class="card-body d-flex justify-content-end">
-        <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->
-        <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            글수정
-        </button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
-                  </div>
-                  <div class="modal-body">
-                    <form id="community-form"class="community-form">
-                        제목
-                        <br>
-                        <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="">
-                        <br>
-                        <input type="radio" class="star" name="star" value="★" id="1">★
-                        <input type="radio" class="star" name="star" value="★★" id="2">★★
-                        <input type="radio" class="star" name="star" value="★★★" id="3">★★★
-                        <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
-                        <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
-                        <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주">
-                        <br>
-                        내용
-                        <br>
-                        <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
-                        <br>
-                        이미지
-                        <input type="file" name="community_file" id="file">
-                        <div class="modal-footer">
-                        <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
-                        <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
-                        </div>
-                    </form>
-                  </div>
-              </div>
+
+    <div style="height: 200px;"></div>
+
+    <div class="card w-75 position-relative w-50 mx-auto">
+        <table style="text-align: center;">
+            <tr>
+                <th>작성자</th>
+                <th>지역</th>
+                <th>별점</th>
+                <th>작성시간</th>
+            </tr>
+            <hr>
+            <tr>
+                <td><%=post.writer%></td>
+                <td><%=post.region%></td>
+                <td><%=post.star%></td>
+                <td><%=post.createdAt%></td>
+            </tr>
+        </table>
+        <hr>
+        <img src="../contents/<%=post.img%>" class="card-img-top w-50 mx-auto" alt="...">
+        <hr>
+        <div class="card-body">
+            <h5 class="card-title"><%=post.title%></h5>
+            <hr>
+            <p class="card-text"><%=post.maintext%></p>
+        </div>
+        <div class="card-body d-flex justify-content-end">
+            <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->
+            <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                글수정
+            </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form id="community-form"class="community-form">
+                            제목
+                            <br>
+                            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="">
+                            <br>
+                            <input type="radio" class="star" name="star" value="★" id="1">★
+                            <input type="radio" class="star" name="star" value="★★" id="2">★★
+                            <input type="radio" class="star" name="star" value="★★★" id="3">★★★
+                            <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
+                            <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
+                            <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주">
+                            <br>
+                            내용
+                            <br>
+                            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                            <br>
+                            이미지
+                            <input type="file" name="community_file" id="file">
+                            <div class="modal-footer">
+                            <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
+                            <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+
             </div>
         </div>
         <a href="#" class="btn table-btn">글삭제</a>

@@ -1,4 +1,5 @@
 const { Post, sequelize } = require("../model");
+const { Op } = require('sequelize');
 
 exports.view_post = async (req, res) => {
         let result = await Post.findAll({attributes:{
@@ -14,7 +15,9 @@ exports.view_post = async (req, res) => {
           ],
         },
       });
-            if ( result.length > 0 ) res.render("community", {data: result, user:req.session.user});
+            if ( result.length > 0 ) 
+            res.render("community", {data: result, user:req.session.user,});
+ 
             else res.render("community");   
 }
 
@@ -49,6 +52,13 @@ exports.community = async (req, res) => {
   console.log(data)
   res.send({result})
 
+}
+
+exports.view_contents = async(req,res,) =>{
+  console.log("파람스",req.params)
+  const post = await Post.findOne({where: {[Op.or]: [{index_number:req.params.index_number},{img:req.params.index_number}] } })
+  res.render("contents",{ post })
+  console.log("포스트",post)
 }
 
 

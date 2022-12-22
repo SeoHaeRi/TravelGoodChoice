@@ -18,6 +18,8 @@ router.get("/sights4", controller.sights4)
 router.get("/sights5", controller.sights5)
 router.get("/sights6", controller.sights6)
 
+router.get("/worldcup", controller.worldCup)
+
 router.get("/chat", controller.chat)
 
 module.exports = router;

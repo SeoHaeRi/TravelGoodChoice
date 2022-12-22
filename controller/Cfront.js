@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 exports.front = (req, res) => {
   if (req.cookies.popup == "1") {
     if (req.session.user) {
@@ -29,7 +27,6 @@ exports.setpopup = (req, res) => {
     res.send(false)
   }
 }
-
 
 exports.recommend = (req, res) => {
   res.render("recommend")
@@ -75,7 +72,9 @@ exports.sights5 = (req, res) => {
 exports.sights6 = (req, res) => {
   res.render("sights6")
 }
-
+exports.worldCup = (req, res) => {
+  res.render("worldCup")
+}
 exports.chat = (req, res) => {
   res.render("chat")
 }

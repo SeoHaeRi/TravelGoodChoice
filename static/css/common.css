@@ -203,7 +203,7 @@ body {
 .community {
     position: fixed;
     top: 65px;
-    right: 350px;
+    right: 510px;
     text-decoration-line: none;
     color: white;
 }
@@ -211,15 +211,31 @@ body {
 .search {
     position: fixed;
     top: 65px;
-    right: 220px;
+    right: 390px;
     text-decoration-line: none;
     color: white;
 }
 
+.worldCup {
+    position: fixed;
+    top: 65px;
+    right: 270px;
+    text-decoration-line: none;
+    color: white;
+}
+
+/* .myPage {
+    position: fixed;
+    top: 65px;
+    right: 150px;
+    text-decoration-line: none;
+    color: white;
+} */
+
 .login {
     position: fixed;
     top: 65px;
-    right: 100px;
+    right: 50px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;
@@ -229,7 +245,7 @@ body {
 .logout {
     position: fixed;
     top: 65px;
-    right: 100px;
+    right: 50px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;

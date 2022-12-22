@@ -1,9 +1,12 @@
 const fs = require('fs');
 
 exports.front = (req, res) => {
-  console.log("session : ", req.session.user);
-  if (req.session.user) res.render("index", { islogin: true })
-  else res.render("index", { islogin: false })
+  if (req.session.user) {
+    res.render("index", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("index", { islogin: true, iskakao: true })
+  }
+  else res.render("index", { islogin: false, iskakao: false })
 }
 exports.recommend = (req, res) => {
   res.render("recommend")
@@ -12,10 +15,20 @@ exports.signup = (req, res) => {
   res.render("signup")
 }
 exports.search = (req, res) => {
-  res.render("search")
+  if (req.session.user) {
+    res.render("search", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("search", { islogin: true, iskakao: true })
+  }
+  else res.render("search", { islogin: false, iskakao: false })
 }
 exports.community = (req, res) => {
-  res.render("community")
+  if (req.session.user) {
+    res.render("community", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("community", { islogin: true, iskakao: true })
+  }
+  else res.render("community", { islogin: false, iskakao: false })
 }
 exports.contents = (req, res) => {
   res.render("contents")

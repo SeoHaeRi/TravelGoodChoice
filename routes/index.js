@@ -15,6 +15,7 @@ router.get("/sights2", controller.sights2)
 router.get("/sights3", controller.sights3)
 router.get("/sights4", controller.sights4)
 router.get("/sights5", controller.sights5)
+router.get("/sights6", controller.sights6)
 
 router.get("/chat", controller.chat)
 

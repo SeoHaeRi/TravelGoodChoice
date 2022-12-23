@@ -16,27 +16,73 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-    //   function writeOn(){
+      function modify(){
     
-    //   var form = document.getElementById("community-form")
-    //   const formData = new FormData();
-    //   const file = document.getElementById("file")
-    //   formData.append('title',form.title.value)
-    //   formData.append('star',form.star.id)
-    //   formData.append('content',form.content.value)
-    //   formData.append('region',form.region.value)
-    //   formData.append('writer',form.writer.value)
-    //   formData.append('postfile',file.files[0]);
-    //   axios({
-    //     method:"post",
-    //     url:"/post/community",
-    //     data: formData
-    //   })
-    //   .then(()=>{
-    //     console.log("성공")
-    //   })
-    // }
-      
+      var form = document.getElementById("contents-modify-form")
+      const formData = new FormData();
+      const file = document.getElementById("file")
+      axios({
+        method:"patch",
+        url:"/post/modify",
+        data: 
+        {
+          title: form.title.value,
+          star:form.star.value,
+          content:form.content.value,
+          region:form.region.value,
+          postfile:file.files[0],
+          index_number:form.index_number.id
+          
+
+
+        }
+      })
+      .then((res)=>{
+        console.log(res)
+        var region = document.querySelector(".region")
+        var star = document.querySelector(".star")
+        var img = document.getElementById("img")
+        var title = document.getElementById("title")
+        var maintext = document.getElementById("maintext")
+        if(img){
+
+        region.innerText = res.config.data.region.value
+        star.innerText = res.config.data.star.value
+        img.src.innerText = "../contents/" + res.config.data.img.value
+        title.innerText = res.config.data.title.value
+        maintext.innerText = res.config.data.maintext.value
+        }
+        else{
+
+        region.innerText = res.config.data.region.value
+        star.innerText = res.config.data.star.value
+        title.innerText = res.config.data.title.value
+        maintext.innerText = res.config.data.maintext.value
+         }
+      })
+    }
+    function del_contents(){
+      var form = document.getElementById("contents-modify-form")
+      const formData = new FormData();
+      const file = document.getElementById("file")
+      axios({
+        method:"delete",
+        url:"/post/del_contents",
+        data: 
+        {
+          index_number:form.index_number.id
+          
+
+
+        }
+      })
+      .then(()=>{
+          if(true){
+            alert("글삭제가 완료되었습니다.")
+            window.location.href= "/post/view_post"
+          }
+      })
+  }  
     </script>
 </head>
 <body>
@@ -54,6 +100,7 @@
     <div class="card div-padding mx-auto">
         <table style="text-align: center;">
             <tr>
+                <th>글번호</th>
                 <th>작성자</th>
                 <th>지역</th>
                 <th>별점</th>
@@ -61,19 +108,24 @@
             </tr>
             <hr>
             <tr>
-                <td><%=post.writer%></td>
-                <td><%=post.region%></td>
-                <td><%=post.star%></td>
-                <td><%=post.createdAt%></td>
+                <td><%=data.index_number%></td>
+                <td><%=data.writer%></td>
+                <td class="region"><%=data.region%></td>
+                <td class="star"><%=data.star%></td>
+                <td><%=data.createdAt%></td>
             </tr>
         </table>
         <hr>
-        <img src="../contents/<%=post.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다.">
+        <% if(data.img !== null) { %>
+        <img id="img"src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다. ">
         <hr>
+        <%} %>
+
+        
         <div class="card-body">
-            <h5 class="card-title"><%=post.title%></h5>
+            <h5 id="title"class="card-title"><%=data.title%></h5>
             <hr>
-            <p class="card-text"><%=post.maintext%></p>
+            <p id="maintext"class="card-text"><%=data.maintext%></p>
         </div>
         <div class="card-body d-flex justify-content-end">
             <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->
@@ -87,27 +139,28 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
                     </div>
                     <div class="modal-body">
-                        <form id="community-form"class="community-form">
+                        <form id="contents-modify-form"class="community-form">
+                          <input type="hidden" name="index_number" id="<%=data.index_number%>">
                             제목
                             <br>
-                            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="">
+                            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="<%=data.tile%>">
                             <br>
                             <input type="radio" class="star" name="star" value="★" id="1">★
                             <input type="radio" class="star" name="star" value="★★" id="2">★★
                             <input type="radio" class="star" name="star" value="★★★" id="3">★★★
                             <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
                             <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
-                            <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주">
+                            <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주" value="<%=data.region%>">
                             <br>
                             내용
                             <br>
-                            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."><%=data.maintext%></textarea>
                             <br>
                             이미지
-                            <input type="file" name="community_file" id="file">
+                            <input type="file" name="community_file" id="file" value="">
                             <div class="modal-footer">
                             <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
-                            <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
+                            <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="modify()">수정</button>
                             </div>
                         </form>
                     </div>
@@ -116,7 +169,7 @@
 
             </div>
         </div>
-        <a href="#" class="btn table-btn">글삭제</a>
+        <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="del_contents()">글 삭제</button>
       </div>
             <!-- -------------------------------------------댓글----------------------------------------------------- -->
       <hr>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경북/대구/울산 | 여행어때</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="banner2">
+    <img src="../static/img/avatar2.png" alt=""">
+  </div>
+  <div class=" banner">
+    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+    <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
+    <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
+    <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
+    <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
+    <a href="http://localhost:8000/user/login" class="login">로그인</a>
+    <a class="logout">로그아웃</a>
+  </div>
+
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+  </div>
+
+  <div class="div-padding"></div>
+
+  <button class="btn table-btn" id="region" type="button" value="11" onclick="selectBig(this.value)">서울특별시</button>
+  <button class="btn table-btn" id="region" type="button" value="23" onclick="selectBig(this.value)">인천광역시</button>
+  <button class="btn table-btn" id="region" type="button" value="31" onclick="selectBig(this.value)">경기도</button>
+  <button class="btn table-btn" id="region" type="button" value="32" onclick="selectBig(this.value)">강원도</button>
+  <button class="btn table-btn" id="region" type="button" value="25" onclick="selectBig(this.value)">대전광역시</button>
+  <button class="btn table-btn" id="region" type="button" value="12" onclick="selectBig(this.value)">세종특별시</button>
+  <button class="btn table-btn" id="region" type="button" value="33" onclick="selectBig(this.value)">충청북도</button>
+  <button class="btn table-btn" id="region" type="button" value="34" onclick="selectBig(this.value)">충청남도</button>
+  <button class="btn table-btn" id="region" type="button" value="26" onclick="selectBig(this.value)">울산광역시</button>
+  <button class="btn table-btn" id="region" type="button" value="24" onclick="selectBig(this.value)">광주광역시</button>
+  <button class="btn table-btn" id="region" type="button" value="35" onclick="selectBig(this.value)">전라북도</button>
+  <button class="btn table-btn" id="region" type="button" value="36" onclick="selectBig(this.value)">전라남도</button>
+  <button class="btn table-btn" id="region" type="button" value="21" onclick="selectBig(this.value)">부산광역시</button>
+  <button class="btn table-btn" id="region" type="button" value="22" onclick="selectBig(this.value)">대구광역시</button>
+  <button class="btn table-btn" id="region" type="button" value="37" onclick="selectBig(this.value)">경상북도</button>
+  <button class="btn table-btn" id="region" type="button" value="38" onclick="selectBig(this.value)">경상남도</button>
+
+  <hr>
+  <div id="station"></div>
+  출발지코드:<input type="text" id="start">
+  <button onclick="searchTrain()">검색</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+  <script>
+    function selectBig(clicked_value){
+      var station = document.getElementById('station');
+      station.innerText = '';
+
+      var xhr = new XMLHttpRequest();
+      var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList'; /*URL*/
+      var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'iwTiqJHCRqEIdoWj%2F4g58Sj89y5bOUhHGhMZPRwH5CBPJOyxUiTArkIf0k1ah%2BUm2N%2BMJ3jGziROL2wUBo%2BuGg%3D%3D'; /*Service Key*/
+      queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+      queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
+      queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('xml'); /**/
+      queryParams += '&' + encodeURIComponent('cityCode') + '=' + encodeURIComponent(clicked_value); /**/
+      xhr.open('GET', url + queryParams);
+      xhr.onreadystatechange = function () {
+          if (this.readyState == 4) {
+              // alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+              var xml = xhr.responseXML;
+              var nodeid = xml.getElementsByTagName("nodeid")
+              var nodename = xml.getElementsByTagName("nodename")
+              // [0].firstChild.nodeValue;
+              console.log(nodeid);
+              // .firstChild.nodeValue;
+              for(let i = 0; i < 100; i++) {
+               var a = nodeid[i].firstChild.nodeValue;
+               var b = nodename[i].firstChild.nodeValue;
+               console.log(a + "," + b);
+
+               var station = document.getElementById("station");
+               var btn = document.createElement("button");
+               btn.innerText = b;
+               btn.value = a;
+               btn.className = "station2";
+
+               station.appendChild(btn);
+
+
+               
+              }
+              // var nodeid = xml.querySelectorAll("nodeid").nodeValue;
+              // alert(nodeid+',');
+          }
+      };
+      // console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+
+      xhr.send('');
+    //   var request = require('request');
+
+    // var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList';
+    // var queryParams = '?' + encodeURIComponent('serviceKey') + '=서비스키'; /* Service Key*/
+    // queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
+    // queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
+    // queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('xml'); /* */
+    // queryParams += '&' + encodeURIComponent('cityCode') + '=' + encodeURIComponent(clicked_value); /* */
+
+    // request({
+    //     url: url + queryParams,
+    //     method: 'GET'
+    // }, function (error, response, body) {
+    //     console.log('Status', response.statusCode);
+    //     console.log('Headers', JSON.stringify(response.headers));
+    //     console.log('Reponse received', body);
+    // });
+    }
+function searchTrain(){
+  var departure = document.getElementById('start');
+
+  var xhr = new XMLHttpRequest();
+  var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo'; /*URL*/
+  var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'iwTiqJHCRqEIdoWj%2F4g58Sj89y5bOUhHGhMZPRwH5CBPJOyxUiTArkIf0k1ah%2BUm2N%2BMJ3jGziROL2wUBo%2BuGg%3D%3D'; /*Service Key*/
+  queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('2'); /**/
+  queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+  queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('xml'); /**/
+  queryParams += '&' + encodeURIComponent('depPlaceId') + '=' + encodeURIComponent(departure.value); /**/
+  queryParams += '&' + encodeURIComponent('arrPlaceId') + '=' + encodeURIComponent('NAT011668'); /**/
+  queryParams += '&' + encodeURIComponent('depPlandTime') + '=' + encodeURIComponent('20211201'); /**/
+  queryParams += '&' + encodeURIComponent('trainGradeCode') + '=' + encodeURIComponent('00'); /**/
+  xhr.open('GET', url + queryParams);
+  xhr.onreadystatechange = function () {
+      if (this.readyState == 4) {
+          console.log('Status: '+this.status+'nHeaders: '+xml.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+      }
+  };
+  
+  xhr.send('');
+}
+  </script>
+</body>
+
+</html>

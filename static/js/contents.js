@@ -4,7 +4,8 @@ function commentOn(){
     // 인덱스 처리
 
     var form = document.getElementById("comment-form")
-    var content = document.getElementsByClassName("comment-box").value;
+    var content = document.getElementById("comment-box");
+    
 
     var comments = document.getElementsByClassName("comments");
 
@@ -22,7 +23,8 @@ function commentOn(){
     a.innerText = "김철수";
     
     var span = document.createElement("span");
-    span.innerText = content;
+    span.innerText = content.value;
+    console.log(span);
     
     var div2 = document.createElement("div");
     

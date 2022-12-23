@@ -197,7 +197,10 @@ body {
 
 }
 .div-padding {
-    padding: 200px;
+    padding: 200px 200px 0 200px;
+}
+.comment-padding {
+    padding: 0 200px 0 200px;
 }
 
 .community {

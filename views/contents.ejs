@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/common.css">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <script type="text/javascript" src="../static/js/community.js"></script>
+    <script type="text/javascript" src="../static/js/contents.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -50,9 +51,7 @@
     </div>
 
 
-    <div style="height: 200px;"></div>
-
-    <div class="card w-75 position-relative w-50 mx-auto">
+    <div class="card div-padding mx-auto">
         <table style="text-align: center;">
             <tr>
                 <th>작성자</th>
@@ -69,7 +68,7 @@
             </tr>
         </table>
         <hr>
-        <img src="../contents/<%=post.img%>" class="card-img-top w-50 mx-auto" alt="...">
+        <img src="../contents/<%=post.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다.">
         <hr>
         <div class="card-body">
             <h5 class="card-title"><%=post.title%></h5>
@@ -121,45 +120,45 @@
       </div>
             <!-- -------------------------------------------댓글----------------------------------------------------- -->
       <hr>
-      <div class=" mx-auto">
+      <div class="mx-auto comment-padding" style="justify-content: center;">
         <h6>Comment</h6>
-        <!-- -------------------------------첫댓----------------------------------------- -->
-        <div class="first-comment">
-          <img style="width: 30px; height: 30px;" src="/static/upload_img/1.jpg">
-          <a class="author comment-name">
-            김철수
-          </a>
-          <span>
-            안녕하세요
-          </span>
-          <div>
-            <div class="comment-form">
-              <span>Today at 5:42PM</span>
-              <br>
-              <a class="reply">답글달기</a>
-            </div>
-            <div>
+         <!-- -------------------------------첫댓----------------------------------------- -->
+        <div class="comments">
+          <div class="first-comment">
+           <img class="comment-img" src="/static/upload_img/1.jpg">
+           <a class="comment-name">
+             김철수
+           </a>
+           <span>
+             안녕하세요
+           </span>
+           <div>
+             <div class="comment-form">
+               <span>Today at 5:42PM</span>
+               <br>
+               <a clinkOn="coComent()">답글달기</a>
+              </div>
             </div>
           </div>
-        </div>
-          <!-- -------------------------------대댓----------------------------------------- -->
-        <div class="second-comment">
-            <img style="width: 30px; height: 30px;" src="/static/upload_img/gmldud.jpg">
-            <a class="author comment-name">
-              홍길동
-            </a>
-            <span>
-              안녕하세요 반갑습니다.
-            </span>
-            <div>
-              <div class="comment-form">
-                <span>Today at 5:45PM</span>
-                <br>
-                <a class="reply">답글달기</a>
-              </div>
-              <div>
-              </div>
-            </div>
+           <!-- -------------------------------대댓----------------------------------------- -->
+          <div class="second-comment">
+             <img style="width: 30px; height: 30px;" src="/static/upload_img/gmldud.jpg">
+             <a class="comment-name">
+               홍길동
+             </a>
+             <span>
+               안녕하세요 반갑습니다.
+             </span>
+             <div>
+               <div class="comment-form">
+                 <span>Today at 5:45PM</span>
+                 <br>
+                 <a class="reply">답글달기</a>
+               </div>
+               <div>
+               </div>
+             </div>
+          </div>
         </div>
 
 
@@ -168,7 +167,7 @@
           <textarea class="comment-box" placeholder="내용을 입력해주세요."></textarea>
           <br>
           <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
-            <a href="#" class="btn table-btn">댓글</a>
+            <button class="btn table-btn" type="button" onclick="commentOn()">댓글</button>
           <!-- </div> -->
         </form>
         

@@ -14,7 +14,9 @@
     <script type="text/javascript" src="../static/js/community.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
     <script>
     //   function writeOn(){
     
@@ -40,20 +42,40 @@
     </script>
 </head>
 <body>
-    <div class="banner">
-        <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
-        <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
-        <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
-        <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
-        <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
-        <a href="http://localhost:8000/user/login" class="login">로그인</a>
-        <a class="logout">로그아웃</a>
-    </div>
-    <div class="table-div div-padding">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id ="write_btn">
-            글쓰기
-        </button>
+  <div class="banner2">
+    <img src="../static/img/avatar2.png" alt=""">
+  </div>
+  <div class="banner">
+    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+    <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
+    <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
+    <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
+    <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
+    <a href="http://localhost:8000/user/login" class="login">로그인</a>
+    <a class="logout">로그아웃</a>
+  </div>
+
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+  </div>
+
+    <div class="div-padding">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id ="write_btn">
+        글쓰기
+      </button>
+      <!-- <div align="center">
+        <input type="search" class="search_input" placeholder="검색어를 입력하세요" onclick="search_filter()">
+      </div> -->
         
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

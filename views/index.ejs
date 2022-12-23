@@ -17,10 +17,12 @@
   <link rel="shortcut icon" href="../static/img/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../static/css/common.css">
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-  <script type="text/javascript" src="../static/js/search.js"></script>
 </head>
 
 <body>
+  <div class="banner2">
+    <img src="../static/img/avatar2.png" alt=""">
+  </div>
   <div class="banner">
     <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
     <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
@@ -32,69 +34,74 @@
   </div>
 
   <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake">
-      ❅
-    </div>
-    <div class="snowflake">
-      ❅
-    </div>
-    <div class="snowflake">
-      ❆
-    </div>
-    <div class="snowflake">
-      ❄
-    </div>
-    <div class="snowflake">
-      ❅
-    </div>
-    <div class="snowflake">
-      ❆
-    </div>
-    <div class="snowflake">
-      ❄
-    </div>
-    <div class="snowflake">
-      ❆
-    </div>
-    <div class="snowflake">
-      ❆
-    </div>
-    <div class="snowflake">
-      ❄
-    </div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
   </div>
 
-  <div style="height: 100px; "></div>
-  <div class="map">
-    <a href="http://localhost:8000/sights1">
-      <img src="../static/img/btn.png" alt="seoul" class="btn seoul-btn">
-      <p class="seoul-text">서울/인천/경기</p>
-    </a>
-    <a href="http://localhost:8000/sights2">
-      <img src="../static/img/btn.png" alt="jejudo" class="btn jejudo-btn">
-      <p class="jejudo-text">제주도</p>
-    </a>
-    <a href="http://localhost:8000/sights3">
-      <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn">
-      <p class="gangwon-text">강원</p>
-    </a>
-    <a href="http://localhost:8000/sights4">
-      <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn">
-      <p class="chungnam-text">충남/대전</p>
-    </a>
-    <a href="http://localhost:8000/sights5">
-      <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn">
-      <p class="chungbuk-text">충북/세종</p>
-    </a>
-    <a href="http://localhost:8000/sights6">
-      <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn">
-      <p class="jeonbuk-text">전북/전남/광주</p>
-    </a>
-    <img src="../static/img/btn.png" alt="degu" class="btn degu-btn">
-    <p class="degu-text">경북/대구/울산</p>
-    <img src="../static/img/btn.png" alt="busan" class="btn busan-btn">
-    <p class="busan-text">경남/부산</p>
-  </div>
+  <div>
+    <div style="height: 80px; "></div>
+    <div class="map">
+      <a href="http://localhost:8000/sights1">
+        <img src="../static/img/btn.png" alt="seoul" class="btn seoul-btn">
+        <p class="seoul-text">서울/인천/경기</p>
+      </a>
+      <a href="http://localhost:8000/sights2">
+        <img src="../static/img/btn.png" alt="jejudo" class="btn jejudo-btn">
+        <p class="jejudo-text">제주도</p>
+      </a>
+      <a href="http://localhost:8000/sights3">
+        <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn">
+        <p class="gangwon-text">강원</p>
+      </a>
+      <a href="http://localhost:8000/sights4">
+        <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn">
+        <p class="chungnam-text">충남/대전</p>
+      </a>
+      <a href="http://localhost:8000/sights5">
+        <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn">
+        <p class="chungbuk-text">충북/세종</p>
+      </a>
+      <a href="http://localhost:8000/sights6">
+        <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn">
+        <p class="jeonbuk-text">전북/전남/광주</p>
+      </a>
+      <img src="../static/img/btn.png" alt="degu" class="btn degu-btn">
+      <p class="degu-text">경북/대구/울산</p>
+      <img src="../static/img/btn.png" alt="busan" class="btn busan-btn">
+      <p class="busan-text">경남/부산</p>
+    </div>
+  
+  <!-- 사업자등록 -->
+  <!-- <div class="copyright" align="bottom">
+    <img class = "col-1 col-sm-2 col-lg-1" src="./favicon.png" width="100px" alt="logo" style="top:20px; right:20px; position: relative;" align = "right">
+    <div class="copyright-info">
+        <h1>여행어때</h1>
+    </div>
+    <div class="copyright-info">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg>
+              서울특별시 용산구 나진전자상가
+            </div>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+              </svg>
+              ceo@howabouttrip.com
+            </div>
+          </div>
+          <span class="copyright">ⓒhowabouttrip all right reserved.</span>
+        </div> -->
+        
   <div class="popup">
     <form id="popup-form">
       <img src="static/img/xmascookie.png" alt="크리스마스 이벤트" class="popup-img">
@@ -104,7 +111,6 @@
       </div>
     </form>
   </div>
-
 
 
   <script>

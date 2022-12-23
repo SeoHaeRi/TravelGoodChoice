@@ -46,6 +46,7 @@ function writeOn(){
         //star.innerText = star1;
     
         var region1 = document.createElement("td");
+        // region1.classList = card_filter;
         region1.innerHTML =  response.data.result.region
         //region1.innerHTML = region.value;
     

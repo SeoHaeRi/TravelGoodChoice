@@ -182,6 +182,7 @@ body {
     text-decoration-line: none;
     color: white;
     text-align: center;
+    text-shadow: 6px 4px 1px rgb(130, 138, 255);
 }
 
 .banner {
@@ -194,6 +195,17 @@ body {
     left: 0;
     background-color: #B2CCFF;
     text-align: center;
+    border-bottom-left-radius:100%
+
+}
+.banner2 {
+    height:200px; width : 100px;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
 }
 .div-padding {
@@ -206,9 +218,11 @@ body {
 .community {
     position: fixed;
     top: 65px;
-    right: 510px;
+    right: 270px;
     text-decoration-line: none;
     color: white;
+    font-weight: bold;
+
 }
 
 .search {
@@ -217,14 +231,19 @@ body {
     right: 390px;
     text-decoration-line: none;
     color: white;
+    /* display: none; */
+    font-weight: bold;
+
 }
 
 .worldCup {
     position: fixed;
     top: 65px;
-    right: 270px;
+    right: 150px;
     text-decoration-line: none;
     color: white;
+    font-weight: bold;
+
 }
 
 /* .myPage {
@@ -259,4 +278,18 @@ body {
     /* z-index: 1; */
     width: 80px;
     height: 80px;
+}
+
+.copyright {
+    
+    width: 100%;
+    background-color:darkslategray;
+}
+.copyright-info{
+    color: white; font-family: 'Courier New', Courier, monospace;
+        padding: 20px; width: fit-content;
+}
+.copyright-text {
+    font-size: 15px; padding: 20px;
+        color: gray;
 }

@@ -53,6 +53,9 @@ exports.community = (req, res) => {
 exports.contents = (req, res) => {
   res.render("contents")
 }
+exports.train = (req, res) => {
+  res.render("train")
+}
 
 exports.sights1 = (req, res) => {
   res.render("sights1")

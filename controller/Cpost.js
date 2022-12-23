@@ -16,7 +16,7 @@ exports.view_post = async (req, res) => {
         },
       });
             if ( result.length > 0 ) 
-            res.render("community", {data: result, user:req.session.user,});
+            res.render("community", {data: result, user:req.session.user, kakao:req.session.kakao});
  
             else res.render("community");   
 }
@@ -30,7 +30,7 @@ exports.community = async (req, res) => {
       star:req.body.star,
       maintext:req.body.content,
       region:req.body.region,
-      writer:req.session.user,
+      writer:req.session.user || req.session.kakao,
       img:req.file.filename
 
     }
@@ -40,7 +40,7 @@ exports.community = async (req, res) => {
         title:req.body.title,
         star:req.body.star,
         maintext:req.body.content,
-        writer:req.session.user,
+        writer:req.session.user || req.session.kakao,
         region:req.body.region,
         
 
@@ -55,11 +55,52 @@ exports.community = async (req, res) => {
 }
 
 exports.view_contents = async(req,res,) =>{
-  console.log("파람스",req.params)
-  const post = await Post.findOne({where: {[Op.or]: [{index_number:req.params.index_number},{img:req.params.index_number}] } })
-  res.render("contents",{ post })
-  console.log("포스트",post)
+  
+  const post = await Post.findOne({where: {[Op.or]: [{index_number:req.params.index_number},{img:req.params.index_number}] }, attributes:{
+    include:[
+      "createdAt",
+      [sequelize.fn(
+        "DATE_FORMAT",
+        sequelize.col("createdAt"),
+        "%Y-%m-%d %H:%i:%S"
+      ),
+    "createdAt"],
+    
+    ],
+  }, })
+  res.render("contents",{ data: post })
+  console.log(post)
+ 
 }
 
+exports.modify = async(req,res) =>{
+  let data
+  if (req.file) {
+    console.log("인덱넘",req.body)
+    data = {
+      title:req.body.title,
+      star:req.body.star,
+      maintext:req.body.content,
+      region:req.body.region,
+      img:req.file.filename
+    }
+  } else {
+    console.log("인덱넘",req.body)
+    data = {    
+        title:req.body.title,
+        star:req.body.star,
+        region:req.body.region,
+        maintext:req.body.content,
+    }
+  }
+  
+  const result = await Post.update(data,{where:{index_number:req.body.index_number}})
+  res.send(result)
+}
+
+exports.del_contents = async(req,res)=>{
+ await Post.destroy({where:{index_number:req.body.index_number}})
+ res.send(true)
+}
 
 

@@ -15,7 +15,7 @@ function writeOn(){
         data: formData
     })
     .then((response)=>{
-        console.log("리스폰스",response)
+        console.log("리스폰스",response.data.result)
         var title = document.getElementById("title");
         var content = document.getElementById("content");
         var region = document.getElementById("region");
@@ -59,6 +59,7 @@ function writeOn(){
         
         date.innerHTML = response.data.result.createdAt
         date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate()+ " " +dt.getHours() + ":" + dt.getMinutes() +":"+ dt.getSeconds();
+        
     
         tr.appendChild(no);
         tr.appendChild(title1);
@@ -66,7 +67,15 @@ function writeOn(){
         tr.appendChild(region1);
         tr.appendChild(id);
         tr.appendChild(date);
+        tr.style.cssText = "cursor:pointer;" 
+        tr.setAttribute(onclick,location.href="http://localhost:8000/post/"+ cnt)
+        //tr.click(function(){
+       //     tr.css("cursor:pointer;", location.href='http://localhost:8000/post/response.data.result.index_number');
+       // });
+   
         table.appendChild(tr);
+        
+        
     
         // ----------------------창 닫힌 후 값 초기화 ---------------------------------
     

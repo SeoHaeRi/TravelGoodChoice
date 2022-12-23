@@ -2,16 +2,18 @@
   background-image: url(../img/map.png);
   height: 1000px;
   width: 800px;
-  /* border: 1px solid black; */
-  position: relative;
-  top: 100px;
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, 0%);
   z-index: -1;
 }
+
 .seoul-btn {
   position: absolute;
   top: 200px;
   left: 260px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .seoul-text {
@@ -24,7 +26,7 @@
   display: none;
 }
 
-.seoul-btn:hover+.seoul-text {
+.seoul-btn:hover +.seoul-text {
   transform: scale(1.5);
   display: block;
 }

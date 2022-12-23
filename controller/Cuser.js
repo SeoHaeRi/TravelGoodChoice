@@ -115,17 +115,39 @@ exports.kakaoLogin = async (req, res) => {
       social_type: 'kakao'
     }
 
-    User.findOne({ where: { [Op.or]: [{ id: data.id }, { name: data.name }] } })
+    User.findOne({ where: { id: data.id } })
       .then((result) => {
+        // 회원가입 된 유저
         if (result) {
           req.session.kakao = user.kakao_account.email;
           res.redirect('/');
         }
         else {
-          User.create(data)
-            .then(() => {
-              req.session.kakao = user.kakao_account.email;
-              res.redirect('/');
+          // 닉네임 중복 검사
+          User.findOne({ where: { name: data.name } })
+            .then((result) => {
+              if (result) {
+                axios({
+                  method: 'get',
+                  url: 'https://nickname.hwanmoo.kr/?format=json&max_length=10'
+                })
+                  .then((res) => {
+                    console.log("random : ", res.data.words[0]);
+                    data.name = res.data.words[0];
+                  }).then(() => {
+                    User.create(data)
+                      .then(() => {
+                        req.session.kakao = user.kakao_account.email;
+                        res.redirect('/');
+                      })
+                  })
+              } else {
+                User.create(data)
+                  .then(() => {
+                    req.session.kakao = user.kakao_account.email;
+                    res.redirect('/');
+                  })
+              }
             })
         }
       })

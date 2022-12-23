@@ -86,15 +86,15 @@
     </script>
 </head>
 <body>
-    <div class="banner">
-        <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
-        <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
-        <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
-        <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
-        <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
-        <a href="http://localhost:8000/login" class="login">로그인</a>
-        <a href="http://localhost:8000/" class="logout">로그아웃</a>
-    </div>
+  <div class="banner">
+      <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+      <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
+      <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
+      <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
+      <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
+      <a href="http://localhost:8000/login" class="login">로그인</a>
+      <a href="http://localhost:8000/" class="logout">로그아웃</a>
+  </div>
 
 
     <div class="card div-padding mx-auto">
@@ -165,13 +165,21 @@
                         </form>
                     </div>
                 </div>
-                </div>
 
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+
         <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="del_contents()">글 삭제</button>
+
       </div>
-            <!-- -------------------------------------------댓글----------------------------------------------------- -->
+      <a href="#" class="btn table-btn">글삭제</a>
+      <a href="http://localhost:8000/post/view_post" class="btn table-btn">글목록</a>
+    </div>
+  </div>
+  <!-- -------------------------------------------댓글----------------------------------------------------- -->
       <hr>
       <div class="mx-auto comment-padding" style="justify-content: center;">
         <h6>Comment</h6>

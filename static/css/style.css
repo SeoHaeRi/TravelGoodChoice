@@ -344,11 +344,10 @@
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: yellow;
 } */
+
 .comment-box {
-  width: 800px;
+  width: 100%;
 }
-@media (max-width:1250px) {
-  .comment-box {
-    width:300px;
-  }
+.comment-img {
+  width: 30px; height: 30px;
 }

@@ -7,7 +7,7 @@ function commentOn(){
     var content = document.getElementById("comment-box");
     
 
-    var comments = document.getElementsByClassName("comments");
+    var comments = document.getElementById("comments");
 
     var div1 = document.createElement("div") ;
     div1.classList = "first-comment";
@@ -53,8 +53,7 @@ function commentOn(){
     div1.appendChild(span);
     div1.appendChild(div2);
     
-    document.body.append(div1);
-    // comments.appendChild(div1);
+    comments.appendChild(div1);
     console.log(div1);
 }
     

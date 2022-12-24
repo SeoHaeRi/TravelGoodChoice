@@ -1,16 +1,17 @@
-const { Post, sequelize } = require("../model");
-const { Op } = require('sequelize');
+const { Post,sequelize, User } = require("../model");
+const { Op } = require('sequelize')
+
 
 exports.view_post = async (req, res) => {
         let result = await Post.findAll({attributes:{
           include:[
-            "createdAt",
+            "updatedAt",
             [sequelize.fn(
               "DATE_FORMAT",
-              sequelize.col("createdAt"),
+              sequelize.col("updatedAt"),
               "%Y-%m-%d %H:%i:%S"
             ),
-          "createdAt"],
+          "updatedAt"],
           
           ],
         },
@@ -23,31 +24,38 @@ exports.view_post = async (req, res) => {
 
 exports.community = async (req, res) => {
     console.log(req.body)
-    let data
-  if (req.file) {
-    data = {
-      title:req.body.title,
-      star:req.body.star,
-      maintext:req.body.content,
-      region:req.body.region,
-      writer:req.session.user || req.session.kakao,
-      img:req.file.filename
 
-    }
-  } else {
-    console.log("바디",req.body)
-    data = {    
+    let user = await User.findOne({attributes:["name"]},{where:{[Op.or]: [{id:req.session.user},{id:req.session.kakao}]}})
+    console.log("세션",req.session.user)
+    console.log("유저",user)
+    let data
+    if (req.file) {
+      data = {
         title:req.body.title,
         star:req.body.star,
         maintext:req.body.content,
-        writer:req.session.user || req.session.kakao,
         region:req.body.region,
-        
-
-        
+        userid:req.session.user || req.session.kakao,
+        writer: user.name,
+        img:req.file.filename
+  
+      }
+    } else {
+      console.log("바디",req.body)
+      data = {    
+          title:req.body.title,
+          star:req.body.star,
+          maintext:req.body.content,      
+          userid:req.session.user || req.session.kakao,
+          writer: user.name,
+          region:req.body.region,
+          
+  
+          
+      }
     }
-  }
-  await Post.create(data)
+    await Post.create(data)
+  
   let result = await Post.findOne({where:{maintext:req.body.content}})
   console.log(data)
   res.send({result})
@@ -58,17 +66,17 @@ exports.view_contents = async(req,res,) =>{
   
   const post = await Post.findOne({where: {[Op.or]: [{index_number:req.params.index_number},{img:req.params.index_number}] }, attributes:{
     include:[
-      "createdAt",
+      "updatedAt",
       [sequelize.fn(
         "DATE_FORMAT",
-        sequelize.col("createdAt"),
+        sequelize.col("updatedAt"),
         "%Y-%m-%d %H:%i:%S"
       ),
-    "createdAt"],
+    "updatedAt"],
     
     ],
   }, })
-  res.render("contents",{ data: post })
+  res.render("contents",{ data: post,user:req.session.user,kakao:req.session.kakao })
   console.log(post)
  
 }
@@ -95,7 +103,7 @@ exports.modify = async(req,res) =>{
   }
   
   const result = await Post.update(data,{where:{index_number:req.body.index_number}})
-  res.send(result)
+  res.send({data:result})
 }
 
 exports.del_contents = async(req,res)=>{

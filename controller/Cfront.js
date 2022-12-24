@@ -51,7 +51,12 @@ exports.community = (req, res) => {
   else res.render("community", { islogin: false, iskakao: false })
 }
 exports.contents = (req, res) => {
-  res.render("contents")
+  if (req.session.user) {
+    res.render("contents", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("contents", { islogin: true, iskakao: true })
+  }
+  else res.render("contents", { islogin: false, iskakao: false })
 }
 exports.train = (req, res) => {
   res.render("train")

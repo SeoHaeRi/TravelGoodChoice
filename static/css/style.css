@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Ansungtangmyun-ESG';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-ESG.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .map {
   background-image: url(../img/map.png);
   height: 1000px;
@@ -29,6 +42,8 @@
 .seoul-btn:hover +.seoul-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .jejudo-btn {
@@ -51,6 +66,8 @@
 .jejudo-btn:hover+.jejudo-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .gangwon-btn {
@@ -73,6 +90,8 @@
 .gangwon-btn:hover+.gangwon-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .chungbuk-btn {
@@ -95,6 +114,8 @@
 .chungbuk-btn:hover+.chungbuk-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .chungnam-btn {
@@ -117,6 +138,8 @@
 .chungnam-btn:hover+.chungnam-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .jeonbuk-btn {
@@ -139,6 +162,8 @@
 .jeonbuk-btn:hover+.jeonbuk-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .degu-btn {
@@ -161,6 +186,8 @@
 .degu-btn:hover+.degu-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .busan-btn {
@@ -183,6 +210,8 @@
 .busan-btn:hover+.busan-text {
   transform: scale(1.5);
   display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
 }
 
 .login-div {
@@ -243,6 +272,9 @@
   /* border-collapse: collapse; */
   width: 100%;
   text-align: center;
+}
+.table td {
+  font-family: 'RIDIBatang';
 }
 
 .table-btn {
@@ -350,4 +382,8 @@
 }
 .comment-img {
   width: 30px; height: 30px;
+}
+.p-4 p,
+.p-4 a{
+  font-family: 'RIDIBatang';
 }

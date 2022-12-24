@@ -220,6 +220,8 @@
   color: #B2CCFF;
   text-decoration-line: none;
   text-align: center;
+  text-shadow: 6px 4px 1px rgb(86, 87, 88);
+
 }
 
 .signup-form {
@@ -248,6 +250,7 @@
   background-color: #B2CCFF;
   color: white;
   height: 40px;
+  font-family: 'Ansungtangmyun-ESG';
 }
 .comment-name {
   text-decoration-line: none;

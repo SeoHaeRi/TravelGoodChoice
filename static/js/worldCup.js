@@ -32,81 +32,97 @@ if(!window['worldCup']) {
           {
             local: '서울Seoul',
             imgSrc: "../static/img/seoul.jpg",
+            url : "http://localhost:8000/sights1",
             selected: false
           },
           {
             local: '인천Incheon',
             imgSrc: "../static/img/incheon.jpg",
+            url : "http://localhost:8000/sights1",
             selected: false
           },
           {
             local: '가평Gapyeong',
             imgSrc: "../static/img/gapyeong.jpg",
+            url : "http://localhost:8000/sights1",
             selected: false
           },
           {
             local: '제주Jeju',
             imgSrc: "../static/img/Jeju.jpg",
+            url : "http://localhost:8000/sights2",
             selected: false
           },
           {
             local: '춘천Chuncheon',
             imgSrc: "../static/img/chuncheon.jpg",
+            url : "http://localhost:8000/sights3",
             selected: false
           },
           {
             local: '강릉Gangneung',
             imgSrc: "../static/img/Gangneung.jpg",
+            url : "http://localhost:8000/sights3",
             selected: false
           },
           {
             local: '정선Jeongseon',
             imgSrc: "../static/img/Jeongseon.jpg",
+            url : "http://localhost:8000/sights3",
             selected: false
           },
           {
             local: '대전Daejeon',
             imgSrc: "../static/img/Daejeon.jpg",
+            url : "http://localhost:8000/sights4",
             selected: false
           },
           {
             local: '부여Buyeo',
             imgSrc: "../static/img/Buyeo.jpg",
+            url : "http://localhost:8000/sights4",
             selected: false
           },
           {
             local: '태안Taean',
             imgSrc: "../static/img/Taean.jpg",
+            url : "http://localhost:8000/sights4",
             selected: false
           },
           {
             local: '세종sejong',
             imgSrc: "../static/img/sejong.jpg",
+            url : "http://localhost:8000/sights5",
             selected: false
           },
           {
             local: '청주Cheongju',
             imgSrc: "../static/img/Cheongju.jpg",
+            url : "http://localhost:8000/sights5",
             selected: false
           },
           {
             local: '단양Danyang',
             imgSrc: "../static/img/Danyang.jpg",
+            url : "http://localhost:8000/sights5",
             selected: false
           },
           {
             local: '광주Gwangju',
             imgSrc: "../static/img/Gwangju.jpg",
+            url : "http://localhost:8000/sights6",
             selected: false
           },
           {
             local: '전주Jeonju',
             imgSrc: "../static/img/Jeonju.jpg",
+            url : "http://localhost:8000/sights6",
             selected: false
           },
           {
             local: '여수Yeosu',
             imgSrc: "../static/img/Yeosu.jpg",
+            url : "http://localhost:8000/sights6",
             selected: false
           }
         ];
@@ -201,33 +217,33 @@ if(!window['worldCup']) {
         this.setRoundTitle();
         this.setContent();
       },
-      setHistory() {
-        const tObj = document.getElementById('modal');
-        let key, roundDiv, imgObj, roundTitleDiv, roundImgWrapDiv;
-        let historyTitleDiv = document.createElement('DIV');
-        historyTitleDiv.className = 'tit';
-        historyTitleDiv.innerText = '히스토리';
-        tObj.appendChild(historyTitleDiv);
-        let wrapDiv = document.createElement('DIV');
-        wrapDiv.className = 'history_box';
-        for(key in _O.Vars.gameHistory) {
-          roundDiv = document.createElement('DIV');
-          roundDiv.className = 'round';
-          roundTitleDiv = document.createElement('h5');
-          roundTitleDiv.innerText = (key === '1' ? `최종 여행지` : `${key}강`);
-          roundDiv.appendChild(roundTitleDiv);
-          roundImgWrapDiv = document.createElement('DIV');
-          _O.Vars.gameHistory[key].forEach((itm) => {
-            imgObj = document.createElement('IMG');
-            imgObj.setAttribute('src', itm.imgSrc);
-            imgObj.className = `history_item ${itm.selected ? '' : (key !== '1' ? 'dim' : '')}`;
-            roundImgWrapDiv.appendChild(imgObj);
-          });
-          roundDiv.appendChild(roundImgWrapDiv);
-          wrapDiv.appendChild(roundDiv);
-        }
-        tObj.appendChild(wrapDiv);
-      },
+      // setHistory() {
+      //   const tObj = document.getElementById('modal');
+      //   let key, roundDiv, imgObj, roundTitleDiv, roundImgWrapDiv;
+      //   let historyTitleDiv = document.createElement('DIV');
+      //   historyTitleDiv.className = 'tit';
+      //   historyTitleDiv.innerText = '히스토리';
+      //   tObj.appendChild(historyTitleDiv);
+      //   let wrapDiv = document.createElement('DIV');
+      //   wrapDiv.className = 'history_box';
+      //   for(key in _O.Vars.gameHistory) {
+      //     roundDiv = document.createElement('DIV');
+      //     roundDiv.className = 'round';
+      //     roundTitleDiv = document.createElement('h5');
+      //     roundTitleDiv.innerText = (key === '1' ? `최종 여행지` : `${key}강`);
+      //     roundDiv.appendChild(roundTitleDiv);
+      //     roundImgWrapDiv = document.createElement('DIV');
+      //     _O.Vars.gameHistory[key].forEach((itm) => {
+      //       imgObj = document.createElement('IMG');
+      //       imgObj.setAttribute('src', itm.imgSrc);
+      //       imgObj.className = `history_item ${itm.selected ? '' : (key !== '1' ? 'dim' : '')}`;
+      //       roundImgWrapDiv.appendChild(imgObj);
+      //     });
+      //  roundDiv.appendChild(roundImgWrapDiv);
+      //  wrapDiv.appendChild(roundDiv);
+      //}
+      //tObj.appendChild(wrapDiv);
+      //},
       setRoundTitle() {
         if(_O.Vars.curRound > 1) document.getElementById('roundTitle').innerText = `${_O.Vars.curRound}강 선택`;
         else document.getElementById('roundTitle').innerText = `축하합니다. 이번 겨울에는 여기 어때요?`;
@@ -237,7 +253,8 @@ if(!window['worldCup']) {
         const tObj = document.getElementById('list_ideal');
         if(!tObj) return;
         tObj.innerHTML = s;
-        if(_O.Vars.curRound === 1) _O.Html.setHistory();
+        if(_O.Vars.curRound === 1) 
+        _O.Html.setHistory();
       },
       getItem() {
         let s = '', i = _O.Vars.curStage * 2, length = i + (_O.Vars.curRound > 1 ? 2 : _O.Vars.curRound);
@@ -250,12 +267,13 @@ if(!window['worldCup']) {
             </a>
           </li>
           `;
+          console.log();
           if(_O.Vars.curRound === 1) {
-            s += `
-            <li id="history">
-              <a class="modal final" id="modal" href="javascript:void(0);"></a>
-            </li>
-            `;
+            // s += `
+            // <li id="history">
+            //   <a class="modal final" id="modal" href="javascript:void(0);"></a>
+            // </li>
+            // `;
           }
         }
         return s;

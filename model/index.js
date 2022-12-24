@@ -9,7 +9,22 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.User = require("./User")(sequelize, Sequelize);
-db.Post = require("./post")(sequelize, Sequelize)
+db.Post = require("./Post")(sequelize, Sequelize);
+db.Comment = require("./Comment")(sequelize, Sequelize);
+
+db.Post.hasMany(db.Comment, {
+    foreignKey: "post_id",
+    sourcekey: "index_number",
+    onDelete: "cascade",
+    onUpdate: "cascade"
+});
+
+db.Comment.belongsTo(db.Post, {
+    foreignKey: "post_id",
+    sourcekey: "index_number",
+    onDelete: "cascade",
+    onUpdate: "cascade"
+});
 
 db.User.hasMany(db.Post,{
     foreignKey : "userid", //payment table

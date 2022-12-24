@@ -8,10 +8,11 @@ const kakao = {
   clientSecret: process.env.KAKAO_clientSecret,
   logoutRedirectUri: process.env.KAKAO_logoutRedirectUri
 };
-let accessToken;
 
 exports.view_login = (req, res) => {
-  res.render("login")
+  if (req.session.user || req.session.kakao) {
+    res.send("로그인 된 유저입니다!");
+  } else res.render("login")
 }
 
 exports.signup = (req, res) => {
@@ -51,7 +52,8 @@ exports.login = (req, res) => {
   User.findOne({ where: { id: data.id, pw: data.pw } })
     .then((result) => {
       if (result) {
-        req.session.user = req.body.id;
+        console.log("Cuser 유저 정보 : ", result.dataValues); // 사용자 정보(객체)
+        req.session.user = result.dataValues;
         res.send(true)
       } else {
         res.send(false)
@@ -119,7 +121,8 @@ exports.kakaoLogin = async (req, res) => {
       .then((result) => {
         // 회원가입 된 유저
         if (result) {
-          req.session.kakao = user.kakao_account.email;
+          req.session.kakao = data;
+          console.log(req.session.kakao.name);
           res.redirect('/');
         }
         else {
@@ -137,14 +140,16 @@ exports.kakaoLogin = async (req, res) => {
                   }).then(() => {
                     User.create(data)
                       .then(() => {
-                        req.session.kakao = user.kakao_account.email;
+                        req.session.kakao = data;
                         res.redirect('/');
                       })
                   })
               } else {
                 User.create(data)
                   .then(() => {
+                    console.log("Cuser kakao 유저 : ", user.kakao_account);
                     req.session.kakao = user.kakao_account.email;
+                    req.session.kakao_profile = user.kakao_account.profile;
                     res.redirect('/');
                   })
               }

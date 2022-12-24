@@ -51,32 +51,80 @@ exports.community = (req, res) => {
   else res.render("community", { islogin: false, iskakao: false })
 }
 exports.contents = (req, res) => {
-  res.render("contents")
+  if (req.session.user) {
+    res.render("contents", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("contents", { islogin: true, iskakao: true })
+  }
+  else res.render("contents", { islogin: false, iskakao: false })
 }
 exports.train = (req, res) => {
-  res.render("train")
+  if (req.session.user) {
+    res.render("train", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("train", { islogin: true, iskakao: true })
+  }
+  else res.render("train", { islogin: false, iskakao: false })
 }
 
 exports.sights1 = (req, res) => {
-  res.render("sights1")
+  if (req.session.user) {
+    res.render("sights1", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("sights1", { islogin: true, iskakao: true })
+  }
+  else res.render("sights1", { islogin: false, iskakao: false })
 }
 exports.sights2 = (req, res) => {
-  res.render("sights2")
+  if (req.session.user) {
+    res.render("sights2", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("sights2", { islogin: true, iskakao: true })
+  }
+  else res.render("sights2", { islogin: false, iskakao: false })
 }
 exports.sights3 = (req, res) => {
-  res.render("sights3")
+  if (req.session.user) {
+    res.render("sights3", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("sights3", { islogin: true, iskakao: true })
+  }
+  else res.render("sights3", { islogin: false, iskakao: false })
 }
 exports.sights4 = (req, res) => {
-  res.render("sights4")
+  if (req.session.user) {
+    res.render("sights4", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("sights4", { islogin: true, iskakao: true })
+  }
+  else res.render("sights4", { islogin: false, iskakao: false })
 }
 exports.sights5 = (req, res) => {
-  res.render("sights5")
+  if (req.session.user) {
+    res.render("sights5", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("sights5", { islogin: true, iskakao: true })
+  }
+  else res.render("sights5", { islogin: false, iskakao: false })
 }
 exports.sights6 = (req, res) => {
-  res.render("sights6")
+  if (req.session.user) {
+    res.render("sights6", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("sights6", { islogin: true, iskakao: true })
+  }
+  else res.render("sights6", { islogin: false, iskakao: false })
 }
 exports.worldCup = (req, res) => {
-  res.render("worldCup")
+  if (req.session.user) {
+    res.render("worldCup", { islogin: true, iskakao: false })
+  } else if (req.session.kakao) {
+    res.render("worldCup", { islogin: true, iskakao: true })
+  }
+  else res.render("worldCup", { islogin: false, iskakao: false })
+}
+exports.todolist = (req, res) => {
+  res.render("todolist")
 }
 exports.chat = (req, res) => {
   res.render("chat")

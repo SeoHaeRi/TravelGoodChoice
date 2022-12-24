@@ -23,4 +23,7 @@ router.get("/worldcup", controller.worldCup)
 
 router.get("/chat", controller.chat)
 
+// router.get("/myPage", controller.myPage)
+router.get("/myPage/todolist", controller.todolist);
+
 module.exports = router;

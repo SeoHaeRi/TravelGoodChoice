@@ -83,6 +83,9 @@ exports.sights6 = (req, res) => {
 exports.worldCup = (req, res) => {
   res.render("worldCup")
 }
+exports.todolist = (req, res) => {
+  res.render("todolist")
+}
 exports.chat = (req, res) => {
   res.render("chat")
 }

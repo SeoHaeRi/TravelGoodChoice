@@ -123,6 +123,9 @@ exports.worldCup = (req, res) => {
   }
   else res.render("worldCup", { islogin: false, iskakao: false })
 }
+exports.todolist = (req, res) => {
+  res.render("todolist")
+}
 exports.chat = (req, res) => {
   res.render("chat")
 }

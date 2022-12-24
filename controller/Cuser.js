@@ -8,10 +8,11 @@ const kakao = {
   clientSecret: process.env.KAKAO_clientSecret,
   logoutRedirectUri: process.env.KAKAO_logoutRedirectUri
 };
-let accessToken;
 
 exports.view_login = (req, res) => {
-  res.render("login")
+  if (req.session.user || req.session.kakao) {
+    res.send("로그인 된 유저입니다!");
+  } else res.render("login")
 }
 
 exports.signup = (req, res) => {

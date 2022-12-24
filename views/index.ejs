@@ -20,31 +20,7 @@
 </head>
 
 <body>
-  <div class="banner2">
-    <img src="../static/img/avatar2.png" alt=""">
-  </div>
-  <div class="banner">
-    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
-    <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
-    <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
-    <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
-    <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
-    <a href="http://localhost:8000/user/login" class="login">로그인</a>
-    <a class="logout">로그아웃</a>
-  </div>
-
-  <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-  </div>
+  <%-include('./header.ejs', {islogin, iskakao})%>
 
   <div>
     <div style="height: 80px; "></div>
@@ -78,9 +54,9 @@
       <img src="../static/img/btn.png" alt="busan" class="btn busan-btn">
       <p class="busan-text">경남/부산</p>
     </div>
-  
-  <!-- 사업자등록 -->
-  <!-- <div class="copyright" align="bottom">
+
+    <!-- 사업자등록 -->
+    <!-- <div class="copyright" align="bottom">
     <img class = "col-1 col-sm-2 col-lg-1" src="./favicon.png" width="100px" alt="logo" style="top:20px; right:20px; position: relative;" align = "right">
     <div class="copyright-info">
         <h1>여행어때</h1>
@@ -101,59 +77,40 @@
           </div>
           <span class="copyright">ⓒhowabouttrip all right reserved.</span>
         </div> -->
-        
-  <div class="popup">
-    <form id="popup-form">
-      <img src="static/img/xmascookie.png" alt="크리스마스 이벤트" class="popup-img">
-      <div class="popup-check">
-        <span><input type="checkbox" name="checkbox" id="check"> 하루동안 다시보지 않기</span>
-        <i class="bi bi-x-circle" onclick="modalClose()"></i>
-      </div>
-    </form>
-  </div>
+
+    <div class="popup">
+      <form id="popup-form">
+        <img src="static/img/xmascookie.png" alt="크리스마스 이벤트" class="popup-img">
+        <div class="popup-check">
+          <span><input type="checkbox" name="checkbox" id="check"> 하루동안 다시보지 않기</span>
+          <i class="bi bi-x-circle" onclick="modalClose()"></i>
+        </div>
+      </form>
+    </div>
 
 
-  <script>
-    if ('<%=islogin%>' == 'true') {
-      document.querySelector(".login").classList.add('d-none');
-      document.querySelector(".logout").classList.remove('d-none');
-    } else {
-      document.querySelector(".logout").classList.add('d-none');
-    }
+    <script>
+      if ("<%=popup%>" == "none") {
+        document.querySelector(".popup").classList.add('d-none');
+      }
 
-    if ("<%=popup%>" == "none") {
-      document.querySelector(".popup").classList.add('d-none');
-    }
-    document.querySelector('.logout').addEventListener('click', () => {
-      if ('<%=iskakao%>' == 'true') {
-        document.location.href = '/user/logout/kakao'
-      } else {
+      function modalClose() {
+        let form = document.getElementById("popup-form");
+        let check = document.getElementById("check");
         axios({
-          method: 'delete',
-          url: '/user/logout',
-        }).then((res) => {
-          document.location.href = '/';
+          method: "post",
+          url: "/setpopup",
+          data: {
+            value: form.checkbox.checked
+          }
+        }).then((result) => {
+          if (result.data) {
+            console.log("성공");
+          }
+          document.querySelector(".popup").classList.add('d-none');
         })
       }
-    })
-
-    function modalClose() {
-      let form = document.getElementById("popup-form");
-      let check = document.getElementById("check");
-      axios({
-        method: "post",
-        url: "/setpopup",
-        data: {
-          value: form.checkbox.checked
-        }
-      }).then((result) => {
-        if (result.data) {
-          console.log("성공");
-        }
-        document.querySelector(".popup").classList.add('d-none');
-      })
-    }
-  </script>
+    </script>
 </body>
 
 </html>

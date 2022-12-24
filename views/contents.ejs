@@ -1,257 +1,231 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>커뮤니티 | 여행어때</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-      <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="../static/img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script type="text/javascript" src="../static/js/community.js"></script>
-    <script type="text/javascript" src="../static/js/contents.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      function modify(){
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티 | 여행어때</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <script type="text/javascript" src="../static/js/community.js"></script>
+  <script type="text/javascript" src="../static/js/contents.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    function modify() {
+
       var form = document.getElementById("contents-modify-form")
       const formData = new FormData();
       const file = document.getElementById("file")
       axios({
-        method:"patch",
-        url:"/post/modify",
-        data: 
+        method: "patch",
+        url: "/post/modify",
+        data:
         {
           title: form.title.value,
-          star:form.star.value,
-          content:form.content.value,
-          region:form.region.value,
-          postfile:file.files[0],
-          index_number:form.index_number.id
-          
-
-
+          star: form.star.value,
+          content: form.content.value,
+          region: form.region.value,
+          postfile: file.files[0],
+          index_number: form.index_number.id
         }
       })
-      .then((res)=>{
-        console.log(res)
-        var region = document.querySelector(".region")
-        var star = document.querySelector(".star")
-        var img = document.getElementById("img")
-        var title = document.getElementById("title")
-        var maintext = document.getElementById("maintext")
-        if(img){
-
-        region.innerText = res.config.data.region.value
-        star.innerText = res.config.data.star.value
-        img.src.innerText = "../contents/" + res.config.data.img.value
-        title.innerText = res.config.data.title.value
-        maintext.innerText = res.config.data.maintext.value
-        }
-        else{
-
-        region.innerText = res.config.data.region.value
-        star.innerText = res.config.data.star.value
-        title.innerText = res.config.data.title.value
-        maintext.innerText = res.config.data.maintext.value
-         }
-      })
+        .then((res) => {
+          console.log(res)
+          var region = document.querySelector(".region")
+          var star = document.querySelector(".star")
+          var img = document.getElementById("img")
+          var title = document.getElementById("title")
+          var maintext = document.getElementById("maintext")
+          if (img) {
+            region.innerText = res.config.data.region.value
+            star.innerText = res.config.data.star.value
+            img.src.innerText = "../contents/" + res.config.data.img.value
+            title.innerText = res.config.data.title.value
+            maintext.innerText = res.config.data.maintext.value
+          }
+          else {
+            region.innerText = res.config.data.region.value
+            star.innerText = res.config.data.star.value
+            title.innerText = res.config.data.title.value
+            maintext.innerText = res.config.data.maintext.value
+          }
+        })
     }
-    function del_contents(){
+    function del_contents() {
       var form = document.getElementById("contents-modify-form")
       const formData = new FormData();
       const file = document.getElementById("file")
       axios({
-        method:"delete",
-        url:"/post/del_contents",
-        data: 
+        method: "delete",
+        url: "/post/del_contents",
+        data:
         {
-          index_number:form.index_number.id
-          
-
-
+          index_number: form.index_number.id
         }
       })
-      .then(()=>{
-          if(true){
+        .then(() => {
+          if (true) {
             alert("글삭제가 완료되었습니다.")
-            window.location.href= "/post/view_post"
+            window.location.href = "/post/view_post"
           }
-      })
-  }  
-    </script>
+        })
+    }
+  </script>
 </head>
+
 <body>
-  <div class="banner2">
-    <img src="../static/img/avatar2.png" alt=""">
-  </div>
-  <div class="banner">
-    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
-    <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
-    <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
-    <a href="http://localhost:8000/search" class="search">여행지 리스트</a>
-    <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
-    <a href="http://localhost:8000/user/login" class="login">로그인</a>
-    <a class="logout">로그아웃</a>
-  </div>
+  <%-include('./header.ejs', {islogin, iskakao})%>
 
-  <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-  </div>
+  <div class="card div-padding mx-auto">
+    <table style="text-align: center;">
+      <tr>
+        <th>글번호</th>
+        <th>작성자</th>
+        <th>지역</th>
+        <th>별점</th>
+        <th>작성시간</th>
+      </tr>
+      <hr>
+      <tr>
+        <td><%=data.index_number%></td>
+        <td><%=data.writer%></td>
+        <td class="region"><%=data.region%></td>
+        <td class="star"><%=data.star%></td>
+        <td><%=data.createdAt%></td>
+      </tr>
+    </table>
+    <hr>
+    <% if(data.img !== null) { %>
+    <img id="img" src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다. ">
+    <hr>
+    <%} %>
 
-    <div class="card div-padding mx-auto">
-        <table style="text-align: center;">
-            <tr>
-                <th>글번호</th>
-                <th>작성자</th>
-                <th>지역</th>
-                <th>별점</th>
-                <th>작성시간</th>
-            </tr>
-            <hr>
-            <tr>
-                <td><%=data.index_number%></td>
-                <td><%=data.writer%></td>
-                <td class="region"><%=data.region%></td>
-                <td class="star"><%=data.star%></td>
-                <td><%=data.createdAt%></td>
-            </tr>
-        </table>
-        <hr>
-        <% if(data.img !== null) { %>
-        <img id="img"src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다. ">
-        <hr>
-        <%} %>
 
-        
-        <div class="card-body">
-            <h5 id="title"class="card-title"><%=data.title%></h5>
-            <hr>
-            <p id="maintext"class="card-text"><%=data.maintext%></p>
-        </div>
-        <div class="card-body d-flex justify-content-end">
-            <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->
-            <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                글수정
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
-                    </div>
-                    <div class="modal-body">
-                        <form id="contents-modify-form"class="community-form">
-                          <input type="hidden" name="index_number" id="<%=data.index_number%>">
-                            제목
-                            <br>
-                            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="<%=data.tile%>">
-                            <br>
-                            <input type="radio" class="star" name="star" value="★" id="1">★
-                            <input type="radio" class="star" name="star" value="★★" id="2">★★
-                            <input type="radio" class="star" name="star" value="★★★" id="3">★★★
-                            <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
-                            <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
-                            <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주" value="<%=data.region%>">
-                            <br>
-                            내용
-                            <br>
-                            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."><%=data.maintext%></textarea>
-                            <br>
-                            이미지
-                            <input type="file" name="community_file" id="file" value="">
-                            <div class="modal-footer">
-                            <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal" >취소</button>
-                            <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="modify()">수정</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
+    <div class="card-body">
+      <h5 id="title" class="card-title"><%=data.title%></h5>
+      <hr>
+      <p id="maintext" class="card-text"><%=data.maintext%></p>
+    </div>
+    <div class="card-body d-flex justify-content-end">
+      <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->
+      <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        글수정
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
+            </div>
+            <div class="modal-body">
+              <form id="contents-modify-form" class="community-form">
+                <input type="hidden" name="index_number" id="<%=data.index_number%>">
+                제목
+                <br>
+                <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="<%=data.tile%>">
+                <br>
+                <input type="radio" class="star" name="star" value="★" id="1">★
+                <input type="radio" class="star" name="star" value="★★" id="2">★★
+                <input type="radio" class="star" name="star" value="★★★" id="3">★★★
+                <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
+                <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
+                <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주" value="<%=data.region%>">
+                <br>
+                내용
+                <br>
+                <textarea name="content" id="content" cols="30" rows="10"
+                  placeholder="내용을 입력해주세요."><%=data.maintext%></textarea>
+                <br>
+                이미지
+                <input type="file" name="community_file" id="file" value="">
+                <div class="modal-footer">
+                  <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal">취소</button>
+                  <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="modify()">수정</button>
                 </div>
               </form>
             </div>
           </div>
+
         </div>
-
-        <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="del_contents()">글 삭제</button>
-
+        </form>
       </div>
-      <a href="#" class="btn table-btn">글삭제</a>
-      <a href="http://localhost:8000/post/view_post" class="btn table-btn">글목록</a>
     </div>
   </div>
+
+  <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="del_contents()">글 삭제</button>
+
+  </div>
+  <a href="#" class="btn table-btn">글삭제</a>
+  <a href="http://localhost:8000/post/view_post" class="btn table-btn">글목록</a>
+  </div>
+  </div>
   <!-- -------------------------------------------댓글----------------------------------------------------- -->
-      <hr>
-      <div class="mx-auto comment-padding" style="justify-content: center;">
-        <h6>Comment</h6>
-         <!-- -------------------------------첫댓----------------------------------------- -->
-        <div id="comments">
-          <div class="first-comment">
-           <img class="comment-img" src="/static/upload_img/1.jpg">
-           <a class="comment-name">
-             김철수
-           </a>
-           <span>
-             안녕하세요
-           </span>
-           <div>
-             <div class="comment-form">
-               <span>Today at 5:42PM</span>
-               <br>
-               <a clinkOn="coComent()">답글달기</a>
-              </div>
-            </div>
-          </div>
-           <!-- -------------------------------대댓----------------------------------------- -->
-          <div class="second-comment">
-             <img style="width: 30px; height: 30px;" src="/static/upload_img/gmldud.jpg">
-             <a class="comment-name">
-               홍길동
-             </a>
-             <span>
-               안녕하세요 반갑습니다.
-             </span>
-             <div>
-               <div class="comment-form">
-                 <span>Today at 5:45PM</span>
-                 <br>
-                 <a class="reply">답글달기</a>
-               </div>
-               <div>
-               </div>
-             </div>
+  <hr>
+  <div class="mx-auto comment-padding" style="justify-content: center;">
+    <h6>Comment</h6>
+    <!-- -------------------------------첫댓----------------------------------------- -->
+    <div id="comments">
+      <div class="first-comment">
+        <img class="comment-img" src="/static/upload_img/1.jpg">
+        <a class="comment-name">
+          김철수
+        </a>
+        <span>
+          안녕하세요
+        </span>
+        <div>
+          <div class="comment-form">
+            <span>Today at 5:42PM</span>
+            <br>
+            <a clinkOn="coComent()">답글달기</a>
           </div>
         </div>
-
-
-          <!-- ------------------------댓글입력양식------------------------- -->
-        <form class="comment-form">
-          <textarea class="comment-box" id="comment-box" placeholder="내용을 입력해주세요." value=""></textarea>
-          <br>
-          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
-            <button class="btn table-btn" type="button" onclick="commentOn()">댓글</button>
-          <!-- </div> -->
-        </form>
-        
-        
+      </div>
+      <!-- -------------------------------대댓----------------------------------------- -->
+      <div class="second-comment">
+        <img style="width: 30px; height: 30px;" src="/static/upload_img/gmldud.jpg">
+        <a class="comment-name">
+          홍길동
+        </a>
+        <span>
+          안녕하세요 반갑습니다.
+        </span>
+        <div>
+          <div class="comment-form">
+            <span>Today at 5:45PM</span>
+            <br>
+            <a class="reply">답글달기</a>
+          </div>
+          <div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------댓글입력양식------------------------- -->
+    <form class="comment-form">
+      <textarea class="comment-box" id="comment-box" placeholder="내용을 입력해주세요." value=""></textarea>
+      <br>
+      <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
+      <button class="btn table-btn" type="button" onclick="commentOn()">댓글</button>
+      <!-- </div> -->
+    </form>
+
+
+  </div>
+  </div>
+
+  <!-- ---------------------------------------------------------------------------------------------- -->
 
 </body>
+
 </html>

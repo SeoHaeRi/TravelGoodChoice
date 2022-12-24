@@ -1,5 +1,6 @@
 var express = require('express');
 var controller = require('../controller/Cpost');
+const controller_comment = require('../controller/Ccomment');
 const multer = require("multer");
 const path = require('path');
 const router = express.Router();
@@ -29,8 +30,8 @@ router.get("/:index_number", controller.view_contents)
 // contents 수정
 router.patch("/modify", controller.modify)
 
-router.delete("/del_contents",controller.del_contents)
+router.delete("/del_contents", controller.del_contents)
 
-
-
+// add comment 
+router.post('/addComment', controller_comment.addComment)
 module.exports = router;

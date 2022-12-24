@@ -1,13 +1,12 @@
-
-function commentOn(){
+function commentOn() {
     var dd = document.getElementsByClassName('sial')[0];
     // 인덱스 처리
 
     var form = document.getElementById("comment-form")
-    var content = document.getElementById("comment-box");
-    
+    var content = document.getElementById("comment-box").value;
 
     var comments = document.getElementById("comments");
+    
 
     var div1 = document.createElement("div") ;
     div1.classList = "first-comment";
@@ -16,14 +15,13 @@ function commentOn(){
     var img = document.createElement("img");    
     img.classList = "comment-img";
     img.src = "/static/upload_img/1.jpg";
-   
     
     var a = document.createElement("a");
     a.classList = "comment-name";
     a.innerText = "김철수";
     
     var span = document.createElement("span");
-    span.innerText = content.value;
+    span.innerText = content;
     console.log(span);
     
     var div2 = document.createElement("div");

@@ -32,97 +32,97 @@ if(!window['worldCup']) {
           {
             local: '서울Seoul',
             imgSrc: "../static/img/seoul.jpg",
-            url : "http://localhost:8000/sights1",
+            url : "https://travel.naver.com/domestic/09/guide/all",
             selected: false
           },
           {
             local: '인천Incheon',
             imgSrc: "../static/img/incheon.jpg",
-            url : "http://localhost:8000/sights1",
+            url : "https://travel.naver.com/domestic/11/guide/all",
             selected: false
           },
           {
             local: '가평Gapyeong',
             imgSrc: "../static/img/gapyeong.jpg",
-            url : "http://localhost:8000/sights1",
+            url : "https://travel.naver.com/domestic/02820/guide/all",
             selected: false
           },
           {
             local: '제주Jeju',
             imgSrc: "../static/img/Jeju.jpg",
-            url : "http://localhost:8000/sights2",
+            url : "https://travel.naver.com/domestic/14110/guide/all",
             selected: false
           },
           {
             local: '춘천Chuncheon',
             imgSrc: "../static/img/chuncheon.jpg",
-            url : "http://localhost:8000/sights3",
+            url : "https://travel.naver.com/domestic/01110/guide/all",
             selected: false
           },
           {
             local: '강릉Gangneung',
             imgSrc: "../static/img/Gangneung.jpg",
-            url : "http://localhost:8000/sights3",
+            url : "https://travel.naver.com/domestic/01150/guide/all",
             selected: false
           },
           {
             local: '정선Jeongseon',
             imgSrc: "../static/img/Jeongseon.jpg",
-            url : "http://localhost:8000/sights3",
+            url : "https://travel.naver.com/domestic/01770/guide/all",
             selected: false
           },
           {
             local: '대전Daejeon',
             imgSrc: "../static/img/Daejeon.jpg",
-            url : "http://localhost:8000/sights4",
+            url : "https://travel.naver.com/domestic/07/guide/all",
             selected: false
           },
           {
             local: '부여Buyeo',
             imgSrc: "../static/img/Buyeo.jpg",
-            url : "http://localhost:8000/sights4",
+            url : "https://travel.naver.com/domestic/15760/guide/all",
             selected: false
           },
           {
             local: '태안Taean',
             imgSrc: "../static/img/Taean.jpg",
-            url : "http://localhost:8000/sights4",
+            url : "https://travel.naver.com/domestic/15825/guide/all",
             selected: false
           },
           {
             local: '세종sejong',
             imgSrc: "../static/img/sejong.jpg",
-            url : "http://localhost:8000/sights5",
+            url : "https://travel.naver.com/domestic/17/guide/all",
             selected: false
           },
           {
             local: '청주Cheongju',
             imgSrc: "../static/img/Cheongju.jpg",
-            url : "http://localhost:8000/sights5",
+            url : "https://travel.naver.com/domestic/16110/guide/all",
             selected: false
           },
           {
             local: '단양Danyang',
             imgSrc: "../static/img/Danyang.jpg",
-            url : "http://localhost:8000/sights5",
+            url : "https://travel.naver.com/domestic/16800/guide/all",
             selected: false
           },
           {
             local: '광주Gwangju',
             imgSrc: "../static/img/Gwangju.jpg",
-            url : "http://localhost:8000/sights6",
+            url : "https://travel.naver.com/domestic/05/guide/all",
             selected: false
           },
           {
             local: '전주Jeonju',
             imgSrc: "../static/img/Jeonju.jpg",
-            url : "http://localhost:8000/sights6",
+            url : "https://travel.naver.com/domestic/13110/guide/all",
             selected: false
           },
           {
             local: '여수Yeosu',
             imgSrc: "../static/img/Yeosu.jpg",
-            url : "http://localhost:8000/sights6",
+            url : "https://travel.naver.com/domestic/12130/guide/all",
             selected: false
           }
         ];
@@ -217,33 +217,6 @@ if(!window['worldCup']) {
         this.setRoundTitle();
         this.setContent();
       },
-      // setHistory() {
-      //   const tObj = document.getElementById('modal');
-      //   let key, roundDiv, imgObj, roundTitleDiv, roundImgWrapDiv;
-      //   let historyTitleDiv = document.createElement('DIV');
-      //   historyTitleDiv.className = 'tit';
-      //   historyTitleDiv.innerText = '히스토리';
-      //   tObj.appendChild(historyTitleDiv);
-      //   let wrapDiv = document.createElement('DIV');
-      //   wrapDiv.className = 'history_box';
-      //   for(key in _O.Vars.gameHistory) {
-      //     roundDiv = document.createElement('DIV');
-      //     roundDiv.className = 'round';
-      //     roundTitleDiv = document.createElement('h5');
-      //     roundTitleDiv.innerText = (key === '1' ? `최종 여행지` : `${key}강`);
-      //     roundDiv.appendChild(roundTitleDiv);
-      //     roundImgWrapDiv = document.createElement('DIV');
-      //     _O.Vars.gameHistory[key].forEach((itm) => {
-      //       imgObj = document.createElement('IMG');
-      //       imgObj.setAttribute('src', itm.imgSrc);
-      //       imgObj.className = `history_item ${itm.selected ? '' : (key !== '1' ? 'dim' : '')}`;
-      //       roundImgWrapDiv.appendChild(imgObj);
-      //     });
-      //  roundDiv.appendChild(roundImgWrapDiv);
-      //  wrapDiv.appendChild(roundDiv);
-      //}
-      //tObj.appendChild(wrapDiv);
-      //},
       setRoundTitle() {
         if(_O.Vars.curRound > 1) document.getElementById('roundTitle').innerText = `${_O.Vars.curRound}강 선택`;
         else document.getElementById('roundTitle').innerText = `축하합니다. 이번 겨울에는 여기 어때요?`;
@@ -265,16 +238,14 @@ if(!window['worldCup']) {
               <span class="thumb"><img src="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['imgSrc']}" alt="최종 여행지 사진"></span>
               <strong> ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['local']}</strong>
             </a>
+            <a href="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['url']}">
+            <button class="w-btn-neon2"  type="button">
+            ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['local']} 여행지 둘러보기
+            </button>
+            </a>
           </li>
           `;
           console.log();
-          if(_O.Vars.curRound === 1) {
-            // s += `
-            // <li id="history">
-            //   <a class="modal final" id="modal" href="javascript:void(0);"></a>
-            // </li>
-            // `;
-          }
         }
         return s;
       },

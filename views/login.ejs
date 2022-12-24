@@ -39,6 +39,9 @@
       <button class="login-btn" type="button" onclick="login();">로그인</button>
       <br>
       <br>
+      <span id="exa" style="color: red;"></span>
+      <br>
+      <br>
       <a href="http://localhost:8000/signup" style="text-decoration-line : none; color: black;">회원가입</a>
     </form>
     <br>
@@ -57,10 +60,10 @@
         }
       }).then((res) => {
         if (res.data) {
-          alert("로그인 성공")
           document.location.href = '/';
         } else {
-          alert("로그인 실패")
+          var exa = document.getElementById('exa');
+          exa.innerText ="아이디 또는 비밀번호를 다시 확인해주세요.";
           form.reset();
         }
       })

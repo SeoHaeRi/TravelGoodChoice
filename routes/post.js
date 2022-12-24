@@ -28,7 +28,7 @@ router.post('/community', upload.single("community_file"), controller.community)
 router.get("/:index_number", controller.view_contents)
 
 // contents 수정
-router.patch("/modify", controller.modify)
+router.patch("/modify",upload.single("modify_file"),controller.modify)
 
 router.delete("/del_contents", controller.del_contents)
 

@@ -27,7 +27,7 @@ const Post = (Sequelize, DataTypes) => {
         allowNull: false,
       },
       writer: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.STRING(10),
         allowNull: false,
       },
       img: {
@@ -42,6 +42,10 @@ const Post = (Sequelize, DataTypes) => {
       updatedAt: {
         type: DataTypes.DATE(6),
         timestamps: true
+      },
+      userid:{
+        type: DataTypes.STRING(40),
+        allowNull: false,
       }
     },
     {

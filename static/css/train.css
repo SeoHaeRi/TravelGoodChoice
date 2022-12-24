@@ -1,0 +1,12 @@
+.train-btn {
+    border-color: white;
+    background: #B2CCFF;
+    color: white;
+    height: 30px;
+    width: 100px;
+    font-family: 'RIDIBatang';
+}
+#station {
+    text-align: center;
+    margin: 20px 500px 20px 500px ;
+}

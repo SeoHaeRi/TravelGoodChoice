@@ -9,14 +9,8 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="shortcut icon" href="../static/img/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../static/css/common.css">
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/train.css">
+  
 </head>
 
 <body>
@@ -47,28 +41,36 @@
   </div>
 
   <div class="div-padding"></div>
+  <div style="text-align: center;">
+    <button class="train-btn" id="region" type="button" value="11" onclick="selectBig(this.value)">서울특별시</button>
+    <button class="train-btn" id="region" type="button" value="23" onclick="selectBig(this.value)">인천광역시</button>
+    <button class="train-btn" id="region" type="button" value="31" onclick="selectBig(this.value)">경기도</button>
+    <button class="train-btn" id="region" type="button" value="32" onclick="selectBig(this.value)">강원도</button>
+    <br>
+    <button class="train-btn" id="region" type="button" value="25" onclick="selectBig(this.value)">대전광역시</button>
+    <button class="train-btn" id="region" type="button" value="12" onclick="selectBig(this.value)">세종특별시</button>
+    <button class="train-btn" id="region" type="button" value="33" onclick="selectBig(this.value)">충청북도</button>
+    <button class="train-btn" id="region" type="button" value="34" onclick="selectBig(this.value)">충청남도</button>
+    <br>
+    <button class="train-btn" id="region" type="button" value="26" onclick="selectBig(this.value)">울산광역시</button>
+    <button class="train-btn" id="region" type="button" value="24" onclick="selectBig(this.value)">광주광역시</button>
+    <button class="train-btn" id="region" type="button" value="35" onclick="selectBig(this.value)">전라북도</button>
+    <button class="train-btn" id="region" type="button" value="36" onclick="selectBig(this.value)">전라남도</button>
+    <br>
+    <button class="train-btn" id="region" type="button" value="21" onclick="selectBig(this.value)">부산광역시</button>
+    <button class="train-btn" id="region" type="button" value="22" onclick="selectBig(this.value)">대구광역시</button>
+    <button class="train-btn" id="region" type="button" value="37" onclick="selectBig(this.value)">경상북도</button>
+    <button class="train-btn" id="region" type="button" value="38" onclick="selectBig(this.value)">경상남도</button>
+  </div>
 
-  <button class="btn table-btn" id="region" type="button" value="11" onclick="selectBig(this.value)">서울특별시</button>
-  <button class="btn table-btn" id="region" type="button" value="23" onclick="selectBig(this.value)">인천광역시</button>
-  <button class="btn table-btn" id="region" type="button" value="31" onclick="selectBig(this.value)">경기도</button>
-  <button class="btn table-btn" id="region" type="button" value="32" onclick="selectBig(this.value)">강원도</button>
-  <button class="btn table-btn" id="region" type="button" value="25" onclick="selectBig(this.value)">대전광역시</button>
-  <button class="btn table-btn" id="region" type="button" value="12" onclick="selectBig(this.value)">세종특별시</button>
-  <button class="btn table-btn" id="region" type="button" value="33" onclick="selectBig(this.value)">충청북도</button>
-  <button class="btn table-btn" id="region" type="button" value="34" onclick="selectBig(this.value)">충청남도</button>
-  <button class="btn table-btn" id="region" type="button" value="26" onclick="selectBig(this.value)">울산광역시</button>
-  <button class="btn table-btn" id="region" type="button" value="24" onclick="selectBig(this.value)">광주광역시</button>
-  <button class="btn table-btn" id="region" type="button" value="35" onclick="selectBig(this.value)">전라북도</button>
-  <button class="btn table-btn" id="region" type="button" value="36" onclick="selectBig(this.value)">전라남도</button>
-  <button class="btn table-btn" id="region" type="button" value="21" onclick="selectBig(this.value)">부산광역시</button>
-  <button class="btn table-btn" id="region" type="button" value="22" onclick="selectBig(this.value)">대구광역시</button>
-  <button class="btn table-btn" id="region" type="button" value="37" onclick="selectBig(this.value)">경상북도</button>
-  <button class="btn table-btn" id="region" type="button" value="38" onclick="selectBig(this.value)">경상남도</button>
+  <div id="station" ><span>출발지</span></div>
+  <div id="arrstation" ><span>도착지</span></div>
+  <form action="" style="text-align: center;">
+    출발지코드:<input type="text" id="start" onclick="">
+    도착지코드:<input type="text" id="end">
+    <button onclick="searchTrain()">검색</button>
 
-  <hr>
-  <div id="station"></div>
-  출발지코드:<input type="text" id="start">
-  <button onclick="searchTrain()">검색</button>
+  </form>
 
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
@@ -87,31 +89,44 @@
       xhr.open('GET', url + queryParams);
       xhr.onreadystatechange = function () {
           if (this.readyState == 4) {
-              // alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+              console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
               var xml = xhr.responseXML;
-              var nodeid = xml.getElementsByTagName("nodeid")
-              var nodename = xml.getElementsByTagName("nodename")
-              // [0].firstChild.nodeValue;
-              console.log(nodeid);
-              // .firstChild.nodeValue;
+
+              var nodeid = xml.getElementsByTagName("nodeid");
+              var nodename = xml.getElementsByTagName("nodename");
+
               for(let i = 0; i < 100; i++) {
                var a = nodeid[i].firstChild.nodeValue;
                var b = nodename[i].firstChild.nodeValue;
-               console.log(a + "," + b);
 
-               var station = document.getElementById("station");
+               console.log("조합",a + "," + b);
+// 출발지 버튼 생성
+              var station = document.getElementById("station"); //div안에 버튼 담기
+              var btn = document.createElement("button");
+              btn.innerText = b;
+              btn.className = "train-btn";
+              btn.id = a;
+              btn.value = a;
+              btn.setAttribute("onClick", "depatureBtn(this)");
+
+              station.appendChild(btn);
+
+              console.log(btn);
+
+// 도착지 버튼 생성
+               var arrstation = document.getElementById("arrstation"); //div안에 버튼 담기
                var btn = document.createElement("button");
                btn.innerText = b;
+               btn.className = "train-btn";
+               btn.id = a;
                btn.value = a;
-               btn.className = "station2";
+               btn.setAttribute("onClick", "arriveBtn(this)");
 
-               station.appendChild(btn);
-
-
+               arrstation.appendChild(btn);
                
+               console.log(btn);
               }
               // var nodeid = xml.querySelectorAll("nodeid").nodeValue;
-              // alert(nodeid+',');
           }
       };
       // console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
@@ -156,6 +171,20 @@ function searchTrain(){
   };
   
   xhr.send('');
+}
+function depatureBtn(obj) {
+  var stn = obj.value;
+  console.log(stn);
+
+  var start = document.getElementById("start");
+  start.value = stn;
+
+  var classrename = document.getElementsByClassName("train-btn").setAttribute("onClick", "arriveBtn(this)");
+
+  console.log(classrename);
+
+
+
 }
   </script>
 </body>

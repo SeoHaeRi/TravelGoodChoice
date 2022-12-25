@@ -234,15 +234,18 @@ if(!window['worldCup']) {
         for(i; i < length && length <= _O.Vars.curRound; i++) {
           s += `
           <li>
-            <a class="item ${_O.Vars.curRound === 1 ? 'final' : ''}" id="item_${i}" hover="false" href="javascript:void(0);" onclick="worldCup.Event.clickItem(this);" onmouseover="worldCup.Event.overItem(this);" onmouseout="worldCup.Event.outItem(this);">
-              <span class="thumb"><img src="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['imgSrc']}" alt="최종 여행지 사진"></span>
-              <strong> ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['local']}</strong>
-            </a>
-            <a href="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['url']}">
-            <button class="w-btn-neon2"  type="button">
-            ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['local']} 여행지 둘러보기
-            </button>
-            </a>
+          <div style="text-align : center;">
+          <a href="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['url']}">
+          <button id="goto"  type="button">
+          ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['local']} 여행지 둘러보기
+          </button>
+          </a>
+          <br>
+          <a class="item ${_O.Vars.curRound === 1 ? 'final' : ''}" id="item_${i}" hover="false" href="javascript:void(0);" onclick="worldCup.Event.clickItem(this);" onmouseover="worldCup.Event.overItem(this);" onmouseout="worldCup.Event.outItem(this);">
+          <span class="thumb"><img src="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['imgSrc']}" alt="최종 여행지 사진"></span>
+          <strong> ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['local']}</strong>
+          </a>
+          </div>
           </li>
           `;
           console.log();

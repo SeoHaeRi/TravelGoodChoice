@@ -109,32 +109,29 @@ h1 {
 #btnGameStart,
 #cancel,
 #prev {
-	font-family: 'Galmuri9';
+	font-family: 'Galmuri9' !important;
 	font-weight: 700;
 	font-size: 15px;
 	color: yellow;
 	background-color:#000000;
   padding: 0px 10px;
   margin:0 auto;
-	/* -moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px; */
 	border: 1px solid black;
-	/* -moz-box-shadow:
-		0px 1px 3px rgba(000,000,000,0.5),
-		inset 0px 0px 5px rgba(16,161,96,0.6);
-	-webkit-box-shadow:
-		0px 1px 3px rgba(000,000,000,0.5);
-	box-shadow:
-		0px 1px 3px rgba(000,000,000,0.5),
-		inset 0px 0px 5px rgba(16,161,96,0.6);
-	text-shadow:
-		0px -1px 3px rgba(255,255,255,0.8),
-		0px 1px 0px rgba(255,255,255,0.3); */
+}
+#goto {
+	font-family: 'Galmuri9' !important;
+	font-weight: 700;
+	font-size: 15px;
+	color: rgb(0, 183, 255);
+	background-color:#000000;
+  padding: 0px 10px;
+  margin:0 auto;
+	border: 1px solid black;
 }
 #btnGameStart:hover,
 #cancel:hover,
-#prev:hover {
+#prev:hover,
+#goto:hover {
 	font-family: 'Galmuri9';
 	font-weight: 700;
 	font-size: 15px;
@@ -228,39 +225,4 @@ footer {
   }
 #div-padding {
     padding: 150px 150px 0 150px;
-}
-.w-btn-neon2 {
-    position: relative;
-    border: none;
-    min-width: 200px;
-    min-height: 50px;
-    background: linear-gradient(
-        90deg,
-        rgba(129, 230, 217, 1) 0%,
-        rgba(79, 209, 197, 1) 100%
-    );
-    border-radius: 1000px;
-    color: darkslategray;
-    cursor: pointer;
-    box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
-    font-weight: 700;
-    transition: 0.3s;
-}
-
-.w-btn-neon2:hover {
-    transform: scale(1.2);
-}
-
-.w-btn-neon2:hover::after {
-    content: "";
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    border: 6px solid #00ffcb;
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: ring 1.5s infinite;
 }

@@ -15,7 +15,7 @@
 
 <body>
   <div class="banner2">
-    <img src="../static/img/avatar2.png" alt=""">
+    <img src="../static/img/avatar2.png" alt="">
   </div>
   <div class=" banner">
     <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
@@ -41,150 +41,171 @@
   </div>
 
   <div class="div-padding"></div>
-  <div style="text-align: center;">
-    <button class="train-btn" id="region" type="button" value="11" onclick="selectBig(this.value)">서울특별시</button>
-    <button class="train-btn" id="region" type="button" value="23" onclick="selectBig(this.value)">인천광역시</button>
-    <button class="train-btn" id="region" type="button" value="31" onclick="selectBig(this.value)">경기도</button>
-    <button class="train-btn" id="region" type="button" value="32" onclick="selectBig(this.value)">강원도</button>
+
+  <button class="train-btn" onclick="showList(this);" value="inputDep">출발지 선택</button>
+  <button class="train-btn" onclick="showList(this);" value="inputArr">도착지 선택</button>
+
+  <div id="regionlist" style="text-align: center; display: none;"> class에 inputDep
+    <button class="train-btn" id="region" type="button" value="11" onclick="showStation(this)">서울특별시</button>
+    <button class="train-btn" id="region" type="button" value="23" onclick="showStation(this)">인천광역시</button>
+    <button class="train-btn" id="region" type="button" value="31" onclick="showStation(this)">경기도</button>
+    <button class="train-btn" id="region" type="button" value="32" onclick="showStation(this)">강원도</button>
     <br>
-    <button class="train-btn" id="region" type="button" value="25" onclick="selectBig(this.value)">대전광역시</button>
-    <button class="train-btn" id="region" type="button" value="12" onclick="selectBig(this.value)">세종특별시</button>
-    <button class="train-btn" id="region" type="button" value="33" onclick="selectBig(this.value)">충청북도</button>
-    <button class="train-btn" id="region" type="button" value="34" onclick="selectBig(this.value)">충청남도</button>
+    <button class="train-btn" id="region" type="button" value="25" onclick="showStation(this)">대전광역시</button>
+    <button class="train-btn" id="region" type="button" value="12" onclick="showStation(this)">세종특별시</button>
+    <button class="train-btn" id="region" type="button" value="33" onclick="showStation(this)">충청북도</button>
+    <button class="train-btn" id="region" type="button" value="34" onclick="showStation(this)">충청남도</button>
     <br>
-    <button class="train-btn" id="region" type="button" value="26" onclick="selectBig(this.value)">울산광역시</button>
-    <button class="train-btn" id="region" type="button" value="24" onclick="selectBig(this.value)">광주광역시</button>
-    <button class="train-btn" id="region" type="button" value="35" onclick="selectBig(this.value)">전라북도</button>
-    <button class="train-btn" id="region" type="button" value="36" onclick="selectBig(this.value)">전라남도</button>
+    <button class="train-btn" id="region" type="button" value="26" onclick="showStation(this)">울산광역시</button>
+    <button class="train-btn" id="region" type="button" value="24" onclick="showStation(this)">광주광역시</button>
+    <button class="train-btn" id="region" type="button" value="35" onclick="showStation(this)">전라북도</button>
+    <button class="train-btn" id="region" type="button" value="36" onclick="showStation(this)">전라남도</button>
     <br>
-    <button class="train-btn" id="region" type="button" value="21" onclick="selectBig(this.value)">부산광역시</button>
-    <button class="train-btn" id="region" type="button" value="22" onclick="selectBig(this.value)">대구광역시</button>
-    <button class="train-btn" id="region" type="button" value="37" onclick="selectBig(this.value)">경상북도</button>
-    <button class="train-btn" id="region" type="button" value="38" onclick="selectBig(this.value)">경상남도</button>
+    <button class="train-btn" id="region" type="button" value="21" onclick="showStation(this)">부산광역시</button>
+    <button class="train-btn" id="region" type="button" value="22" onclick="showStation(this)">대구광역시</button>
+    <button class="train-btn" id="region" type="button" value="37" onclick="showStation(this)">경상북도</button>
+    <button class="train-btn" id="region" type="button" value="38" onclick="showStation(this)">경상남도</button>
   </div>
 
-  <div id="station" ><span>출발지</span></div>
+  <div id="station"><span>Staion List</span></div>
+  <!-- 역 항목 박스임 안에 꾸며줘야함 station list 살릴 방법도 찾기 -->
+
   <div id="arrstation" ><span>도착지</span></div>
   <form action="" style="text-align: center;">
     출발지코드:<input type="text" id="start" onclick="">
-    도착지코드:<input type="text" id="end">
-    <button onclick="searchTrain()">검색</button>
-
+    도착지코드:<input type="text" id="end" onclick="">
+    출발시간:<input type="text" id="time" onclick="">  
   </form>
+  <button onclick="searchTrain()">검색</button>
+  <div id="result"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
   <script>
-    function selectBig(clicked_value){
-      var station = document.getElementById('station');
-      station.innerText = '';
 
+    function showList(obj){
+      var regionlist = document.getElementById("regionlist");
+      regionlist.style.display = "block";
+      regionlist.name = obj.value;
+    }
+    
+    function showStation(obj){
+      //역리스트 초기화
+      var station = document.getElementById("station");
+      station.style.display = "block";
+      station.innerText = "";
+      
       var xhr = new XMLHttpRequest();
       var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList'; /*URL*/
       var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'iwTiqJHCRqEIdoWj%2F4g58Sj89y5bOUhHGhMZPRwH5CBPJOyxUiTArkIf0k1ah%2BUm2N%2BMJ3jGziROL2wUBo%2BuGg%3D%3D'; /*Service Key*/
       queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
       queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
       queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('xml'); /**/
-      queryParams += '&' + encodeURIComponent('cityCode') + '=' + encodeURIComponent(clicked_value); /**/
+      queryParams += '&' + encodeURIComponent('cityCode') + '=' + encodeURIComponent(obj.value); /**/
       xhr.open('GET', url + queryParams);
       xhr.onreadystatechange = function () {
           if (this.readyState == 4) {
               console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
               var xml = xhr.responseXML;
 
-              var nodeid = xml.getElementsByTagName("nodeid");
-              var nodename = xml.getElementsByTagName("nodename");
+              var st_code = xml.getElementsByTagName("nodeid");
+              var st_name = xml.getElementsByTagName("nodename");
 
               for(let i = 0; i < 100; i++) {
-               var a = nodeid[i].firstChild.nodeValue;
-               var b = nodename[i].firstChild.nodeValue;
+               var a = st_code[i].firstChild.nodeValue;
+               var b = st_name[i].firstChild.nodeValue;
 
-               console.log("조합",a + "," + b);
-// 출발지 버튼 생성
-              var station = document.getElementById("station"); //div안에 버튼 담기
+              //역 버튼 생성
+              var regionlist = document.getElementById("regionlist");
+              // console.log(regionlist.name);
+              if( regionlist.name == "inputDep")
+              {
+              var station = document.getElementById("station");
               var btn = document.createElement("button");
               btn.innerText = b;
-              btn.className = "train-btn";
               btn.id = a;
+              btn.className = "train-btn";
               btn.value = a;
-              btn.setAttribute("onClick", "depatureBtn(this)");
-
+              btn.setAttribute("onClick", "inputStn(this)");
+              
               station.appendChild(btn);
-
-              console.log(btn);
-
-// 도착지 버튼 생성
-               var arrstation = document.getElementById("arrstation"); //div안에 버튼 담기
-               var btn = document.createElement("button");
-               btn.innerText = b;
-               btn.className = "train-btn";
-               btn.id = a;
-               btn.value = a;
-               btn.setAttribute("onClick", "arriveBtn(this)");
-
-               arrstation.appendChild(btn);
-               
-               console.log(btn);
               }
-              // var nodeid = xml.querySelectorAll("nodeid").nodeValue;
+
+              else if (regionlist.name == "inputArr"){var station = document.getElementById("station");
+              var btn = document.createElement("button");
+              btn.innerText = b;
+              btn.id = a;
+              btn.className = "train-btn";
+              btn.value = a;              
+              btn.setAttribute("onClick", "inputStn(this)");
+              
+              station.appendChild(btn);
+              }
+            }
           }
-      };
-      // console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-
+        };
       xhr.send('');
-    //   var request = require('request');
-
-    // var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList';
-    // var queryParams = '?' + encodeURIComponent('serviceKey') + '=서비스키'; /* Service Key*/
-    // queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
-    // queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
-    // queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('xml'); /* */
-    // queryParams += '&' + encodeURIComponent('cityCode') + '=' + encodeURIComponent(clicked_value); /* */
-
-    // request({
-    //     url: url + queryParams,
-    //     method: 'GET'
-    // }, function (error, response, body) {
-    //     console.log('Status', response.statusCode);
-    //     console.log('Headers', JSON.stringify(response.headers));
-    //     console.log('Reponse received', body);
-    // });
     }
+    
+    function inputStn(obj) {
+      var stn_code = obj.value;
+      var regionlist = document.getElementById("regionlist");
+      if( regionlist.name == "inputDep")
+
+      {var start = document.getElementById("start");
+      start.value = stn_code;
+      var station = document.getElementById("station");
+      regionlist.style.display = "none";
+      station.style.display = "none";
+      regionlist.name = "";
+    }
+
+      else{var end = document.getElementById("end");
+      end.value = stn_code;
+      var station = document.getElementById("station");
+      regionlist.style.display = "none";
+      station.style.display = "none";
+      regionlist.name = "";
+    }
+    
+    }
+
 function searchTrain(){
   var departure = document.getElementById('start');
+  var arrival = document.getElementById('end');
+  var time = document.getElementById('time');
+  var result = document.getElementById("result");
+
+  var train_code = ['00','01','02','03','04','05','06','07','08','09','10','16','17']
+  
+  for(var i = 1; i <14; i ++){
 
   var xhr = new XMLHttpRequest();
-  var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo'; /*URL*/
-  var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'iwTiqJHCRqEIdoWj%2F4g58Sj89y5bOUhHGhMZPRwH5CBPJOyxUiTArkIf0k1ah%2BUm2N%2BMJ3jGziROL2wUBo%2BuGg%3D%3D'; /*Service Key*/
-  queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('2'); /**/
-  queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
-  queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('xml'); /**/
-  queryParams += '&' + encodeURIComponent('depPlaceId') + '=' + encodeURIComponent(departure.value); /**/
-  queryParams += '&' + encodeURIComponent('arrPlaceId') + '=' + encodeURIComponent('NAT011668'); /**/
-  queryParams += '&' + encodeURIComponent('depPlandTime') + '=' + encodeURIComponent('20211201'); /**/
-  queryParams += '&' + encodeURIComponent('trainGradeCode') + '=' + encodeURIComponent('00'); /**/
-  xhr.open('GET', url + queryParams);
-  xhr.onreadystatechange = function () {
-      if (this.readyState == 4) {
-          console.log('Status: '+this.status+'nHeaders: '+xml.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-      }
-  };
-  
-  xhr.send('');
-}
-function depatureBtn(obj) {
-  var stn = obj.value;
-  console.log(stn);
-
-  var start = document.getElementById("start");
-  start.value = stn;
-
-  var classrename = document.getElementsByClassName("train-btn").setAttribute("onClick", "arriveBtn(this)");
-
-  console.log(classrename);
+var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo'; /*URL*/
+var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'iwTiqJHCRqEIdoWj%2F4g58Sj89y5bOUhHGhMZPRwH5CBPJOyxUiTArkIf0k1ah%2BUm2N%2BMJ3jGziROL2wUBo%2BuGg%3D%3D'; /*Service Key*/
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('json'); /**/
+queryParams += '&' + encodeURIComponent('depPlaceId') + '=' + encodeURIComponent(departure.value); /**/
+queryParams += '&' + encodeURIComponent('arrPlaceId') + '=' + encodeURIComponent(arrival.value); /**/
+queryParams += '&' + encodeURIComponent('depPlandTime') + '=' + encodeURIComponent(time.value); /**/
+queryParams += '&' + encodeURIComponent('trainGradeCode') + '=' + encodeURIComponent(train_code[i]); /**/
+xhr.open('GET', url + queryParams);
+xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+        
+        //add로 바꿔서 
+        var a = 
+          'Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText;
+          console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+        var list = result.innerHTML
+          result.innerHTML = result.innerHTML+a;
+        }
+};
 
 
-
+xhr.send('');
+  }
 }
   </script>
 </body>

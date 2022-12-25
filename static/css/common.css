@@ -221,14 +221,13 @@ body {
 
 }
 .banner2 {
-    height:200px; width : 100px;
-    z-index: 3;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
+    height:200px; width : 100px !important;
+    z-index: 3 !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
 }
 .div-padding {
     padding: 200px 200px 0 200px;

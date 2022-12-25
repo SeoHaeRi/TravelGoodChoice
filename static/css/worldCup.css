@@ -12,8 +12,6 @@
 }
 fieldset,img:not(.ski) {
 	border: 0 none;
-	/* 수정한 이미지크기 */
-	/* width: 235px; */
 	height: 300px;
 }
 dl,ul,ol,menu,li {

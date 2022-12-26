@@ -15,30 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <script>
-    //   function writeOn(){
     
-    //   var form = document.getElementById("community-form")
-    //   const formData = new FormData();
-    //   const file = document.getElementById("file")
-    //   formData.append('title',form.title.value)
-    //   formData.append('star',form.star.id)
-    //   formData.append('content',form.content.value)
-    //   formData.append('region',form.region.value)
-    //   formData.append('writer',form.writer.value)
-    //   formData.append('postfile',file.files[0]);
-    //   axios({
-    //     method:"post",
-    //     url:"/post/community",
-    //     data: formData
-    //   })
-    //   .then(()=>{
-    //     console.log("성공")
-    //   })
-    // }
-      
-    </script>
+
 </head>
 <body>
   <%-include('./header.ejs', {islogin, iskakao})%>
@@ -136,25 +114,16 @@
         </nav>
     </div>
     <script>
-        if ('<%=user%>' || '<%=kakao%>') {
-      document.querySelector(".login").classList.add('d-none');
-      document.querySelector(".logout").classList.remove('d-none');
+        if ("<%=islogin%>" == "true"  || "<%=iskakao%>"== "true" ) {
+
       document.querySelector("#write_btn").classList.remove('d-none');
       
     } else {
-      document.querySelector(".logout").classList.add('d-none');
+
       document.querySelector("#write_btn").classList.add('d-none');
      
       
     }
-    document.querySelector('.logout').addEventListener('click', () => {
-      axios({
-        method: 'delete',
-        url: '/user/logout',
-      }).then((result) => {
-        document.location.href = '/';
-      })
-    })
 
     </script>
 </body>

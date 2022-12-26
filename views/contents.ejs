@@ -49,7 +49,7 @@
 
         region1.innerText = form.region.value
         star1.innerText = form.star.value
-        img1.setAttribute("src","../contents/"+form.modify_file.value);
+        img1.setAttribute("src","../contents/"+res.result);
         title1.innerText = form.title.value
         maintext1.innerText = form.content.value
         }
@@ -185,6 +185,7 @@
             <button type="button" id="modify_btn"class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 글수정
             </button>
+            <button type="button" id="del_btn" class="btn table-btn" data-bs-dismiss="modal" onclick="del_contents()">글 삭제</button>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -225,7 +226,7 @@
 
         </div>
 
-        <button type="button" id="del_btn" class="btn table-btn" data-bs-dismiss="modal" onclick="del_contents()">글 삭제</button>
+        
 
 
         </div>
@@ -237,7 +238,7 @@
   </div>
   <script>
       var form = document.getElementById("contents-modify-form")  
-  if ( '<%=kakao%>' == form.userid.value|| '<%=user%>' == form.userid.value) {
+  if ( '<%=kakao%>' == form.userid.value || '<%=user%>' == form.userid.value) {
         document.querySelector("#modify_btn").classList.remove('d-none');
         document.querySelector("#del_btn").classList.remove('d-none');
       } else {

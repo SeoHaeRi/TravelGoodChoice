@@ -44,7 +44,7 @@ const Post = (Sequelize, DataTypes) => {
         timestamps: true
       },
       userid:{
-        type: DataTypes.STRING(40),
+        type: DataTypes.STRING(20),
         allowNull: false,
       }
     },

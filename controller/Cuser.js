@@ -29,6 +29,7 @@ exports.signup = (req, res) => {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
+      profile_img: 'noprofile/avatar_640.png',
     }
   }
 
@@ -113,7 +114,7 @@ exports.kakaoLogin = async (req, res) => {
       id: user.kakao_account.email,
       pw: '',
       name: user.properties.nickname,
-      profile_img: user.properties.thumbnail_image,
+      profile_img: user.properties.thumbnail_image || 'noprofile/avatar_640.png',
       social_type: 'kakao'
     }
 
@@ -148,8 +149,7 @@ exports.kakaoLogin = async (req, res) => {
                 User.create(data)
                   .then(() => {
                     console.log("Cuser kakao 유저 : ", user.kakao_account);
-                    req.session.kakao = user.kakao_account.email;
-                    req.session.kakao_profile = user.kakao_account.profile;
+                    req.session.kakao = data;
                     res.redirect('/');
                   })
               }

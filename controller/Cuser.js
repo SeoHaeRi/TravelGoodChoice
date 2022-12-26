@@ -9,42 +9,15 @@ const kakao = {
   logoutRedirectUri: process.env.KAKAO_logoutRedirectUri
 };
 
+/* login 페이지 */
 exports.view_login = (req, res) => {
   if (req.session.user || req.session.kakao) {
     res.send("로그인 된 유저입니다!");
-  } else res.render("login")
+  } else 
+      res.render("login")
 }
 
-exports.signup = (req, res) => {
-  let data;
-  if (req.file) {
-    data = {
-      id: req.body.id,
-      pw: req.body.pw,
-      name: req.body.name,
-      profile_img: req.file.filename,
-    }
-  } else {
-    data = {
-      id: req.body.id,
-      pw: req.body.pw,
-      name: req.body.name,
-      profile_img: 'noprofile/avatar_640.png',
-    }
-  }
-
-  User.findOne({ where: { [Op.or]: [{ id: data.id }, { name: data.name }] } })
-    .then((result) => {
-      if (result) res.send(false);
-      else {
-        User.create(data)
-          .then(() => {
-            res.send(true);
-          })
-      }
-    })
-}
-
+/* login */
 exports.login = (req, res) => {
   let data = {
     id: req.body.id,
@@ -55,37 +28,18 @@ exports.login = (req, res) => {
       if (result) {
         console.log("Cuser 유저 정보 : ", result.dataValues); // 사용자 정보(객체)
         req.session.user = result.dataValues;
-        res.send(true)
+        res.send(true); // 로그인 성공
       } else {
-        res.send(false)
+        res.send(false); // 로그인 실패
       }
-    })
+    });
 }
-
-exports.logout = (req, res) => {
-  req.session.destroy((err) => {
-    if (err) throw err;
-    res.send(true);
-  })
-}
-exports.view_kakaoLogout = (req, res) => {
-  const kakaoLogout = `https://kauth.kakao.com/oauth/logout?client_id=${kakao.clientID}&logout_redirect_uri=${kakao.logoutRedirectUri}`;
-  res.redirect(kakaoLogout);
-}
-
-exports.kakaoLogout = (req, res) => {
-  // console.log("logout: ", req);
-  req.session.destroy((err) => {
-    if (err) throw err;
-    res.redirect('/');
-  })
-}
-
+// 카카오 로그인 화면
 exports.view_kakaoLogin = (req, res) => {
   const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code`;
   res.redirect(kakaoAuthURL);
 }
-
+// 카카오 로그인
 exports.kakaoLogin = async (req, res) => {
   //access토큰을 받기 위한 코드
   await axios({
@@ -159,6 +113,25 @@ exports.kakaoLogin = async (req, res) => {
   })
 }
 
+/* logout */
+exports.logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) throw err;
+    res.send(true);
+  })
+}
+exports.view_kakaoLogout = (req, res) => {
+  const kakaoLogout = `https://kauth.kakao.com/oauth/logout?client_id=${kakao.clientID}&logout_redirect_uri=${kakao.logoutRedirectUri}`;
+  res.redirect(kakaoLogout);
+}
+exports.kakaoLogout = (req, res) => {
+  // console.log("logout: ", req);
+  req.session.destroy((err) => {
+    if (err) throw err;
+    res.redirect('/');
+  })
+}
+
 function userInfo(token) {
   return new Promise((resolve, reject) => {
     axios({
@@ -172,4 +145,77 @@ function userInfo(token) {
       resolve(res.data);
     })
   })
+}
+
+/* singup - User 정보 저장 */
+exports.signup = (req, res) => {
+  let data;
+  // 프로필 이미지가 있으면
+  if (req.file) {
+    data = {
+      id: req.body.id,
+      pw: req.body.pw,
+      name: req.body.name,
+      hint: req.body.hint,
+      hint_answer: req.body.hint_answer,
+      profile_img: req.file.filename,
+    }
+    // 프로필 이미지가 없으면
+  } else {
+    data = {
+      id: req.body.id,
+      pw: req.body.pw,
+      name: req.body.name,
+      hint: req.body.hint,
+      hint_answer: req.body.hint_answer,
+      profile_img: 'noprofile/avatar_640.png',
+    }
+  }
+  // 회원 가입 시, id 및 닉네임 중복 확인 
+  User.findOne({ 
+    where: { [Op.or]: [{ id: data.id }, { name: data.name }] } 
+    })
+    .then((result) => {
+      console.log(result)
+      if (result) // 데이터가 있으면
+        res.send(false);  // 사용 불가능
+      else {
+        User.create(data)
+          .then(() => {
+            res.send(true); // 사용 가능
+          })
+      }
+    })
+}
+
+/* 비밀번호 찾기 */
+exports.find_index = (req, res) => {
+  res.render('find'); 
+}
+exports.find = (req, res) => {
+  User.findOne({
+      where: { id : req.body.id }
+  }).then((result) => {
+      console.log('비밀번호 찾기 실행 :', result);
+      // hint와 answer db와 같으면
+      if (req.body.hint == result.hint && req.body.hint_answer == result.hint_answer) {
+          res.send('True'); 
+      } else {
+          res.send(null);
+      }
+  });
+}
+
+/* 비밀번호 변경 */
+exports.pw_modify = (req, res) => {
+  res.render('modify', {id: req.body.id});
+}
+exports.pw_update = (req, res) => {
+  let newObj = {
+      password : req.body.password
+  };
+  User.update( newObj, {where: {id: req.body.id}})
+  .then((result) => {
+      res.send('비밀번호 수정 성공!');
+  });
 }

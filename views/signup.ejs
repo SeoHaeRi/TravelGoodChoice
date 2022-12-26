@@ -18,6 +18,8 @@
       formData.append('id', form.id.value);
       formData.append('pw', form.pw.value);
       formData.append('name', form.name.value);
+      formData.append('hint', form.hint.value);
+      formData.append('hint_answer', form.hint_answer.value);
       formData.append('userfile', file.files[0]);
       axios({
         method: 'post',
@@ -31,16 +33,17 @@
           form.id.value = "";
           form.pw.value = "";
           form.name.value = "";
+          form.hint.value = "";
+          form.hint_answer.value = "";
           alert('회원가입 성공!');
           document.location.href = "/user/login";
         } else {
-          var exa = document.getElementById('exa');
-          exa.innerText ="회원가입 실패! 중복된 아이디 또는 닉네임입니다!";
-          form.reset();
+            var exa = document.getElementById('exa');
+            exa.innerText ="회원가입 실패! 중복된 아이디 또는 닉네임입니다!";
+            form.reset();
         }
       })
     }
-
   </script>
 </head>
 
@@ -53,15 +56,27 @@
     <span id="exa" style="color: red;"></span>
     <br>
     <br>
-    <input class="login-input" type="text" name="id" placeholder="아이디">
+    <input class="login-input" type="text" name="id" placeholder="아이디" maxlength='40'>
     <br>
     <br>
-    <input class="login-input" type="text" name="pw" placeholder="비밀번호">
+    <input class="login-input" type="text" name="pw" placeholder="비밀번호" maxlength='20'> 
     <br>
     <br>
     <input class="login-input" type="text" name="name" placeholder="닉네임" maxlength="10">
     <br>
     <br>
+    <span class="login-input">비밀번호 힌트 질문</span>
+    <br>
+    <br>
+    <select class="login-input" name="hint">
+      <option value="1">어느 초등학교 출신인가요?</option>
+      <option value="2">어렸을 때 살았던 동네는?</option>
+      <option value="3">롤모델의 이름을 입력하세요.</option>
+    </select>
+    <br>
+    <br>
+    <input class="login-input" type="text" name="hint_answer" placeholder="비밀번호 힌트 답" maxlength='50'/>
+    <br><br>
     <span>프로필 사진 :</span>
     <input type="file" id="profileImg" name="profileImg" placeholder="프로필">
     <br>

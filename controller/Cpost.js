@@ -17,52 +17,66 @@ exports.view_post = async (req, res) => {
           ],
         },
       });
-            if ( result.length > 0 ) 
-            res.render("community", {data: result, user:req.session.user, kakao:req.session.kakao});
- 
-            else res.render("community");   
+      if (req.session.user) {
+        res.render("community", { data: result, islogin: true, iskakao: false,})
+      } else if (req.session.kakao) {
+        res.render("community", { data: result, islogin: true, iskakao: true, })
+      }
+      else res.render("community", { data: result, islogin: false, iskakao: false, })
 }
 
 exports.community = async (req, res) => {
-    console.log(req.body)
-
-    let user = await User.findOne({attributes:["name"]},{where:{[Op.or]: [{id:req.session.user},{id:req.session.kakao}]}})
-    console.log("세션",req.session.user)
-    console.log("유저",user)
     let data
-    if (req.file) {
+    if (req.session.kakao && req.file) {
       data = {
         title:req.body.title,
         star:req.body.star,
         maintext:req.body.content,
         region:req.body.region,
-        userid:req.session.user || req.session.kakao,
-        writer: user.name,
-        img:req.file.filename
-  
+        userid: req.session.kakao.id, 
+        writer: req.session.kakao.name,
+        img:req.file.filename 
       }
-    } else {
-      console.log("바디",req.body)
+    } else if (req.session.user && req.file) {
+      data = {
+        title:req.body.title,
+        star:req.body.star,
+        maintext:req.body.content,
+        region:req.body.region,
+        userid: req.session.user.id,
+        writer: req.session.user.name,
+        img:req.file.filename
+      }
+    }
+    else if (req.session.kakao ){
       data = {    
           title:req.body.title,
           star:req.body.star,
           maintext:req.body.content,      
-          userid:req.session.user || req.session.kakao,
-          writer: user.name,
+          userid:req.session.kakao.id,
+          writer: req.session.kakao.name,
           region:req.body.region,
-          
-  
-          
       }
     }
+      else if(req.session.user){
+        data = {    
+          title:req.body.title,
+          star:req.body.star,
+          maintext:req.body.content,      
+          userid:req.session.user.id,
+          writer: req.session.user.name,
+          region:req.body.region, 
+      }
+      }
+    
     await Post.create(data)
   
   let result = await Post.findOne({where:{maintext:req.body.content}})
 
-  console.log(data)
-  res.send({ result })
+  console.log(result)
+  res.send({ data:result })
 
-}
+  }
 
 
 exports.view_contents = async (req, res,) => {
@@ -80,13 +94,13 @@ exports.view_contents = async (req, res,) => {
     },
   })
   if (req.session.user) {
-    res.render("contents", { data: post, islogin: true, iskakao: false })
+    res.render("contents", { data: post, islogin: true, iskakao: false, user:req.session.user.id, kakao: false })
   } else if (req.session.kakao) {
-    res.render("contents", { data: post, islogin: true, iskakao: true })
+    res.render("contents", { data: post, islogin: true, iskakao: true, user:false, kakao:req.session.kakao.id })
   }
-  else res.render("contents", { data: post, islogin: false, iskakao: false })
+  else res.render("contents", { data: post, islogin: false, iskakao: false, user:false, kakao:false })
 
-  console.log(post)
+  console.log("포스트",post)
 }
 
 exports.modify = async (req, res) => {
@@ -112,7 +126,7 @@ exports.modify = async (req, res) => {
 
   
   const result = await Post.update(data,{where:{index_number:req.body.index_number}})
-  res.send({data:result})
+  res.send({data:result.img})
 
 }
 

@@ -13,7 +13,7 @@ const upload = multer({
     filename(req, file, done) {
       console.log("filename: ", req.body);
       const ext = path.extname(file.originalname);
-      const filename = req.body.title + ext;
+      const filename = Date.now() + ext;
       done(null, filename);
     }
   })
@@ -28,7 +28,9 @@ router.post('/community', upload.single("community_file"), controller.community)
 router.get("/:index_number", controller.view_contents)
 
 // contents 수정
-router.patch("/modify",upload.single("modify_file"),controller.modify)
+router.patch("/modify",upload.single("modify_file"),(req,res)=>{
+res.json({result:`${req.file.filename}`})},controller.modify)
+
 
 router.delete("/del_contents", controller.del_contents)
 

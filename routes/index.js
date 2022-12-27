@@ -8,8 +8,7 @@ router.post("/setpopup", controller.setpopup)
 router.get("/recommend", controller.recommend)
 router.get("/signup", controller.signup)
 router.get("/search", controller.search)
-router.get("/community", controller.community)
-router.get("/contents", controller.contents)
+
 router.get("/train", controller.train)
 router.get("/train_list", controller.train_list)
 

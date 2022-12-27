@@ -10,19 +10,7 @@
   <link rel="stylesheet" type="text/css" href="../static/css/common.css">
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
-   $(window).on('load', function() {
-       var cookieArr = document.cookie.split("; ");
-
-       if (cookieArr.includes('id=remember')) {
-           var id_input = document.getElementById('user');
-           var id = document.getElementById('id').innerText;
-           id_input.value = id;
-
-           $("#userid_Remember").prop('checked', true);
-       }
-   })
-</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 </head>
 
@@ -50,7 +38,6 @@
       <input class="login-input" type="password" name="pw" placeholder="비밀번호" required>
       <br>
       <br>
-      <div class="remember"><label for="userid_Remember" style="font-size: 0.7rem;"><input type="checkbox" id="userid_Remember" name="id_remember" onclick="idRemember()">&nbsp;아이디 기억하기</label></div>
       <button class="login-btn" type="button" onclick="login();">로그인</button>
       <br>
       <br>
@@ -68,7 +55,7 @@
     <a href="javascript:void(0);" onclick="findPw();return false;">비밀번호 찾기</a> -->
   </div>
 
-  <script>a
+  <script>
     function login() {
       let form = document.getElementById("login-form");
       axios({
@@ -91,28 +78,6 @@
     function register() {
       document.location.href="http://localhost:8000/signup";
     }
-
-    function findPw() {
-      document.location.href="http://localhost:8000/user/find";
-    }
-                 
-   function idRemember() {
-      var cookieArr = document.cookie.split("; ");
-      if (cookieArr.includes('id=remember')) {  
-        // 쿠키 삭제
-        var date = new Date();
-        date.setDate(date.getDate() - 10); 
-        var before = date.toGMTString();
-        document.cookie = `id=remember; expires=${before}}`;
-      } else { 
-          var date = new Date();
-          date.setDate(date.getDate() + 30); 
-          var afterMonth = date.toGMTString();
-                    
-           // 아이디를 기억해줘 누르면 쿠키 생성해주기
-           document.cookie = `id=remember; expires=${afterMonth}`;
-         }
-          }
   </script>
 
 </body>

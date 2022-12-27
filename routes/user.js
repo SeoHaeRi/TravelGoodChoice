@@ -3,6 +3,7 @@ var controller = require('../controller/Cuser');
 const multer = require("multer");
 const path = require('path');
 const router = express.Router();
+const mypage = require('../controller/CmyPage');
 
 /* user 프로필 업로드 */
 const upload = multer({
@@ -20,6 +21,8 @@ const upload = multer({
 });
 
 router.post('/signup', upload.single("userfile"), controller.signup);
+router.post('/signup/upload', upload.single("profileImg"), controller.signup);
+
 
 router.get('/login', controller.view_login)
 router.post('/login', controller.login);
@@ -32,5 +35,17 @@ router.get('/kakao/logout', controller.kakaoLogout);
 
 // router.post('/modify',controller.pw_modify); 
 // router.post('/update', controller.pw_update); 
+
+router.get('/mypage', checkSession, mypage.mypage_index); 
+router.post('/mypage', mypage.user_update); 
+
+router.post('/mypage/isName', mypage.isName);
+/* 로그인 확인 미들웨어 */
+function checkSession (req, res, next) {
+  if (req.session.id != null && req.session.id != '') next(); 
+  else {
+      res.redirect('/login');
+  }
+}
 
 module.exports = router;

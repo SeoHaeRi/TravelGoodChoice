@@ -139,44 +139,81 @@
     </script>  
 </head>
 <body>
-    <div class="container">
-        <div class="mypage-head"> 
+    <div class="login-div">
+        <div onclick="goHome()">
+            <a href="http://localhost:8000/" class="login-logo" title="여행어때">여행어때</a>
+        </div>
+        <div onclick="goModify()">
+            <i class="fa-solid fa-user">&nbsp;&nbsp;
+                <a href="/">회원정보수정</a>
+            </i>
+        </div>
+        <form id="login-form">
+          <br>
+          <input class="login-input" type="text" id="nickname" name="nickname" required onkeyup="checkNickname( this );" placeholder="닉네임" required>
+          <p id="checkNickname_text"></p>
+          <br>
+          <input class="login-input" type="password" name="password" onchange="pwCheck()" id="pw" placeholder="비밀번호">
+          <br>
+          <br>
+          <br>
+          <input class="login-input" type="password" name="checkPw" onchange="pwCheck()" id="pwConfirm" placeholder="비밀번호 확인">
+          <br>
+          <span id="check"></span>
+          <br>
+          <br>
+          <br>
+          <button class="login-btn" type="button" onclick="info_modify();"">수정완료</button>
+          <br>
+          <br>
+      </div>
+<!-- ============================================================================================================== -->
+    <!-- <div class="container">
+        <div class="mypage-head mypage-form"> 
             <div onclick="goHome()">
-            <a href="/">메인으로 돌아가기</a>
+            <a href="/">여행어때</a>
             </button>
-        </div>
-
-        <div class="menu">
-            <div onclick="goModify()">
-                <i class="fa-solid fa-user">&nbsp;&nbsp;
-                    <a href="/">회원정보수정</a>
-                </i>
             </div>
-        </div>
 
-        <div class="modify-list">
+            <div class="menu">
+                <div onclick="goModify()">
+                    <i class="fa-solid fa-user">&nbsp;&nbsp;
+                        <a href="/">회원정보수정</a>
+                    </i>
+                </div>
+            </div>
+
+            <div class="modify-list">
                 <form id="modify_info">
-                    <div class="info-field">
-                        <div class="name-div">닉네임 : &nbsp;&nbsp;</div>
-                            <div class="input-div">
+                    <div>
+                        <div>
+                            닉네임 : 
+                        </div>
+                        <div class="input-div">
                             <input type="text" id="nickname" name="nickname" required onkeyup="checkNickname( this );" class="nickname" style="color: black" />
                             <p id="checkNickname_text"></p>
-                            </div>
-                    <br><br>
-                        <div class="name-div">비밀번호 : &nbsp;&nbsp;</div>
-                            <div class="input-div">
+                        </div>
+                        <div>
+                            비밀번호 :
+                        </div>
+                        <div class="input-div">
                             <input type="password" name="password" onchange="pwCheck()" id="pw" style="color: black" /><br><br>
-                            </div>
-                        <div class="name-div">비밀번호 확인 : &nbsp;&nbsp;</div>
-                            <div class="input-div">
+                        </div>
+                        <div>
+                            비밀번호 확인
+                        </div>
+                        <div class="input-div">
                             <input type="password" onchange="pwCheck()" name="checkPw" id="pwConfirm" style="color: black" /><br>
                             <span id="check"></span>
-                            </div>
+                        </div>
                     </div>
-                        <button type="button" class="signupBtn" style="color:#FFE19C" onclick="info_modify();">수정완료</button>
-                    </div>
+                    <br>
+                    <br>
+                    <button type="button" class="signupBtn" style="color:#FFE19C" onclick="info_modify();">수정완료</button>
                 </form>
+            </div>
         </div>
-    </div>
+    </div> -->
+
 </body>
 </html>

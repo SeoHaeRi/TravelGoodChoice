@@ -15,7 +15,7 @@
   background-image: url(../img/map.png);
   height: 1000px;
   width: 800px;
-  position: relative;
+  position: absolute;
   /* top: 50%; */
   left: 50%;
   transform: translate(-50%, 0%);
@@ -23,20 +23,20 @@
 }
 
 .seoul-btn {
-  position: relative;
+  position: absolute;
   top: 200px;
   left: 260px;
   z-index: 2;
 }
 
 .seoul-text {
-  position: relative;
+  position: absolute;
   font-size: 11px;
   font-weight: bold;
   top: 260px;
   left: 300px;
   z-index: 2;
-  /* display: none; */
+  display: none;
 }
 
 .seoul-btn:hover +.seoul-text {

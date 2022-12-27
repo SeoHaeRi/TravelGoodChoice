@@ -15,7 +15,7 @@ function writeOn(){
         data: formData
     })
     .then((response)=>{
-        console.log("리스폰스",response.data.result)
+        console.log("리스폰스",response)
         var title = document.getElementById("title");
         var content = document.getElementById("content");
         var region = document.getElementById("region");
@@ -30,35 +30,35 @@ function writeOn(){
         var tr = document.createElement("tr");
     
         var no = document.createElement("td");
-        var cnt = response.data.result.index_number
+        var cnt = response.data.data.index_number
 
         no.innerText = cnt;
                 //cnt = cnt + 1;
     
         var title1 = document.createElement("td");
-        title1.innerHTML  = response.data.result.title
+        title1.innerHTML  = response.data.data.title
         //title1.innerHTML = '<a href="http://localhost:8000/" class="list">'+ title.value + "</a>";
         // title1.innerText = title.value;
     
         var star = document.createElement("td");
             
-        star.innerText =  response.data.result.star
+        star.innerText =  response.data.data.star
         //star.innerText = star1;
     
         var region1 = document.createElement("td");
         // region1.classList = card_filter;
-        region1.innerHTML =  response.data.result.region
+        region1.innerHTML =  response.data.data.region
         //region1.innerHTML = region.value;
     
         var id = document.createElement("td");
-       id.innerHTML= response.data.result.writer
+       id.innerHTML= response.data.data.writer
         // title.innerText = id;
     
         var date = document.createElement("td");
         var dt = new Date();
         console.log( dt );
         
-        date.innerHTML = response.data.result.createdAt
+        date.innerHTML = response.data.data.uodatedAt
         date.innerText = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate()+ " " +dt.getHours() + ":" + dt.getMinutes() +":"+ dt.getSeconds();
         
     

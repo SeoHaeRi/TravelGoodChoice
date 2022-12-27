@@ -44,11 +44,11 @@
           var img1 = document.getElementById("img")
           var title1 = document.getElementById("title")
           var maintext1 = document.getElementById("maintext")
-          if (res.data) {
+          if (res.data.result) {
 
             region1.innerText = form.region.value
             star1.innerText = form.star.value
-            img1.setAttribute("src", "../contents/" + res.result);
+            img1.setAttribute("src", "../contents/" + res.data.file );
             title1.innerText = form.title.value
             maintext1.innerText = form.content.value
           }
@@ -95,6 +95,7 @@
     }
     // 댓글 등록 함수
     function commentOn() {
+      var form = document.getElementById("contents-modify-form")
       const content = document.getElementById("comment-box");
       if ('<%=islogin%>' == 'true' && content.value) {
         axios({

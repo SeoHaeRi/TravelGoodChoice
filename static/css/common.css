@@ -318,9 +318,13 @@ body {
 }
 
 .btn {
-    /* z-index: 1; */
     width: 80px;
     height: 80px;
+}
+.btn2 {
+    width: 80px;
+    height: 80px;
+    box-shadow: none;
 }
 
 .copyright {

@@ -28,62 +28,62 @@
     <input type="search" class="search_input" placeholder="검색어를 입력하세요" onclick="search_filter()">
   </div>
   <br>
-  <div class="div-padding">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="write_btn">
-      글쓰기
-    </button>
-    <!-- <div align="center">
-        <input type="search" class="search_input" placeholder="검색어를 입력하세요" onclick="search_filter()">
-      </div> -->
+  <!-- Button trigger modal -->
+  <button type="button" class="btn2 table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="write_btn">
+    글쓰기
+  </button>
+  <!-- <div align="center">
+      <input type="search" class="search_input" placeholder="검색어를 입력하세요" onclick="search_filter()">
+    </div> -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
-          </div>
-          <div class="modal-body">
-            <form id="community-form" class="community-form">
-              제목
-              <br>
-              <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="">
-              <br>
-              <input type="radio" class="star" name="star" value="★" id="1">★
-              <input type="radio" class="star" name="star" value="★★" id="2">★★
-              <input type="radio" class="star" name="star" value="★★★" id="3">★★★
-              <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
-              <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
-              <!-- -------------------------- -->
-              <!-- <select name="korea_region">
-                <option value="서울">서울</option>
-                <option value="강원">강원</option>
-                <option value="충북">충북</option>
-                <option value="충남">충남</option>
-                <option value="경북">경북</option>
-                <option value="경남">경남</option>
-                <option value="전북">전북</option>
-                <option value="전남">전남</option>
-                <option value="제주">제주</option>
-              </select> -->
-              <input type="text" id="region" name="region" placeholder="세부 지역 ex)서울, 경주">
-              <br>
-              내용
-              <br>
-              <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
-              <br>
-              이미지
-              <input type="file" name="community_file" id="file">
-              <div class="modal-footer">
-                <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal">취소</button>
-                <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
-              </div>
-            </form>
-          </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
+        </div>
+        <div class="modal-body">
+          <form id="community-form" class="community-form">
+            제목
+            <br>
+            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="">
+            <br>
+            <input type="radio" class="star" name="star" value="★" id="1">★
+            <input type="radio" class="star" name="star" value="★★" id="2">★★
+            <input type="radio" class="star" name="star" value="★★★" id="3">★★★
+            <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
+            <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
+            <!-- -------------------------- -->
+            <!-- <select name="korea_region">
+              <option value="서울">서울</option>
+              <option value="강원">강원</option>
+              <option value="충북">충북</option>
+              <option value="충남">충남</option>
+              <option value="경북">경북</option>
+              <option value="경남">경남</option>
+              <option value="전북">전북</option>
+              <option value="전남">전남</option>
+              <option value="제주">제주</option>
+            </select> -->
+            <input type="text" id="region" name="region" placeholder="세부 지역 ex)서울, 경주">
+            <br>
+            내용
+            <br>
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+            <br>
+            이미지
+            <input type="file" name="community_file" id="file">
+            <div class="modal-footer">
+              <button type="reset" class=" cancle-btn" data-bs-dismiss="modal">취소</button>
+              <button type="button" class=" table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
+  <div class="div-padding">
 
   <!-- <div class="btn_category" style="margin:auto" align="center">
     <button type="button" class="btn btn-outline-info" onclick="start()" data-filter="ALL">ALL</button>
@@ -139,7 +139,7 @@
                     
                   </div>
                 </div>
-                <div class="card-body">
+                <div class="">
                   <div class="card-text d-flex justify-content-between text-capitalize">
                     <p class="card-text">제목: <%=data[i].title%></p>
                     <p class="card-text">지역: <%=data[i].region%></p>
@@ -155,12 +155,12 @@
             } else {
               document.querySelector("#write_btn").classList.add('d-none');
             }
-
-
-          </script>
-  
-
-      <%-include('./footer.ejs')%>
+            
+            
+            </script>
+          </div>
+          </div>
+            <%-include('./footer.ejs')%>
 
 </body>
 

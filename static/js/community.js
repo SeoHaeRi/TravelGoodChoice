@@ -8,6 +8,7 @@ function writeOn(){
     formData.append('star', form.star.value)
     formData.append('content', form.content.value)
     formData.append('region', form.region.value)
+    //formData.append('korea_region', form.korea_region.value)
     formData.append('community_file', file.files[0]);
     axios({
         method: "post",

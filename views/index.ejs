@@ -20,77 +20,77 @@
 </head>
 
 <body>
-  <%-include('./header.ejs', {islogin, iskakao})%>
+  <%-include( './header.ejs' , {islogin, iskakao})%>
 
-  <div>
-    <div style="height: 80px; "></div>
-    <div class="map">
-      <a href="http://localhost:8000/sights1">
-        <img src="../static/img/btn.png" alt="seoul" class="btn seoul-btn">
-        <p class="seoul-text">서울/인천/경기</p>
-      </a>
-      <a href="http://localhost:8000/sights2">
-        <img src="../static/img/btn.png" alt="jejudo" class="btn jejudo-btn">
-        <p class="jejudo-text">제주도</p>
-      </a>
-      <a href="http://localhost:8000/sights3">
-        <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn">
-        <p class="gangwon-text">강원</p>
-      </a>
-      <a href="http://localhost:8000/sights4">
-        <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn">
-        <p class="chungnam-text">충남/대전</p>
-      </a>
-      <a href="http://localhost:8000/sights5">
-        <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn">
-        <p class="chungbuk-text">충북/세종</p>
-      </a>
-      <a href="http://localhost:8000/sights6">
-        <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn">
-        <p class="jeonbuk-text">전북/전남/광주</p>
-      </a>
-      <img src="../static/img/btn.png" alt="degu" class="btn degu-btn">
-      <p class="degu-text">경북/대구/울산</p>
-      <img src="../static/img/btn.png" alt="busan" class="btn busan-btn">
-      <p class="busan-text">경남/부산</p>
-    </div>
-    <div class="main-div"></div>
+    <div>
+      <div style="height: 80px; "></div>
+      <div class="map">
+        <a href="/sights1">
+          <img src="../static/img/btn.png" alt="seoul" class="btn seoul-btn">
+          <p class="seoul-text">서울/인천/경기</p>
+        </a>
+        <a href="/sights2">
+          <img src="../static/img/btn.png" alt="jejudo" class="btn jejudo-btn">
+          <p class="jejudo-text">제주도</p>
+        </a>
+        <a href="/sights3">
+          <img src="../static/img/btn.png" alt="gangwon" class="btn gangwon-btn">
+          <p class="gangwon-text">강원</p>
+        </a>
+        <a href="/sights4">
+          <img src="../static/img/btn.png" alt="chungnam" class="btn chungnam-btn">
+          <p class="chungnam-text">충남/대전</p>
+        </a>
+        <a href="/sights5">
+          <img src="../static/img/btn.png" alt="chungbuk" class="btn chungbuk-btn">
+          <p class="chungbuk-text">충북/세종</p>
+        </a>
+        <a href="/sights6">
+          <img src="../static/img/btn.png" alt="jeonbuk" class="btn jeonbuk-btn">
+          <p class="jeonbuk-text">전북/전남/광주</p>
+        </a>
+        <img src="../static/img/btn.png" alt="degu" class="btn degu-btn">
+        <p class="degu-text">경북/대구/울산</p>
+        <img src="../static/img/btn.png" alt="busan" class="btn busan-btn">
+        <p class="busan-text">경남/부산</p>
+      </div>
+      <div class="main-div"></div>
 
-    <%-include('./footer.ejs')%>
+      <%-include( './footer.ejs' )%>
 
-    <div class="popup">
-      <form id="popup-form">
-        <img src="static/img/xmascookie.png" alt="크리스마스 이벤트" class="popup-img">
-        <div class="popup-check">
-          <span><input type="checkbox" name="checkbox" id="check"> 하루동안 다시보지 않기</span>
-          <i class="bi bi-x-circle" onclick="modalClose()"></i>
+        <div class="popup">
+          <form id="popup-form">
+            <img src="static/img/xmascookie.png" alt="크리스마스 이벤트" class="popup-img">
+            <div class="popup-check">
+              <span><input type="checkbox" name="checkbox" id="check"> 하루동안 다시보지 않기</span>
+              <i class="bi bi-x-circle" onclick="modalClose()"></i>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
 
 
-    <script>
-      if ("<%=popup%>" == "none") {
-        document.querySelector(".popup").classList.add('d-none');
-      }
-
-      function modalClose() {
-        let form = document.getElementById("popup-form");
-        let check = document.getElementById("check");
-        axios({
-          method: "post",
-          url: "/setpopup",
-          data: {
-            value: form.checkbox.checked
+        <script>
+          if ("<%=popup%>" == "none") {
+            document.querySelector(".popup").classList.add('d-none');
           }
-        }).then((result) => {
-          if (result.data) {
-            console.log("성공");
+
+          function modalClose() {
+            let form = document.getElementById("popup-form");
+            let check = document.getElementById("check");
+            axios({
+              method: "post",
+              url: "/setpopup",
+              data: {
+                value: form.checkbox.checked
+              }
+            }).then((result) => {
+              if (result.data) {
+                console.log("성공");
+              }
+              document.querySelector(".popup").classList.add('d-none');
+            })
           }
-          document.querySelector(".popup").classList.add('d-none');
-        })
-      }
-    </script>
+        </script>
 </body>
 
 </html>

@@ -18,8 +18,6 @@
       formData.append('id', form.id.value);
       formData.append('pw', form.pw.value);
       formData.append('name', form.name.value);
-      formData.append('hint', form.hint.value);
-      formData.append('hint_answer', form.hint_answer.value);
       formData.append('userfile', file.files[0]);
       axios({
         method: 'post',
@@ -33,8 +31,6 @@
           form.id.value = "";
           form.pw.value = "";
           form.name.value = "";
-          form.hint.value = "";
-          form.hint_answer.value = "";
           alert('회원가입 성공!');
           document.location.href = "/user/login";
         } else {

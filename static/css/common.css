@@ -241,14 +241,15 @@ body {
     bottom: 0 !important;
     left: 0 !important;
 }
+
 .div-padding {
-    padding: 200px 200px 600px 200px;
+    padding: 200px 200px 200px 200px;
 }
 .comment-padding {
     padding: 0 200px 0 200px;
 }
 
-.community {
+.worldCup {
     position: fixed;
     top: 65px;
     right: 270px;
@@ -269,10 +270,10 @@ body {
 
 }
 
-.worldCup {
+.mypage {
     position: fixed;
     top: 65px;
-    right: 150px;
+    right: 130px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;
@@ -306,6 +307,15 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+.logout {
+    position: fixed;
+    top: 65px;
+    right: 50px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .btn {
     /* z-index: 1; */
@@ -320,7 +330,9 @@ body {
     font-size: 15px;
     color: white;
     padding: 30px;
-    font-family: 'Courier New', Courier, monospace;
+}
+.copyright-title{
+    padding: 0px 0px 40px 30px; width: fit-content;
 }
 .copyright-info{
     padding: 0px 0px 40px 30px; width: fit-content;

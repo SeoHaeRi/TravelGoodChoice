@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swith:비밀번호 변경</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/modify.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--sweetalert -->
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal/minimal.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <script>
+        function pw_check() {
+            let pw = $('#pw').val(); 
+            let pw2 = $('#pwd').val();
+            
+            if (pw != pw2) {
+                $('#checkPw').html("<p>비밀번호가 일치하지 않습니다</p>");
+            };
+            if (pw == pw2) {
+                $('#checkPw').html("<p>비밀번호가 일치</p>");
+            };
+        }
+        
+        /* 비밀번호 변경 */
+        function password_modify() {
+            var form = document.getElementById('modify_password');
+            var flag = checkData();
+            if (flag) {
+                axios({
+                    method:'post',
+                    url: "http://localhost:8000/user/update",
+                    data: {
+                        id : form.id.value,
+                        password : form.password.value, 
+                    }
+                })
+                .then((req) => { return req.data;})
+                .then((data) => {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '변경 되었습니다.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setTimeout(function() {
+                        document.location.href="http:/localhost:8000/user/login";
+                    }, 1000);
+                });
+            }
+        }
+
+        /* 비밀번호 확인 */
+        function pwCheck() {
+            if(document.getElementById('pw').value !='' && document.getElementById('pwd').value!=''){
+                if(document.getElementById('pw').value==document.getElementById('pwd').value){
+                    document.getElementById('checkPw').innerHTML='비밀번호 일치'
+                    document.getElementById('checkPw').style.color='rgb(54, 54, 255)';
+                }
+                else{
+                    document.getElementById('checkPw').innerHTML='비밀번호가 일치하지 않습니다';
+                    document.getElementById('checkPw').style.color='rgb(255, 89, 89)';
+                }
+            }
+        }
+
+        /* 데이터 유효성 검사 alert */
+        function checkData () {
+            var form = document.getElementById("modify_password");
+
+            if (form.password.value == '') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '비밀번호 확인해주세요!',
+                    text: '45글자 이내',
+                })
+                return false;
+            }
+
+            if (form.password2.value == '') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '비밀번호 확인을 해주세요!',
+                })
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style>
+        .Popup {
+            width: 300px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    
+        <div class="container text-center">
+            <form id="modify_password">
+            <div class="form_background"></div>
+            <div class="modify_info">
+                <h1 class="password_modify"><%=id%>님 비밀번호 변경</h1>
+                <!-- </div> -->
+
+                <!-- <form id="modify_password"> -->
+                    <input id="id" type="text" name="id" class="modify_form_user" value="<%=id%>" style="color:white"><br>
+                    
+                    <input id="pw" type="password" name="password" class="check_pw" placeholder="비밀번호" onchange="pwCheck()" required style="color:white"><br>
+
+                    <input id="pwd" type="password" name="password2" class="check_pwd" placeholder="비밀번호 확인" onchange="pwCheck()" required style="color:white"><br><br>
+                    <!-- </div> -->
+                    <div id="checkPw" class="checkPw"></div><br>
+                    <button type="button" class="modifyUser_2"
+                    onclick="password_modify()" style="color:#FFE19C">비밀번호 변경</button>
+                    </div>
+                <!-- </div>     -->
+                </form>
+                </div>
+        </body>
+</html>

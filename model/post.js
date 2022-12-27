@@ -46,7 +46,11 @@ const Post = (Sequelize, DataTypes) => {
       userid:{
         type: DataTypes.STRING(20),
         allowNull: false,
-      }
+      },
+      //korea_region:{
+      //  type:DataTypes.STRING(10),
+      //  allowNull:false
+      //}
     },
     {
       tablename: "post",

@@ -18,7 +18,7 @@ const upload = multer({
     }
   })
 })
-
+router.get('/view_search',controller.view_search)
 // community 페이지 렌더
 router.get('/view_post', controller.view_post)
 // commnunity 폼전송

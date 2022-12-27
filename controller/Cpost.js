@@ -24,6 +24,28 @@ exports.view_post = async (req, res) => {
   else res.render("community", { data: result, islogin: false, iskakao: false, })
 }
 
+exports.view_search = async (req, res) => {
+  let result = await Post.findAll({
+    attributes: {
+      include: [
+        "updatedAt",
+        [sequelize.fn(
+          "DATE_FORMAT",
+          sequelize.col("updatedAt"),
+          "%Y-%m-%d %H:%i:%S"
+        ),
+          "updatedAt"],
+      ],
+    },
+  });
+  if (req.session.user) {
+    res.render("search", { data: result, islogin: true, iskakao: false, })
+  } else if (req.session.kakao) {
+    res.render("search", { data: result, islogin: true, iskakao: true, })
+  }
+  else res.render("search", { data: result, islogin: false, iskakao: false, })
+}
+
 exports.community = async (req, res) => {
   let data
   if (req.session.kakao && req.file) {

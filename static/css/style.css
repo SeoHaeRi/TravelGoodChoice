@@ -20,14 +20,19 @@
   /* top: 50%; */
   left: 50%;
   transform: translate(-50%, 0%);
-  z-index: -1;
+
+}
+
+.main-div{
+  height: 1000px;
+
 }
 
 .seoul-btn {
   position: absolute;
   top: 200px;
   left: 260px;
-  z-index: 2;
+
 }
 
 .seoul-text {
@@ -36,7 +41,7 @@
   font-weight: bold;
   top: 260px;
   left: 300px;
-  z-index: 2;
+
   display: none;
 }
 

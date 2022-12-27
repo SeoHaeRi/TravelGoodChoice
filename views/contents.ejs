@@ -166,7 +166,6 @@
 <body>
   <%-include( './header.ejs' , {islogin, iskakao})%>
 
-
     <div class="card div-padding mx-auto">
       <table style="text-align: center;">
         <tr>
@@ -315,6 +314,8 @@
     </div>
 
     <!-- ---------------------------------------------------------------------------------------------- -->
+    <%-include('./footer.ejs')%>
+    
     <script>
       var form = document.getElementById("contents-modify-form")
       if ('<%=kakao%>' == form.userid.value || '<%=user%>' == form.userid.value) {

@@ -24,16 +24,14 @@
 </head>
 
 <body>
-  <%-include('./header.ejs', {islogin, iskakao})%>
+  <%-include( './header.ejs' , {islogin, iskakao})%>
 
-  <div class="div-padding">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="write_btn">
-      글쓰기
-    </button>
-    <!-- <div align="center">
-        <input type="search" class="search_input" placeholder="검색어를 입력하세요" onclick="search_filter()">
-      </div> -->
+    <div class="div-padding">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn table-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="write_btn">
+        글쓰기
+      </button>
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,58 +76,70 @@
                 <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="writeOn();">작성</button>
               </div>
             </form>
+
           </div>
         </div>
       </div>
+
+      <br>
+      <br>
+      <table class="table table-striped table-hover" id="table">
+        <tr>
+          <th>NO.</th>
+          <th>제목</th>
+          <th>별점</th>
+          <th>지역</th>
+          <th>작성자</th>
+          <th>작성일</th>
+          <% for(let i=0; i<data.length; i++) { %>
+        <tr style="cursor:pointer;" onclick="location.href='/post/<%=data[i].index_number%>'">
+          <td>
+            <%=data[i].index_number%>
+          </td>
+          <td>
+            <%=data[i].title%>
+          </td>
+          <td>
+            <%=data[i].star%>
+          </td>
+          <td>
+            <%=data[i].region%>
+          </td>
+          <td>
+            <%=data[i].writer%>
+          </td>
+          <td>
+            <%=data[i].updatedAt%>
+          </td>
+        </tr>
+        <% } %>
+          </tr>
+      </table>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" style="justify-content: center;">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
+    <script>
+      if ("<%=islogin%>" == "true" || "<%=iskakao%>" == "true") {
+        document.querySelector("#write_btn").classList.remove('d-none');
+      } else {
+        document.querySelector("#write_btn").classList.add('d-none');
+      }
 
-    <br>
-    <br>
-    <table class="table table-striped table-hover" id="table">
-      <tr>
-        <th>NO.</th>
-        <th>제목</th>
-        <th>별점</th>
-        <th>지역</th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <% for(let i=0; i<data.length; i++) { %>
-      <tr style="cursor:pointer;" onclick="location.href='http://localhost:8000/post/<%=data[i].index_number%>'">
-        <td><%=data[i].index_number%></td>
-        <td><%=data[i].title%></td>
-        <td><%=data[i].star%></td>
-        <td><%=data[i].region%></td>
-        <td><%=data[i].writer%></td>
-        <td><%=data[i].updatedAt%></td>
-      </tr>
-      <% } %>
-      </tr>
-    </table>
-
-    <nav aria-label="Page navigation example">
-      <ul class="pagination" style="justify-content: center;">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <script>
-    if ("<%=islogin%>" == "true" || "<%=iskakao%>" == "true") {
-      document.querySelector("#write_btn").classList.remove('d-none');
-    } else {
-      document.querySelector("#write_btn").classList.add('d-none');
-    }
-
-  </script>
+    </script>
 </body>
 
 </html>

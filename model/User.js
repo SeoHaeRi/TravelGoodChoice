@@ -24,12 +24,12 @@ const User = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(10),
         allowNull: true,
       }
-  },
-  // table option
+    },
+    // table option
     {
       charset: "utf8", // 한국어 설정
       collate: "utf8_general_ci", // 한국어 설정
-      tablename: "travel",
+      tablename: "user",
       freezeTableName: true,
       timestamps: false
     }

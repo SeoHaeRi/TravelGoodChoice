@@ -1,47 +1,48 @@
 <div class="banner2">
-    <img src="../static/img/avatar2.png" class="ski" alt="">
+  <img src="../static/img/avatar2.png" class="ski" alt="">
 </div>
 <div class=" banner">
-    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
-    <a href="http://localhost:8000/" class="logo" title="여행어때">여행어때</a>
-    <a href="http://localhost:8000/post/view_post" class="community">커뮤니티</a>
-    <a href="http://localhost:8000/post/view_search" class="search">여행지 리스트</a>
-    <a href="http://localhost:8000/worldCup" class="worldCup">여행지 월드컵</a>
-    <a href="http://localhost:8000/user/login" class="login">로그인</a>
-    <a class="logout">로그아웃</a>
+
+  <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+  <a href="/" class="logo" title="여행어때">여행어때</a>
+  <a href="/post/view_post" class="community">커뮤니티</a>
+  <a href="/post/view_search" class="search">여행지 리스트</a>
+  <a href="/worldCup" class="worldCup">여행지 월드컵</a>
+  <a href="/user/login" class="login">로그인</a>
+  <a class="logout">로그아웃</a>
 </div>
 <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❄</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
 </div>
 
 <script>
 
-    if ('<%=islogin%>' == 'true') {
-        document.querySelector(".login").classList.add('d-none');
-        document.querySelector(".logout").classList.remove('d-none');
-    } else {
-        document.querySelector(".logout").classList.add('d-none');
-    }
+  if ('<%=islogin%>' == 'true') {
+    document.querySelector(".login").classList.add('d-none');
+    document.querySelector(".logout").classList.remove('d-none');
+  } else {
+    document.querySelector(".logout").classList.add('d-none');
+  }
 
-    document.querySelector('.logout').addEventListener('click', () => {
-        if ('<%=iskakao%>' == 'true') {
-            document.location.href = '/user/logout/kakao'
-        } else {
-            axios({
-                method: 'delete',
-                url: '/user/logout',
-            }).then((res) => {
-                document.location.href = '/';
-            })
-        }
-    })
+  document.querySelector('.logout').addEventListener('click', () => {
+    if ('<%=iskakao%>' == 'true') {
+      document.location.href = '/user/logout/kakao'
+    } else {
+      axios({
+        method: 'delete',
+        url: '/user/logout',
+      }).then((res) => {
+        document.location.href = '/';
+      })
+    }
+  })
 </script>

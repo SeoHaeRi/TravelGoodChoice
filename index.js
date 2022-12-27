@@ -31,7 +31,6 @@ app.use(session({
   // secure:
 }))
 
-
 const router = require("./routes");
 const userRouter = require("./routes/user");
 const postRouter = require("./routes/post")
@@ -47,17 +46,16 @@ app.get('*', (req, res) => {
 });
 
 io.sockets.on('connection', (socket) => {
-
   /* 새로운 유저가 접속했을 경우 다른 소켓에게도 알려줌 */
-  socket.on('newUser', (name) => {
+  socket.on('newUser',(name) => {
 
-    console.log(name + ' 님이 접속하였습니다.')
+    console.log(name + ' 으로 접속')
 
     /* 소켓에 이름 저장해두기 */
-    socket.name = name
+    socket.name = name;
 
     /* 모든 소켓에게 전송 */
-    io.sockets.emit('update', { type: 'connect', name: 'SERVER', message: name + '님이 접속하였습니다.' })
+    io.sockets.emit('notice', {name:socket.name , msg:'님이 입장하셨습니다.'});
   })
 
   /* 전송한 메시지 받기 */

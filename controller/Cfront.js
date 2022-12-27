@@ -141,5 +141,11 @@ exports.todolist = (req, res) => {
   res.render("todolist")
 }
 exports.chat = (req, res) => {
-  res.render("chat")
+  if (req.session.user) {
+  console.log('origin:', req.session.user.name); 
+  res.render("chat", {name: req.session.user.name});
+  } else if (req.session.kakao) {
+    console.log('origin:', req.session.kakao.name); 
+    res.render("chat", {name: req.session.user.name});
+  }  else res.render("chat");
 }

@@ -81,7 +81,7 @@
       if (type == '1') {
         $("#comments").append(
           `<div class="first-comment">
-            <img class="comment-img" src="/static/upload_img/${comment.profileImg}">
+            <img class="comment-img" src="${comment.profileImg}">
             <a class="comment-name">${comment.name}</a>
             <span>${comment.content}</span>
             <div class="comment-form">
@@ -268,7 +268,7 @@
       <div id="comments">
         <%for(let i=0; i <comment.length; i++) {%>
           <div class="first-comment">
-            <img class="comment-img" src="/static/upload_img/<%=comment[i].img%>">
+            <img class="comment-img" src="<%=comment[i].img%>">
             <a class="comment-name">
               <%=comment[i].name%>
             </a>
@@ -286,7 +286,7 @@
           <%for(let j=0; j <secComment.length; j++) {%>
             <%if(secComment[j].foreign_comment_id==comment[i].comment_id) {%>
               <div class="second-comment">
-                <img class="comment-img" src="/static/upload_img/<%=secComment[i].img%>">
+                <img class="comment-img" src="<%=secComment[i].img%>">
                 <a class="comment-name">
                   <%=secComment[j].name%>
                 </a>
@@ -314,18 +314,18 @@
     </div>
 
     <!-- ---------------------------------------------------------------------------------------------- -->
-    <%-include('./footer.ejs')%>
-    
-    <script>
-      var form = document.getElementById("contents-modify-form")
-      if ('<%=kakao%>' == form.userid.value || '<%=user%>' == form.userid.value) {
-        document.querySelector("#modify_btn").classList.remove('d-none');
-        document.querySelector("#del_btn").classList.remove('d-none');
-      } else {
-        document.querySelector("#modify_btn").classList.add('d-none');
-        document.querySelector("#del_btn").classList.add('d-none');
-      }
-    </script>
+    <%-include( './footer.ejs' )%>
+
+      <script>
+        var form = document.getElementById("contents-modify-form")
+        if ('<%=kakao%>' == form.userid.value || '<%=user%>' == form.userid.value) {
+          document.querySelector("#modify_btn").classList.remove('d-none');
+          document.querySelector("#del_btn").classList.remove('d-none');
+        } else {
+          document.querySelector("#modify_btn").classList.add('d-none');
+          document.querySelector("#del_btn").classList.add('d-none');
+        }
+      </script>
 
 </body>
 

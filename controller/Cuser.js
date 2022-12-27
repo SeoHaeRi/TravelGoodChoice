@@ -188,29 +188,12 @@ exports.signup = (req, res) => {
     })
 }
 
-/* 비밀번호 찾기 */
-exports.find_index = (req, res) => {
-  res.render('find'); 
-}
-exports.find = (req, res) => {
-  User.findOne({
-      where: { id : req.body.id }
-  }).then((result) => {
-      console.log('비밀번호 찾기 실행 :', result);
-      // hint와 answer db와 같으면
-      if (req.body.hint == result.hint && req.body.hint_answer == result.hint_answer) {
-          res.send('True'); 
-      } else {
-          res.send(null);
-      }
-  });
+/* 비밀번호 변경 */
+exports.post_modify = (req, res) => {
+  res.render('modify', {id: req.body.user_id});
 }
 
-/* 비밀번호 변경 */
-exports.pw_modify = (req, res) => {
-  res.render('modify', {id: req.body.id});
-}
-exports.pw_update = (req, res) => {
+exports.post_update = (req, res) => {
   let newObj = {
       password : req.body.password
   };

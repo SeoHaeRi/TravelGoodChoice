@@ -19,15 +19,17 @@ const upload = multer({
   }),
 });
 
-router.get('/login', controller.view_login)
 router.post('/signup', upload.single("userfile"), controller.signup);
+
+router.get('/login', controller.view_login)
 router.post('/login', controller.login);
-router.delete('/logout', controller.logout);
 router.get('/login/kakao', controller.view_kakaoLogin);
 router.get('/kakao/finish', controller.kakaoLogin);
+
+router.delete('/logout', controller.logout);
 router.get('/logout/kakao', controller.view_kakaoLogout);
 router.get('/kakao/logout', controller.kakaoLogout);
-// router.get('/find',controller.find_index); 
+
 // router.post('/modify',controller.pw_modify); 
 // router.post('/update', controller.pw_update); 
 

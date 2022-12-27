@@ -4,6 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'RIDIBatang';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
@@ -39,7 +40,7 @@
   display: none;
 }
 
-.seoul-btn:hover +.seoul-text {
+.seoul-btn:hover+.seoul-text {
   transform: scale(1.5);
   display: block;
   color: white;
@@ -273,6 +274,7 @@
   width: 100%;
   text-align: center;
 }
+
 .table td {
   font-family: 'RIDIBatang';
 }
@@ -284,20 +286,35 @@
   height: 40px;
   font-family: 'Ansungtangmyun-ESG';
 }
+
 .comment-name {
   text-decoration-line: none;
   font-weight: bold;
   color: #000;
 }
+
 .comment-form {
-    text-align: end;
+  padding: 0 20px;
+  text-align: end;
 }
+
+.comment-form>a {
+  cursor: pointer;
+}
+
+.second.comment-form {
+  margin-left: 10%;
+  text-align: end;
+}
+
 .first-comment {
-  padding: 0 20px 0 0;
+  padding: 0 20px;
 }
+
 .second-comment {
-  padding: 0 0 0 20px;
+  padding: 0 20px 0 40px;
 }
+
 .cancle-btn {
   border-color: white;
   background-color: darkgrey;
@@ -380,10 +397,13 @@
 .comment-box {
   width: 100%;
 }
+
 .comment-img {
-  width: 30px; height: 30px;
+  width: 30px;
+  height: 30px;
 }
+
 .p-4 p,
-.p-4 a{
+.p-4 a {
   font-family: 'RIDIBatang';
 }

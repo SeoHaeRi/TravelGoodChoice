@@ -1,4 +1,4 @@
-const { Post, sequelize, User, Comment } = require("../model");
+const { Post, sequelize, Comment, SecComment } = require("../model");
 const { Op } = require('sequelize')
 
 
@@ -78,7 +78,7 @@ exports.community = async (req, res) => {
 }
 
 
-exports.view_contents = async (req, res,) => {
+exports.view_contents = async (req, res) => {
   console.log("파람스", req.params)
   const post = await Post.findOne({
     where: { [Op.or]: [{ index_number: req.params.index_number }, { img: req.params.index_number }] }, attributes: {
@@ -95,6 +95,7 @@ exports.view_contents = async (req, res,) => {
   })
   console.log("포스트", post)
   console.log("params, :", req.params.index_number);
+
   const comment = await Comment.findAll({
     where: { post_id: req.params.index_number }, attributes: {
       include: [
@@ -104,12 +105,21 @@ exports.view_contents = async (req, res,) => {
       ],
     },
   })
+  const secComment = await SecComment.findAll({
+    where: { post_id: req.params.index_number }, attributes: {
+      include: [
+        "createdAt",
+        [sequelize.fn("DATE_FORMAT", sequelize.col("createdAt"), "%Y-%m-%d %H:%i:%S"),
+          "updatedAt"],
+      ],
+    },
+  })
   if (req.session.user) {
-    res.render("contents", { data: post, comment: comment, islogin: true, iskakao: false, user: req.session.user.id, kakao: false })
+    res.render("contents", { data: post, comment: comment, secComment: secComment, islogin: true, iskakao: false, user: req.session.user.id, kakao: false })
   } else if (req.session.kakao) {
-    res.render("contents", { data: post, comment: comment, islogin: true, iskakao: true, user: false, kakao: req.session.kakao.id })
+    res.render("contents", { data: post, comment: comment, secComment: secComment, islogin: true, iskakao: true, user: false, kakao: req.session.kakao.id })
   }
-  else res.render("contents", { data: post, comment: comment, islogin: false, iskakao: false, user: false, kakao: false })
+  else res.render("contents", { data: post, comment: comment, secComment: secComment, islogin: false, iskakao: false, user: false, kakao: false })
 }
 
 exports.modify = async (req, res) => {

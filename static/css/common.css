@@ -242,7 +242,7 @@ body {
     left: 0 !important;
 }
 .div-padding {
-    padding: 200px 200px 0 200px;
+    padding: 200px 200px 600px 200px;
 }
 .comment-padding {
     padding: 0 200px 0 200px;
@@ -316,15 +316,17 @@ body {
 .copyright {
     
     width: 100%;
-    background-color:darkslategray;
-    position: fixed;
-    bottom: 0px;
+    background-color:rgb(0, 0, 0);
+    font-size: 15px;
+    color: white;
+    padding: 30px;
+    font-family: 'Courier New', Courier, monospace;
 }
 .copyright-info{
-    color: white; font-family: 'Courier New', Courier, monospace;
-        padding: 20px; width: fit-content;
+    padding: 0px 0px 40px 30px; width: fit-content;
 }
-.copyright-text {
-    font-size: 15px; padding: 20px;
-        color: gray;
+.copyright-info2{
+    margin-left: 10px;
+    font-size: 10px;
+    padding: 20px; width: fit-content;
 }

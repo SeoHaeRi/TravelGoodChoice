@@ -120,7 +120,7 @@
   <%-include( './header.ejs' , {islogin, iskakao})%>
 
 
-  <div class="card div-padding mx-auto">
+  <div class="card div-padding w-50 mx-auto">
     <table style="text-align: center;">
       <tr>
         <th>글번호</th>
@@ -204,15 +204,12 @@
       </div>
       <a href="http://localhost:8000/post/view_post" class="btn table-btn">글목록</a>
       </form>
-
     </div>
-
   </div>
-
   </div>
 
   <!-- -------------------------------------------댓글----------------------------------------------------- -->
-  <div class="mx-auto comment-padding" style="justify-content: center;">
+  <div class="mx-auto comment-padding w-50" style="justify-content: center;">
     <h6>Comment</h6>
     <!-- -------------------------------첫댓----------------------------------------- -->
     <div id="comments">
@@ -265,6 +262,8 @@
     </div>
 
     <!-- ---------------------------------------------------------------------------------------------- -->
+    <%-include('./footer.ejs')%>
+    
     <script>
       var form = document.getElementById("contents-modify-form")
       if ('<%=kakao%>' == form.userid.value || '<%=user%>' == form.userid.value) {

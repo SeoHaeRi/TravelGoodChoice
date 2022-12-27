@@ -1,12 +1,22 @@
+@font-face {
+  font-family: 'D2Coding';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 /* 메인 */
+*{
+  font-family: 'D2Coding';
+}
 #main {
     margin: auto;
     margin-top: 100px;
     border-radius: 20px;
-    background-color: lightblue;
+    background-color: #B2CCFF;
     text-align: center;
     width: 500px;
     height: 800px;
+    border: 3px solid gray;
   }
   
   /* 채팅 영역 */
@@ -18,16 +28,19 @@
   
   /* 접속 알림 */
   .connect {
-    width: 90%;
+    width: 60%;
     margin: auto;
-    background-color: aquamarine;
+    background-color: #ffffff;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 30px;
+    font-size: 15px;
   }
   
   /* 접속 종료 알림 */
   .disconnect {
-    width: 90%;
+    width: 80%;
     margin: auto;
     background-color: indianred;
     text-align: center;
@@ -36,19 +49,46 @@
   
   /* 내가 보낸 메시지 */
   .me {
-    width: 90%;
+    width: 80%;
     margin: auto;
     background-color: lemonchiffon;
     border-radius: 5px;
+    text-align: right !important;
+    padding: 10px;
     margin-top: 10px;
+    border: 1px solid gray;
   }
   
   /* 상대방이 보낸 메시지 */
+
   .other {
-    width: 90%;
-    margin: auto;
-    background-color: white;
+    width: 80%;
+    margin : auto;
+    background-color: rgb(227, 227, 227);
     border-radius: 5px;
+    text-align: left !important;
+    padding: 10px;
     margin-top: 10px;
+    border: 1px solid gray;
   }
-  
+
+  /* 채팅input */
+  .text {
+    width: 75%;
+    border: 1px solid gray;
+    height: 35px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .btn {
+    background-color: #5f697b;
+  border: 1px solid #ffffff;
+  width: 10%;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  }

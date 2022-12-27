@@ -156,8 +156,6 @@ exports.signup = (req, res) => {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
-      hint: req.body.hint,
-      hint_answer: req.body.hint_answer,
       profile_img: req.file.filename,
     }
     // 프로필 이미지가 없으면
@@ -166,8 +164,6 @@ exports.signup = (req, res) => {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
-      hint: req.body.hint,
-      hint_answer: req.body.hint_answer,
       profile_img: 'noprofile/avatar_640.png',
     }
   }
@@ -186,19 +182,4 @@ exports.signup = (req, res) => {
           })
       }
     })
-}
-
-/* 비밀번호 변경 */
-exports.post_modify = (req, res) => {
-  res.render('modify', {id: req.body.user_id});
-}
-
-exports.post_update = (req, res) => {
-  let newObj = {
-      password : req.body.password
-  };
-  User.update( newObj, {where: {id: req.body.id}})
-  .then((result) => {
-      res.send('비밀번호 수정 성공!');
-  });
 }

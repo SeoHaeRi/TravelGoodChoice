@@ -9,12 +9,12 @@ const mypage = require('../controller/CmyPage');
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, done) {
-      done(null, 'static/upload_img');  
+      done(null, 'static/upload_img');
     },
     filename(req, file, done) {
       console.log("filename: ", req.body);
       const ext = path.extname(file.originalname);
-      const filename = req.body.name + ext;
+      const filename = '/static/upload_img/' + req.body.name + ext;
       done(null, filename);
     },
   }),
@@ -36,15 +36,15 @@ router.get('/kakao/logout', controller.kakaoLogout);
 // router.post('/modify',controller.pw_modify); 
 // router.post('/update', controller.pw_update); 
 
-router.get('/mypage', checkSession, mypage.mypage_index); 
-router.post('/mypage', mypage.user_update); 
+router.get('/mypage', checkSession, mypage.mypage_index);
+router.post('/mypage', mypage.user_update);
 
 router.post('/mypage/isName', mypage.isName);
 /* 로그인 확인 미들웨어 */
-function checkSession (req, res, next) {
-  if (req.session.id != null && req.session.id != '') next(); 
+function checkSession(req, res, next) {
+  if (req.session.id != null && req.session.id != '') next();
   else {
-      res.redirect('/login');
+    res.redirect('/login');
   }
 }
 

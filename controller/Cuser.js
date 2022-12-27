@@ -13,8 +13,8 @@ const kakao = {
 exports.view_login = (req, res) => {
   if (req.session.user || req.session.kakao) {
     res.send("로그인 된 유저입니다!");
-  } else 
-      res.render("login")
+  } else
+    res.render("login")
 }
 
 /* login */
@@ -68,7 +68,7 @@ exports.kakaoLogin = async (req, res) => {
       id: user.kakao_account.email,
       pw: '',
       name: user.properties.nickname,
-      profile_img: user.properties.thumbnail_image || 'noprofile/avatar_640.png',
+      profile_img: user.properties.thumbnail_image,
       social_type: 'kakao'
     }
 
@@ -164,13 +164,13 @@ exports.signup = (req, res) => {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
-      profile_img: 'noprofile/avatar_640.png',
+      profile_img: '/static/upload_img/noprofile/avatar_640.png',
     }
   }
   // 회원 가입 시, id 및 닉네임 중복 확인 
-  User.findOne({ 
-    where: { [Op.or]: [{ id: data.id }, { name: data.name }] } 
-    })
+  User.findOne({
+    where: { [Op.or]: [{ id: data.id }, { name: data.name }] }
+  })
     .then((result) => {
       console.log(result)
       if (result) // 데이터가 있으면

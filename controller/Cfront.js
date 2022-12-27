@@ -43,24 +43,24 @@ exports.train_list = async (req, res) => {
     url: url,
     method: 'GET',
     params: {
-      serviceKey : 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw/dvXENngYfoOq09Gj3w==',
+      serviceKey: 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw/dvXENngYfoOq09Gj3w==',
       // pageNo : '1' ,
       // numOfRows : '10',
-      _type : 'json',
-      depPlaceId : 'NAT010000',
-      arrPlaceId : 'NAT011668',
-      depPlandTime : '20221201',
-      trainGradeCode : '00'
+      _type: 'json',
+      depPlaceId: 'NAT010000',
+      arrPlaceId: 'NAT011668',
+      depPlandTime: '20221201',
+      trainGradeCode: '00'
     }
-}).then ((result) => {
-  console.log("result : ", result.data.response.body.items.item);
+  }).then((result) => {
+    console.log("result : ", result.data.response.body.items.item);
     //console.log('Status', response.statusCode);
     //console.log('Headers', JSON.stringify(response.headers));
     //console.log('Reponse received', body);
     res.send(true);
-});
+  });
   // res.header("Access-Control-Allow-Origin", "*");
-  
+
 }
 
 exports.search = (req, res) => {
@@ -71,22 +71,7 @@ exports.search = (req, res) => {
   }
   else res.render("search", { islogin: false, iskakao: false })
 }
-exports.community = (req, res) => {
-  if (req.session.user) {
-    res.render("community", { islogin: true, iskakao: false })
-  } else if (req.session.kakao) {
-    res.render("community", { islogin: true, iskakao: true })
-  }
-  else res.render("community", { islogin: false, iskakao: false })
-}
-exports.contents = (req, res) => {
-  if (req.session.user) {
-    res.render("contents", { islogin: true, iskakao: false })
-  } else if (req.session.kakao) {
-    res.render("contents", { islogin: true, iskakao: true })
-  }
-  else res.render("contents", { islogin: false, iskakao: false })
-}
+
 exports.train = (req, res) => {
   if (req.session.user) {
     res.render("train", { islogin: true, iskakao: false })

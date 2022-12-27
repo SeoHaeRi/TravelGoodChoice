@@ -20,14 +20,6 @@ const User = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(200),
         allowNull: true,
       },
-      hint: {
-        type: DataTypes.STRING(10),
-        allowNull: false, 
-      },
-      hint_answer: {
-        type: DataTypes.STRING(50),
-        allowNull: false, 
-      },
       social_type: {
         type: DataTypes.STRING(10),
         allowNull: true,

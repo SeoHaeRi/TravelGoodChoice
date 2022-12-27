@@ -3,7 +3,6 @@ const { Op } = require('sequelize')
 
 
 exports.view_post = async (req, res) => {
-
   let result = await Post.findAll({
     attributes: {
       include: [
@@ -73,14 +72,14 @@ exports.community = async (req, res) => {
 
   let result = await Post.findOne({ where: { maintext: req.body.content } })
 
-  console.log("리절트",result)
+  console.log("리절트", result)
   res.send({ data: result })
 
 }
 
 
 exports.view_contents = async (req, res,) => {
-  console.log("파람스",req.params)
+  console.log("파람스", req.params)
   const post = await Post.findOne({
     where: { [Op.or]: [{ index_number: req.params.index_number }, { img: req.params.index_number }] }, attributes: {
       include: [
@@ -94,7 +93,7 @@ exports.view_contents = async (req, res,) => {
       ],
     },
   })
-  console.log("포스트",post)
+  console.log("포스트", post)
   console.log("params, :", req.params.index_number);
   const comment = await Comment.findAll({
     where: { post_id: req.params.index_number }, attributes: {
@@ -138,9 +137,9 @@ exports.modify = async (req, res) => {
   const result = await Post.update(data, { where: { index_number: req.body.index_number } })
   let sendData = {
     result: result,
-    file :  req.file.filename
+    file: req.file.filename
   }
-  res.send(sendData )
+  res.send(sendData)
 
 }
 

@@ -1,0 +1,196 @@
+/* 정보 */
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "GmarketSansMedium";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  height: 150vh;
+  width: 100%;
+  background: #f3f7fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-field {
+  position: absolute;
+  top: 70px;
+  width: 500px;
+  height: 100px;
+  padding-top: 3vw; 
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  left: 300px;
+  margin-bottom: 300px;
+}
+
+.mypage-head {
+  background-color: #fff;
+  width: 1050px;
+  height: 10vh;
+  position: absolute;
+  top: 40px;
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.homeBtn {
+  background-color: #f5d17c;
+  border-radius: 20px;
+  border-color: black;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 20px;
+}
+.homeBtn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.menu {
+  background: #fff;
+  display: flex;
+  box-shadow: 0 10px 10px 0px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: absolute;
+  top: 150px;
+  border-radius: 20px;
+}
+
+.menu div {
+  text-align:center;
+  padding: 20px;
+  width: 350px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.menu div span {
+  position: absolute;
+  color: #4686C2;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  width: 350px;
+  left: 0;
+  top: 100%;
+  border-bottom: 5px solid #4686C2;
+}
+
+.menu div:hover {
+  transform: translateY(-100%);
+}
+
+/* .good {
+  display: flex;
+  padding: 20px 120px;
+  background: black;
+} */
+
+.modify-list {
+  width: 1050px;
+  height: 100vh;
+  display: flex;
+  border-radius: 20px;
+  border-color: #4686C2;
+  border-width: 3px;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; */
+  background-color: #fff;
+  box-shadow: 0 10px 10px 0px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 220px;
+}
+#checkNickname_text {
+  text-align: center;
+  font-size: 14px;
+  padding:0.5vw;
+}
+.inte-field {
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 36%;
+}
+.span-field {
+  position: absolute;
+  left: 100px;
+}
+
+.nickname, .email, #pw, #pwConfirm {
+  border: 0;
+  background-color: #f3f7fe;
+  width:300px;
+  height: 30px;
+  border-radius: 30px;
+  text-align: center;
+  /* float: left;
+  display: inline-block; */
+}
+
+.name-div {
+  width: 120px;
+  text-align: left;
+  float: left;
+  padding-top: 5px;
+}
+.input-div {
+  float: left;
+}
+
+input {
+  text-align: center;
+}
+input::-webkit-input-placeholder { color: black; text-align: center; opacity: 0.5;}
+input:focus {
+    outline: 3px solid #4686C2
+}
+
+.category {
+  border-color: #4686C2;
+  width:300px;
+  height: 30px;
+  border-radius: 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.signupBtn {
+  cursor:pointer;
+  background-color: #4686C2;
+  border:0;
+  border-radius: 20px;
+  width: 120px;
+  height:35px;
+  position: absolute;
+  left: 27%;
+  
+}
+
+#check{
+  position: relative;
+  top: 10px;
+  left: 90px;
+}

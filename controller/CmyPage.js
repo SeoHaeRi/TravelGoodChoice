@@ -37,14 +37,14 @@ exports.isName = (req, res) => {
   
   /* 비밀 번호 중복 확인 및 변경 */
   exports.post_modify = (req, res) => {
-    res.render('modify', {id: data.id});
+    res.render('modify', {id: req.body.id});
   }
   
   exports.post_update = (req, res) => {
     let newObj = {
-        pw : data.pw
+        pw : req.body.pw
     };
-    User.update( newObj, {where: {id: data.id}})
+    User.update( newObj, {where: {id: req.body.id}})
     .then((result) => {
         res.send('비밀번호 수정 성공!');
     });

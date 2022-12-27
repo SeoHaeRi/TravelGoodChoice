@@ -1,14 +1,29 @@
 var socket = io();
 
+var usernames = [];
+var claim = function (name) {
+  if (!name || usernames[name]) {
+    return false;
+  } else {
+    usernames[name] = true;
+    return true;
+  }
+};
+
+var getGuestName =  () => {
+  var name,
+    nextUserId = 1;
+  do {
+    name = 'Guest' + nextUserId;
+    nextUserId += 1;
+  } while (!claim(name));
+  return name;
+};
+
 /* 접속 되었을 때 실행 */
 socket.on('connect', function () {
-  /* 이름을 입력받고 */
-  var name = prompt('반갑습니다!', '')
+  var name = getGuestName();
 
-  /* 이름이 빈칸인 경우 */
-  if (!name) {
-    name = '익명'
-  }
   /* 서버에 새로운 유저가 왔다고 알림 */
   socket.emit('newUser', name)
 })

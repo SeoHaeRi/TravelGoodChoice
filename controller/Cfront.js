@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 exports.front = (req, res) => {
   if (req.cookies.popup == "1") {
     if (req.session.user) {
@@ -34,6 +36,33 @@ exports.recommend = (req, res) => {
 exports.signup = (req, res) => {
   res.render("signup")
 }
+
+exports.train_list = async (req, res) => {
+  var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo';
+  await axios({
+    url: url,
+    method: 'GET',
+    params: {
+      serviceKey : 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw/dvXENngYfoOq09Gj3w==',
+      // pageNo : '1' ,
+      // numOfRows : '10',
+      _type : 'json',
+      depPlaceId : 'NAT010000',
+      arrPlaceId : 'NAT011668',
+      depPlandTime : '20221201',
+      trainGradeCode : '00'
+    }
+}).then ((result) => {
+  console.log("result : ", result.data.response.body.items.item);
+    //console.log('Status', response.statusCode);
+    //console.log('Headers', JSON.stringify(response.headers));
+    //console.log('Reponse received', body);
+    res.send(true);
+});
+  // res.header("Access-Control-Allow-Origin", "*");
+  
+}
+
 exports.search = (req, res) => {
   if (req.session.user) {
     res.render("search", { islogin: true, iskakao: false })

@@ -24,9 +24,21 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /* --------------------------------------------------------- */
 *{
-    font-family: 'Ansungtangmyun-ESG';
+    font-family: 'Cafe24SsurroundAir';
 }
 body {
     background: white;
@@ -305,6 +317,8 @@ body {
     
     width: 100%;
     background-color:darkslategray;
+    position: fixed;
+    bottom: 0px;
 }
 .copyright-info{
     color: white; font-family: 'Courier New', Courier, monospace;

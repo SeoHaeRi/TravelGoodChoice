@@ -23,3 +23,6 @@
 
 > # 4. 기획 및 설계
 [노션, 와이어프레임 등등 ]
+
+### ERD
+<img width="598 src= "https://user-images.githubusercontent.com/87747459/209762785-a9272b2c-22fc-4d2a-90b6-641b5442c9d2.png">

@@ -1,229 +1,134 @@
-/* 정보 */
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'CWDangamAsac-Bold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+  * {
+    font-family: "GmarketSansMedium";
 }
 
-* {
-  font-family: "GmarketSansMedium";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html,body {
+    height:100%;
+}
+/* 전체 컨티이너 설정 */
+.container{
+    margin: auto;
+    padding: 0px;
+    width: 100%;
+    /* height: 150vh; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-a {
-  text-decoration: none;
+.modify_background {
+    /* position: absolute; */
+    margin: auto;
+    /* width: 100%; */
+    width: 1280px;
+    z-index: 1;
 }
 
-.container {
-  height: 150vh;
-  width: 100%;
-  background: #f3f7fe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 폼 내부 정보 */
+
+#modify_password {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 3;
+    padding: 10px 10px 10px 10px;
 }
 
-
-.mypage-head {
-  background-color: #fff;
-  width: 20%;
-  position: absolute;
-  top: 40px;
-  display: flex;
-  border-radius: 20px;
-  align-items: center;
-  justify-content: center;
-
+.modify_logo {
+    /* position: relative;
+    padding-bottom: 440px; */
+    padding-bottom: 50px;
 }
 
-.homeBtn {
-  background-color: #f5d17c;
-  border-radius: 20px;
-  border-color: black;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  right: 20px;
-}
-.homeBtn:hover {
-  cursor: pointer;
-  transform: scale(1.05);
+.form_background {
+    margin: auto;
+    width: 640px;
+    height: 740px;
+    background-color: white;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
 }
 
-.menu {
-  background: #fff;
-  display: flex;
-  box-shadow: 0 10px 10px 0px rgba(0,0,0,0.1);
-  overflow: hidden;
-  position: absolute;
-  top: 50px;
-  border-radius: 20px;
+/*  */
+
+.modify_info {
+    position: absolute;
+    z-index: 3;
+    display: inline-block;
+    text-align: center;
+    width: 400px;
+    box-sizing: border-box;
 }
 
-.menu div {
-  text-align:center;
-  padding: 20px;
-  width: 300px;
-  font-size: 20px;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.3s;
+.modify_card {
+    margin-top: -20rem;
+    padding-left: 2rem;
+    justify-content: center;
+    /* display: inline-block; */
 }
 
-.menu div span {
-  position: absolute;
-  color: #4686C2;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  width: 350px;
-  left: 0;
-  top: 100%;
-  border-bottom: 5px solid #4686C2;
+.pw_modify {
+    position: absolute;
+    right: -350px;
+    top: -25rem;
 }
 
-/* .menu div:hover {
-  transform: translateY(-100%);
-} */
+/*password_modify {
+    width: 400px;*/
+    /* padding-inline: -10rem; */
+    /*text-align: center;
+    padding-top: -60px;
+    padding-left: -15rem;;
+    font-size: 30px;
+    position: relative;
+    top: 570px;
+    right: 355px;
+}*/
 
-/* .good {
-  display: flex;
-  padding: 20px 120px;
-  background: black;
-} */
-
-.modify-list {
-  height: 500px;
-  display: flex;
-  border-radius: 20px;
-  border-color: #4686C2;
-  border-width: 3px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  background-color: #fff;
-  box-shadow: 0 10px 10px 0px rgba(0,0,0,0.1);
-  position: absolute;
-  top: 220px;
-  padding: 0 10px 0 10px;
+.password_modify {
+    padding-bottom: 25px;
+    font-size: 35px;
 }
-#checkNickname_text {
-  text-align: center;
-  font-size: 14px;
-  padding:0.5vw;
+.modify_form_user, .check_pw, .check_pwd, .modifyUser_1, .modifyUser_2 {
+    border: 0;
+    background-color: #4686C2;
+    width:300px;
+    height: 50px;
+    border-radius: 30px;
+    margin-bottom: 25px;
 }
-.inte-field {
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  left: 36%;
-}
-.span-field {
-  position: absolute;
-  left: 100px;
-}
-
-.name-div {
-  width: 120px;
-  text-align: left;
-  float: left;
-  padding-top: 5px;
-}
-.input-div {
-  float: left;
-}
-
 input {
-  text-align: center;
+    text-align: center;
 }
-input::-webkit-input-placeholder { color: black; text-align: center; opacity: 0.5;}
+input::-webkit-input-placeholder { color: white; text-align: center; opacity: 0.5;}
 input:focus {
     outline: 3px solid #4686C2
 }
 
-.category {
-  border-color: #4686C2;
-  width:300px;
-  height: 30px;
-  border-radius: 30px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-.signupBtn {
-  cursor:pointer;
-  background-color: #4686C2;
-  border:0;
-  border-radius: 20px;
-  width: 120px;
-  height:35px;
-  position: relative;
-  left: 80;
+.modifyUser_1, .modifyUser_2 {
+    background-color: #4686C2;
+    border:0;
+    border-radius: 30px;
+    width: 300px;
+    height:50px;
 }
 
-
-.mypage-form {
-  background-color: #f3f7fe;
-  border-color: #B2CCFF;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  margin-left: -150px;
-  margin-top: -150px;
-  padding: 10px 10px 30px 10px;
-  border-radius: 20px;
-}
-.login-logo {
-  line-height: 150px;
-  width: 800px;
-  font-family: 'CWDangamAsac-Bold';
-  font-size: 70px;
-  color: #B2CCFF;
-  text-decoration-line: none;
-  text-align: center;
-  text-shadow: 6px 4px 1px rgb(86, 87, 88);
-
-}
-.login-div {
-  background-color: #f3f7fe;
-  border-color: #B2CCFF;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  margin-left: -150px;
-  margin-top: -150px;
-  padding: 30px 30px 30px 30px;
-  border-radius: 20px;
-  text-align: center;
+.modifyUser_2 {
+    width: 150px;
+    height:35px;
 }
 
-.login-input {
-  border: 2px solid gray;
-  width: 400px;
-  height: 50px;
-  border-radius: 20px;
-}
-
-.login-btn {
-  
-  background-color: #B2CCFF;
-  border: 3px solid #B2CCFF;
-  width: 200px;
-  height: 50px;
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
-  cursor: pointer;
-}
+a:link { text-decoration:none; }

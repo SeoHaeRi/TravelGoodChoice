@@ -33,16 +33,13 @@ router.delete('/logout', controller.logout);
 router.get('/logout/kakao', controller.view_kakaoLogout);
 router.get('/kakao/logout', controller.kakaoLogout);
 
-// router.post('/modify',controller.pw_modify); 
-// router.post('/update', controller.pw_update); 
+router.get('/modify',mypage.post_modify); 
+router.patch('/update', mypage.post_update); 
 
 router.get('/mypage', checkSession, mypage.mypage_index);
-router.post('/mypage', mypage.user_update);
-
-router.post('/mypage/isName', mypage.isName);
 /* 로그인 확인 미들웨어 */
 function checkSession(req, res, next) {
-  if (req.session.id != null && req.session.id != '') next();
+  if (((req.session.user.id || req.session.kakao.id) != null) && (req.session.user.id || req.session.kakao.id) != '') next();
   else {
     res.redirect('/login');
   }

@@ -20,8 +20,7 @@
 <body>
   <%-include('./header.ejs', {islogin, iskakao})%>
   
-    <div style="height: 200px;"></div>
-
+  <div class="div-padding">
     <div class="row g-0 bg-light position-relative w-50 mx-auto">
       <div class="col-md-6 mb-md-0 p-md-4">
         <img src="../static/img/Gwangju.jpg" class="w-100" alt="seoul">
@@ -36,7 +35,6 @@
         <a href="https://travel.naver.com/domestic/05/guide/all" class="stretched-link">광주 관광지 둘러보기</a>
       </div>
     </div>
-    
     <br>
     <div class="row g-0 bg-light position-relative w-50 mx-auto">
       <div class="col-md-6 mb-md-0 p-md-4 ">
@@ -51,7 +49,6 @@
           <a href="https://travel.naver.com/domestic/13110/guide/all" class="stretched-link align-middle">전주 관광지 둘러보기</a>
       </div>
     </div>
-
     <br>
     <div class="row g-0 bg-light position-relative w-50 mx-auto">
       <div class="col-md-6 mb-md-0 p-md-4">
@@ -68,6 +65,8 @@
           <a href="https://travel.naver.com/domestic/12130/guide/all" class="stretched-link">여수 관광지 둘러보기</a>
       </div>
     </div>
-    <%-include('./footer.ejs')%>
+  </div>
+
+  <%-include('./footer.ejs')%>
 </body>
 </html>

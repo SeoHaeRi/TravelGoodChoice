@@ -1,5 +1,5 @@
 function start() {
-  const button = document.querySelectorAll(".btn")
+  const button = document.querySelectorAll(".btn2")
   var item = document.querySelectorAll(".card_filter2")
 
 

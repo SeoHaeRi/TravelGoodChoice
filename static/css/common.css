@@ -4,14 +4,6 @@
     font-weight: normal;
     font-style: normal;
 }
-/* 1 */
-@font-face {
-    font-family: 'Ansungtangmyun-ESG';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-ESG.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-/* 2 */
 @font-face {
     font-family: 'Yeongdo-Rg';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/Yeongdo-Rg.woff') format('woff');

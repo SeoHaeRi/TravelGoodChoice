@@ -156,7 +156,7 @@ exports.signup = (req, res) => {
       id: req.body.id,
       pw: req.body.pw,
       name: req.body.name,
-      profile_img: req.file.filename,
+      profile_img: '/static/upload_img/' + req.file.filename,
     }
     // 프로필 이미지가 없으면
   } else {

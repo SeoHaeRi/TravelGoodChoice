@@ -43,8 +43,8 @@ const Post = (Sequelize, DataTypes) => {
         type: DataTypes.DATE(6),
         timestamps: true
       },
-      userid:{
-        type: DataTypes.STRING(20),
+      userid: {
+        type: DataTypes.STRING(40),
         allowNull: false,
       },
       //korea_region:{

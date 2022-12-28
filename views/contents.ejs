@@ -70,7 +70,7 @@
         .then(() => {
           if (true) {
             alert("글삭제가 완료되었습니다.")
-            window.location.href = "/post/view_post"
+            window.location.href = "/post/view_search"
           }
         })
     }
@@ -201,7 +201,7 @@
       </table>
       <hr>
 
-        <img id="img" src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다. ">
+        <img id="img" src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="이미지 등록이 필요합니다. ">
         <hr>
 
           <div class="card-body">
@@ -255,7 +255,7 @@
                 </div>
               </div>
             </div>
-            <a href="http://localhost:8000/post/view_post" class="btn table-btn">글목록</a>
+            <a href="http://localhost:8000/post/view_search" class="btn table-btn">글목록</a>
             </form>
           </div>
     </div>

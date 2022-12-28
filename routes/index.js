@@ -10,7 +10,7 @@ router.get("/signup", controller.signup)
 router.get("/search", controller.search)
 
 router.get("/train", controller.train)
-router.get("/train_list", controller.train_list)
+router.post("/train_list", controller.train_list)
 
 router.get("/sights1", controller.sights1)
 router.get("/sights2", controller.sights2)

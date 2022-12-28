@@ -37,30 +37,33 @@ exports.signup = (req, res) => {
   res.render("signup")
 }
 
-exports.train_list = async (req, res) => {
+exports.train_list = (req, res) => {
   var url = 'http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo';
-  await axios({
+
+  axios({
     url: url,
     method: 'GET',
     params: {
-      serviceKey: 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw%2FdvXENngYfoOq09Gj3w%3D%3D',
-      // pageNo : '1' ,
-      // numOfRows : '10',
-      _type: 'json',
-      depPlaceId: req.query.departure,
-      arrPlaceId: req.query.arrival,
-      depPlandTime: req.query.time,
-      trainGradeCode: req.query.train_code
+      serviceKey: 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw/dvXENngYfoOq09Gj3w==',
+      depPlaceId: req.body.departure,
+      arrPlaceId: req.body.arrival,
+      depPlandTime: req.body.time,
     }
   }).then((result) => {
-    console.log("result : ", result);
-    //console.log('Status', response.statusCode);
-    //console.log('Headers', JSON.stringify(response.headers));
-    //console.log('Reponse received', body);
-    res.send(result);
+    // 배열 : result.data.response.body.items
+    /*{
+      adultcharge: 0,
+      arrplacename: '제천',
+      arrplandtime: 20221229140200,
+      depplacename: '청량리',
+      depplandtime: 20221229123000,
+      traingradename: '무궁화호',
+      trainno: 1635
+    }*/
+    let data = result.data.response.body.items
+    console.log("result : ", result.data.response.body.items);
+    res.send(data);
   });
-  // res.header("Access-Control-Allow-Origin", "*");
-
 }
 
 exports.search = (req, res) => {
@@ -142,10 +145,10 @@ exports.todolist = (req, res) => {
 }
 exports.chat = (req, res) => {
   if (req.session.user) {
-  console.log('origin:', req.session.user.name); 
-  res.render("chat", {name: req.session.user.name});
+    console.log('origin:', req.session.user.name);
+    res.render("chat", { name: req.session.user.name });
   } else if (req.session.kakao) {
-    console.log('origin:', req.session.kakao.name); 
-    res.render("chat", {name: req.session.user.name});
-  }  else res.render("chat");
+    console.log('origin:', req.session.kakao.name);
+    res.render("chat", { name: req.session.user.name });
+  } else res.render("chat");
 }

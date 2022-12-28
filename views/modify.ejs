@@ -35,8 +35,8 @@
             var flag = checkData();
             if (flag) {
                 let user = {
-                id: form.id.value,
-                pw: form.password.value
+                    id: form.id.value,
+                    pw: form.password.value
                 };
                 axios({
                     method:'patch',
@@ -125,8 +125,9 @@
                     <input id="id" type="text" name="id" class="check_input" value="<%=id%>" style="color:black" readonly><br>
                     <input id="pw" type="password" name="password" class="checkPw" placeholder="비밀번호" onchange="pwCheck()" required style="color:black"><br>
                     <input id="pwd" type="password" name="password2" class="checkPw" placeholder="비밀번호 확인" onchange="pwCheck()" required style="color:black"><br><br>
-                    <div id="checkPw" class="checkPw"></div><br>
-                    <button type="button" class="modifyUser_2" onclick="password_modify()" style="color:#FFE19C">비밀번호 변경</button>
+                    <div id="checkPw" class="checkPw"></div>
+                    <br>
+                    <button type="button" class="modifyUser_2" onclick="password_modify()" style="color:black">비밀번호 변경</button>
                 </form>
         </body>
 </html>

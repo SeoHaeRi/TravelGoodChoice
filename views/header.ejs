@@ -2,15 +2,44 @@
   <img src="../static/img/avatar2.png" class="ski" alt="">
 </div>
 <div class=" banner">
-
+  
   <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
   <a href="/" class="logo" title="여행어때">여행어때</a>
-  <a href="/post/view_search" class="community">커뮤니티</a>
-  <a href="/worldCup" class="worldCup">여행지 월드컵</a>
-  <a href="/user/login" class="login">로그인</a>
-  <a href="/user/mypage" class="mypage">마이페이지</a>
-  <a class="logout">로그아웃</a>
+  <header class="header fixed">
+  
+
+  
+  
+    <div id="wrap">
+      <nav>
+        <ul class="gnb">
+          <li><a href="/post/view_search" class="community">커뮤니티</a></li>
+          <li><a href="/worldCup" class="worldCup">여행지 월드컵</a></li>
+          <li><a href="/user/login" class="login">로그인</a></li>
+          <li><a href="/user/mypage" class="mypage">마이페이지</a></li>
+          <li><a class="logout">로그아웃</a></li> 
+        </ul>
+      </nav>
+      <span class="toggle">
+        MENU
+      </span>
+    </div>
+  </header>
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </div>
+
+
+
+
+
 <div class="snowflakes" aria-hidden="true">
   <div class="snowflake">❅</div>
   <div class="snowflake">❅</div>
@@ -25,7 +54,6 @@
 </div>
 
 <script>
-
   if ('<%=islogin%>' == 'true') {
     document.querySelector(".login").classList.add('d-none');
     document.querySelector(".logout").classList.remove('d-none');

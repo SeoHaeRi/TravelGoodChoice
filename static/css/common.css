@@ -243,10 +243,10 @@ body {
 }
 
 .div-padding {
-    padding: 200px 200px 200px 200px;
+    padding: 200px 100px 50px 100px;
 }
 .comment-padding {
-    padding: 0 200px 0 200px;
+    padding: 0 200px 50px 200px;
 }
 
 .worldCup {

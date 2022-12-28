@@ -22,7 +22,7 @@
 
             axios({
                 method:'post',
-                url: "http://localhost:8000/user/signup/upload",
+                url: "/user/upload",
                 data: formData,
             })
             .then((req) => { return req.data;})
@@ -40,29 +40,29 @@
             }
             
 
-            // 닉네임 확인 폼 작성
-            function checkNickname( obj ) {
-                    axios({
-                        method: "post",
-                        url: "http://localhost:8000/user/mypage/isName",
-                        data: {
-                            name: obj.value,
-                        }
-                    }).then((req) => { 
-                        return req.data;
-                    }).then((data) => {
-                        console.log(data);
-                        if ( data ) {
-                            $("#checkNickname_text").css("color", "green");
-                            $("#checkNickname_text").text("사용할 수 있는 닉네임입니다.");
-                            $( "button" ).removeAttr("disabled")
-                        } else {
-                            $("#checkNickname_text").css("color", "red");
-                            $("#checkNickname_text").text("사용할 수 없는 닉네임입니다.");
-                            $( "button" ).attr("disabled", "true");
-                        } 
-                    });
-                }
+            // // 닉네임 확인 폼 작성
+            // function checkNickname( obj ) {
+            //         axios({
+            //             method: "post",
+            //             url: "user/mypage/isName",
+            //             data: {
+            //                 name: obj.value,
+            //             }
+            //         }).then((req) => { 
+            //             return req.data;
+            //         }).then((data) => {
+            //             console.log(data);
+            //             if ( data ) {
+            //                 $("#checkNickname_text").css("color", "green");
+            //                 $("#checkNickname_text").text("사용할 수 있는 닉네임입니다.");
+            //                 $( "button" ).removeAttr("disabled")
+            //             } else {
+            //                 $("#checkNickname_text").css("color", "red");
+            //                 $("#checkNickname_text").text("사용할 수 없는 닉네임입니다.");
+            //                 $( "button" ).attr("disabled", "true");
+            //             } 
+            //         });
+            //     }
 
             /* 비밀번호 확인 */
             function pwCheck() {
@@ -86,7 +86,7 @@
                 if (flag) {
                     axios({
                         method:'post',
-                        url: "http://localhost:8000/user/mypage",
+                        url: "/user/mypage",
                         data: {
                             name : form.name.value,
                             pw : form.pw.value,
@@ -136,6 +136,8 @@
                 }
                 return true;
             }
+            function TrueCase() {
+        }   
     </script>  
 </head>
 <body>
@@ -145,75 +147,9 @@
         </div>
         <div onclick="goModify()">
             <i class="fa-solid fa-user">&nbsp;&nbsp;
-                <a href="/">회원정보수정</a>
+                <a href="http://localhost:8000/user/modify">비밀번호수정</a>
             </i>
         </div>
-        <form id="login-form">
-          <br>
-          <input class="login-input" type="text" id="nickname" name="nickname" required onkeyup="checkNickname( this );" placeholder="닉네임" required>
-          <p id="checkNickname_text"></p>
-          <br>
-          <input class="login-input" type="password" name="password" onchange="pwCheck()" id="pw" placeholder="비밀번호">
-          <br>
-          <br>
-          <br>
-          <input class="login-input" type="password" name="checkPw" onchange="pwCheck()" id="pwConfirm" placeholder="비밀번호 확인">
-          <br>
-          <span id="check"></span>
-          <br>
-          <br>
-          <br>
-          <button class="login-btn" type="button" onclick="info_modify();"">수정완료</button>
-          <br>
-          <br>
-      </div>
-<!-- ============================================================================================================== -->
-    <!-- <div class="container">
-        <div class="mypage-head mypage-form"> 
-            <div onclick="goHome()">
-            <a href="/">여행어때</a>
-            </button>
-            </div>
-
-            <div class="menu">
-                <div onclick="goModify()">
-                    <i class="fa-solid fa-user">&nbsp;&nbsp;
-                        <a href="/">회원정보수정</a>
-                    </i>
-                </div>
-            </div>
-
-            <div class="modify-list">
-                <form id="modify_info">
-                    <div>
-                        <div>
-                            닉네임 : 
-                        </div>
-                        <div class="input-div">
-                            <input type="text" id="nickname" name="nickname" required onkeyup="checkNickname( this );" class="nickname" style="color: black" />
-                            <p id="checkNickname_text"></p>
-                        </div>
-                        <div>
-                            비밀번호 :
-                        </div>
-                        <div class="input-div">
-                            <input type="password" name="password" onchange="pwCheck()" id="pw" style="color: black" /><br><br>
-                        </div>
-                        <div>
-                            비밀번호 확인
-                        </div>
-                        <div class="input-div">
-                            <input type="password" onchange="pwCheck()" name="checkPw" id="pwConfirm" style="color: black" /><br>
-                            <span id="check"></span>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <button type="button" class="signupBtn" style="color:#FFE19C" onclick="info_modify();">수정완료</button>
-                </form>
-            </div>
-        </div>
-    </div> -->
-
+        
 </body>
 </html>

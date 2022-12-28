@@ -22,41 +22,46 @@
             let pw2 = $('#pwd').val();
             
             if (pw != pw2) {
-                $('#checkPw').html("<p>비밀번호 불일치</p>");
+                $('#checkPw').html("<p>비밀번호가 일치하지 않습니다</p>");
             };
             if (pw == pw2) {
-                $('#checkPw').html("<p>비밀번호가 일치</p>");
+                $('#checkPw').html("<p>비밀번호가 일치🥰</p>");
             };
         }
         
         /* 비밀번호 변경 */
         function password_modify() {
-            var form = document.getElementById('modify_password');
+            const form = document.getElementById('modify_password');
             var flag = checkData();
             if (flag) {
+                let user = {
+                id: form.id.value,
+                pw: form.password.value
+                };
                 axios({
-                    method:'post',
-                    url: "http://localhost:8000/user/update",
-                    data: {
-                        id : form.id.value,
-                        password : form.password.value, 
-                    }
+                    method:'patch',
+                    url: "/user/update",
+                    data: user,
                 })
-                .then((req) => { return req.data;})
-                .then((data) => {
+                .then((res) => {
+                    if (res.data) {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: '변경 되었습니다.',
+                        title: '변경되었습니다.',
                         showConfirmButton: false,
                         timer: 1500
                     });
                     setTimeout(function() {
-                        document.location.href="http:/localhost:8000/user/login";
+                        document.location.href="http://localhost:8000";
                     }, 1000);
+                } else {
+                    alert("알 수 없는 문제가 발생했습니다.");
+                    }
                 });
+                }
             }
-        }
+
 
         /* 비밀번호 확인 */
         function pwCheck() {
@@ -66,7 +71,7 @@
                     document.getElementById('checkPw').style.color='rgb(54, 54, 255)';
                 }
                 else{
-                    document.getElementById('checkPw').innerHTML='비밀번호 불일치';
+                    document.getElementById('checkPw').innerHTML='비밀번호가 일치하지 않습니다';
                     document.getElementById('checkPw').style.color='rgb(255, 89, 89)';
                 }
             }
@@ -94,6 +99,9 @@
             }
             return true;
         }
+        function goHome() {
+            document.location.href="http://localhost:8000";
+            }
     </script>
     <style>
         .Popup {
@@ -108,22 +116,17 @@
             <form id="modify_password">
             <div class="form_background"></div>
             <div class="modify_info">
-                <h1 class="password_modify"><%=id%>님 비밀번호 변경</h1>
-                <!-- </div> -->
-
-                <!-- <form id="modify_password"> -->
-                    <input id="id" type="text" name="id" class="modify_form_user" value="<%=id%>" style="color:white"><br>
-                    
-                    <input id="pw" type="password" name="password" class="check_pw" placeholder="비밀번호" onchange="pwCheck()" required style="color:white"><br>
-
-                    <input id="pwd" type="password" name="password2" class="check_pwd" placeholder="비밀번호 확인" onchange="pwCheck()" required style="color:white"><br><br>
-                    <!-- </div> -->
-                    <div id="checkPw" class="checkPw"></div><br>
-                    <button type="button" class="modifyUser_2"
-                    onclick="password_modify()" style="color:#FFE19C">비밀번호 변경</button>
+                <div class="login-div">
+                    <div onclick="goHome()">
+                        <a href="http://localhost:8000/" class="login-logo" title="여행어때">여행어때</a>
                     </div>
-                <!-- </div>     -->
+                     <h1 class="password_modify"><%=name%>님 비밀번호 변경</h1>
+                    <label for="id"  class="check_form">아이디 :</label>
+                    <input id="id" type="text" name="id" class="check_input" value="<%=id%>" style="color:black" readonly><br>
+                    <input id="pw" type="password" name="password" class="checkPw" placeholder="비밀번호" onchange="pwCheck()" required style="color:black"><br>
+                    <input id="pwd" type="password" name="password2" class="checkPw" placeholder="비밀번호 확인" onchange="pwCheck()" required style="color:black"><br><br>
+                    <div id="checkPw" class="checkPw"></div><br>
+                    <button type="button" class="modifyUser_2" onclick="password_modify()" style="color:#FFE19C">비밀번호 변경</button>
                 </form>
-                </div>
         </body>
 </html>

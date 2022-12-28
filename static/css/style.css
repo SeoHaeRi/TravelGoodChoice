@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'Ansungtangmyun-ESG';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-ESG.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'RIDIBatang';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
   font-weight: normal;
@@ -295,7 +288,6 @@
   background-color: #B2CCFF;
   color: white;
   height: 40px;
-  font-family: 'Ansungtangmyun-ESG';
 }
 
 .comment-name {
@@ -331,7 +323,6 @@
   background-color: darkgrey;
   color: white;
   height: 40px;
-  font-family: 'Ansungtangmyun-ESG';
 }
 
 #title {

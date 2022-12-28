@@ -245,6 +245,9 @@ body {
 .div-padding {
     padding: 200px 100px 50px 100px;
 }
+.card-padding {
+    padding: 0px 100px 50px 100px;
+}
 .comment-padding {
     padding: 0 200px 50px 200px;
 }
@@ -320,11 +323,13 @@ body {
 .btn {
     width: 80px;
     height: 80px;
+    border-radius: 10px;
 }
 .btn2 {
     width: 80px;
     height: 80px;
-    box-shadow: none;
+    border-radius: 10px;
+    border: none;
 }
 
 .copyright {

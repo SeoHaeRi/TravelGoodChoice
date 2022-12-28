@@ -44,7 +44,8 @@
           var img1 = document.getElementById("img")
           var title1 = document.getElementById("title")
           var maintext1 = document.getElementById("maintext")
-          if (res.data.result) {
+          if (res.data) {
+            console.log(res.data.file)
 
             region1.innerText = form.region.value
             star1.innerText = form.star.value
@@ -52,7 +53,6 @@
             title1.innerText = form.title.value
             maintext1.innerText = form.content.value
           }
-
         })
     }
     function del_contents() {
@@ -182,7 +182,7 @@
           <td>
             <%=data.index_number%>
           </td>
-          <td>
+          <td id="title">
             <%=data.title%>
           </td>
           <td>
@@ -200,10 +200,10 @@
         </tr>
       </table>
       <hr>
-      <% if(data.img) {%>
+
         <img id="img" src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="이미지가 없습니다. ">
         <hr>
-        <% } %>
+
           <div class="card-body">
             <p id="maintext" class="card-text">
               <%=data.maintext%>
@@ -230,7 +230,7 @@
                       <input type="hidden" name="userid" value="<%=data.userid%>">
                       제목
                       <br>
-                      <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="<%=data.tile%>">
+                      <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="<%=data.title%>">
                       <br>
                       <input type="radio" class="star" name="star" value="★" id="1">★
                       <input type="radio" class="star" name="star" value="★★" id="2">★★
@@ -241,8 +241,7 @@
                       <br>
                       내용
                       <br>
-                      <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."
-                        value="<%=data.maintext%>"></textarea>
+                      <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요." value="<%=data.maintext%>"><%=data.maintext%></textarea>
                       <br>
                       이미지
                       <input type="file" name="modify_file" id="file">

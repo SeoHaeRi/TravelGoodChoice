@@ -1,14 +1,16 @@
 function start() {
   const button = document.querySelectorAll(".btn")
-  var item = document.querySelectorAll(".card_filter")
+  var item = document.querySelectorAll(".card_filter2")
 
 
   button.forEach(b => b.addEventListener("click", (e) => {
     e.preventDefault()
     const filter = e.target.dataset.filter
+    console.log(filter)
 
 
     item.forEach(i => {
+      console.log(i)
       if (filter === 'ALL') {
         i.style.display = 'block'
       }

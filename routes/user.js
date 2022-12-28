@@ -12,17 +12,14 @@ const upload = multer({
       done(null, 'static/upload_img');
     },
     filename(req, file, done) {
-      console.log("filename: ", req.body);
       const ext = path.extname(file.originalname);
-      const filename = '/static/upload_img/' + req.body.name + ext;
+      const filename = req.body.name + ext;
       done(null, filename);
     },
   }),
 });
 
 router.post('/signup', upload.single("userfile"), controller.signup);
-router.post('/signup/upload', upload.single("profileImg"), controller.signup);
-
 
 router.get('/login', controller.view_login)
 router.post('/login', controller.login);
@@ -33,8 +30,8 @@ router.delete('/logout', controller.logout);
 router.get('/logout/kakao', controller.view_kakaoLogout);
 router.get('/kakao/logout', controller.kakaoLogout);
 
-router.get('/modify',mypage.post_modify); 
-router.patch('/update', mypage.post_update); 
+router.get('/modify', mypage.post_modify);
+router.patch('/update', mypage.post_update);
 
 router.get('/mypage', checkSession, mypage.mypage_index);
 /* 로그인 확인 미들웨어 */

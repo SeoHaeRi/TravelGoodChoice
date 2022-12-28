@@ -271,6 +271,20 @@
   font-size: 30px;
 }
 
+#profile-div {
+  display: flex;
+  align-items: center;
+}
+
+#profileImg {
+  width: 200px;
+}
+
+#preview {
+  display: flex;
+  margin-right: 10px;
+}
+
 .table {
   /* border-collapse: collapse; */
   width: 100%;

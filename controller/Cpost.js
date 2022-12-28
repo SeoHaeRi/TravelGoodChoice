@@ -155,6 +155,12 @@ exports.modify = async (req, res) => {
       region: req.body.region,
       img: req.file.filename
     }
+    const result = await Post.update(data, { where: { index_number: req.body.index_number } })
+    let sendData = {
+      result: result,
+      file: req.file.filename
+    }
+    res.send(sendData)
   } else {
     console.log("인덱넘", req.body)
     data = {
@@ -163,16 +169,13 @@ exports.modify = async (req, res) => {
       region: req.body.region,
       maintext: req.body.content,
     }
+      const result = await Post.update(data, { where: { index_number: req.body.index_number } })
+    let sendData = {
+      result: result,
+      
+    }
+    res.send(sendData)
   }
-
-
-  const result = await Post.update(data, { where: { index_number: req.body.index_number } })
-  let sendData = {
-    result: result,
-    file: req.file.filename
-  }
-  res.send(sendData)
-
 }
 
 exports.del_contents = async (req, res) => {

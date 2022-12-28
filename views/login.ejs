@@ -10,7 +10,8 @@
   <link rel="stylesheet" type="text/css" href="../static/css/common.css">
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 </head>
 
@@ -29,7 +30,7 @@
   </div>
 
   <div class="login-div">
-    <a href="http://localhost:8000/" class="login-logo" title="여행어때">여행어때</a>
+    <a href="/" class="login-logo" title="여행어때">여행어때</a>
     <form id="login-form">
       <br>
       <input class="login-input" type="text" name="id" placeholder="아이디" required>
@@ -70,13 +71,13 @@
           document.location.href = '/';
         } else {
           var exa = document.getElementById('exa');
-          exa.innerText ="아이디 또는 비밀번호를 다시 확인해주세요.";
+          exa.innerText = "아이디 또는 비밀번호를 다시 확인해주세요.";
           form.reset();
         }
       })
     }
     function register() {
-      document.location.href="http://localhost:8000/signup";
+      document.location.href = "/signup";
     }
   </script>
 

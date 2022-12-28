@@ -270,6 +270,20 @@
   font-weight: bold;
   font-size: 30px;
 }
+#profile {
+  display: flex;
+  float: left;
+}
+#profileImg {
+  display: flex;
+  float: left;
+  width: 200px;
+}
+#preview {
+  display: flex;
+  float: left;
+  margin-right: 5px;
+}
 
 #profile-div {
   display: flex;

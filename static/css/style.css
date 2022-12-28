@@ -288,6 +288,7 @@
   background-color: #B2CCFF;
   color: white;
   height: 40px;
+  font-family: 'RIDIBatang';
 }
 
 .comment-name {
@@ -323,6 +324,15 @@
   background-color: darkgrey;
   color: white;
   height: 40px;
+  font-family: 'RIDIBatang';
+  
+}
+.star-btn {
+  border: 1px solid #B2CCFF;
+  background-color: white;
+  color: #B2CCFF;
+  height: 40px;
+  font-family: 'RIDIBatang';
 }
 
 #title {

@@ -26,3 +26,9 @@
 
 ### ERD
 <img width="1059" alt="erd" src="https://user-images.githubusercontent.com/87747459/209762785-a9272b2c-22fc-4d2a-90b6-641b5442c9d2.png">
+
+## 사용한 기술 스택
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-#F7DF1E?style=for-the-badge&logo=html5&logoColor=white">
+ [더 추가 예정]

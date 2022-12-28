@@ -81,7 +81,7 @@
       if (type == '1') {
         $("#comments").append(
           `<div class="first-comment">
-            <img class="comment-img" src="${comment.profileImg}">
+            <img class="comment-img" src="${comment.img}">
             <a class="comment-name">${comment.name}</a>
             <span>${comment.content}</span>
             <div class="comment-form">
@@ -94,7 +94,7 @@
       } else {
         $("#comments").append(
           `<div class="second-comment">
-            <img class="comment-img" src="${comment.profileImg}">
+            <img class="comment-img" src="${comment.img}">
             <a class="comment-name">${comment.name}</a>
             <span>${comment.content}</span>
             <div class="comment-form">
@@ -287,7 +287,7 @@
           <%for(let j=0; j <secComment.length; j++) {%>
             <%if(secComment[j].foreign_comment_id==comment[i].comment_id) {%>
               <div class="second-comment">
-                <img class="comment-img" src="<%=secComment[i].img%>">
+                <img class="comment-img" src="<%=secComment[j].img%>">
                 <a class="comment-name">
                   <%=secComment[j].name%>
                 </a>

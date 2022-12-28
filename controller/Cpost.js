@@ -169,10 +169,10 @@ exports.modify = async (req, res) => {
       region: req.body.region,
       maintext: req.body.content,
     }
-      const result = await Post.update(data, { where: { index_number: req.body.index_number } })
+    const result = await Post.update(data, { where: { index_number: req.body.index_number } })
     let sendData = {
       result: result,
-      
+
     }
     res.send(sendData)
   }

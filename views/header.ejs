@@ -5,7 +5,7 @@
   
   <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
   <a href="/" class="logo" title="여행어때">여행어때</a>
-  <header class="header fixed">
+  <header id="header">
   
 
   
@@ -13,18 +13,19 @@
     <div id="wrap">
       <nav>
         <ul class="gnb">
-          <li><a href="/post/view_search" class="community">커뮤니티</a></li>
-          <li><a href="/worldCup" class="worldCup">여행지 월드컵</a></li>
-          <li><a href="/user/login" class="login">로그인</a></li>
-          <li><a href="/user/mypage" class="mypage">마이페이지</a></li>
-          <li><a class="logout">로그아웃</a></li> 
+          <li><a href="/post/view_search" id="community" class="community">커뮤니티</a></li>
+          <li><a href="/train" id="train" class="train">열차시간표</a></li>
+          <li><a href="/worldCup" id="worldCup" class="worldCup">여행지 월드컵</a></li>
+          <li><a href="/user/login" id="login" class="login">로그인</a></li>
+          <li><a href="/user/mypage" id="mypage" class="mypage">마이페이지</a></li>
+          <li><a id="logout" class="logout">로그아웃</a></li>
         </ul>
       </nav>
-      <span class="toggle">
-        MENU
-      </span>
     </div>
   </header>
+  <span class="toggle" onclick="menu()">
+    MENU
+  </span>
   
   
   
@@ -54,6 +55,34 @@
 </div>
 
 <script>
+function menu(){
+  var header = document.getElementById("header");
+  var community = document.getElementById("community");
+  var worldCup = document.getElementById("worldCup");
+  var login = document.getElementById("login");
+  var mypage = document.getElementById("mypage");
+  var logout = document.getElementById("logout");
+
+  if (header.style.display == 'none' || header.style.display === "")
+  { header.style.display = "block";
+  header.style.height = "auto";
+  community.style.display = "block";
+  worldCup.style.display = "block";
+  login.style.display = "block";
+  mypage.style.display = "block";
+  logout.style.display = "block";
+} else {
+  header.style.display = "none";
+  header.style.height = "0px";
+  community.style.display = "none";
+  worldCup.style.display = "none";
+  login.style.display = "none";
+  mypage.style.display = "none";
+  logout.style.display = "none";
+}
+console.log('hiu');
+} 
+
   if ('<%=islogin%>' == 'true') {
     document.querySelector(".login").classList.add('d-none');
     document.querySelector(".logout").classList.remove('d-none');

@@ -247,31 +247,39 @@ li {
     padding: 0 200px 50px 200px;
 }
 
-.worldCup {
+#worldCup {
     position: fixed;
     top: 65px;
-    right: 225px;
+    right: 220px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;
 
 }
 
-.community {
+#train {
     position: fixed;
     top: 65px;
-    right: 340px;
+    right: 335px;
     text-decoration-line: none;
     color: white;
-    /* display: none; */
+    font-weight: bold;
+
+}
+#community {
+    position: fixed;
+    top: 65px;
+    right: 430px;
+    text-decoration-line: none;
+    color: white;
     font-weight: bold;
 
 }
 
-.mypage {
+#mypage {
     position: fixed;
     top: 65px;
-    right: 130px;
+    right: 125px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;
@@ -286,7 +294,7 @@ li {
     color: white;
 } */
 
-.login {
+#login {
     position: fixed;
     top: 65px;
     right: 50px;
@@ -296,7 +304,7 @@ li {
 
 }
 
-.logout {
+#logout {
     position: fixed;
     top: 65px;
     right: 50px;
@@ -312,24 +320,34 @@ li {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
-    display: block;
+    display: none;
     text-align: center;
 }
-
-@media all and (max-width:1200px) {
-    .header {
-        display: grid;
-        grid-template-columns: 30% 70%;
-        padding: 0px;
-        height: auto;
-        margin-top: auto;
-        margin-bottom: auto;
-        background: #808080;
-      }
+@media all and (max-width:1300px) {
+    .toggle {
+        display: block;
+    }
     .gnb {
+        text-align: center;
+    }
+    #header, #community, #worldCup, #login, #logout, #mypage {
         display: none;
     }
-
+    #header {
+        display: grid;
+        padding: 0px;
+        height: 0px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: linear-gradient( to bottom, rgb(250, 250, 255), #abc1f1 );
+      }
+    /* #header .gnb {
+        display: grid !important;
+        grid-template-rows: 30px 30px 30px 30px;
+      } */
+    #community, #worldCup, #login, #logout, #mypage , a {
+        position: static !important;
+    }
 }
 
 .btn {

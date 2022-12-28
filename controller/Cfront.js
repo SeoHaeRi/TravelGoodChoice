@@ -45,6 +45,7 @@ exports.train_list = (req, res) => {
     method: 'GET',
     params: {
       serviceKey: 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw/dvXENngYfoOq09Gj3w==',
+      numOfRows: '100',
       depPlaceId: req.body.departure,
       arrPlaceId: req.body.arrival,
       depPlandTime: req.body.time,

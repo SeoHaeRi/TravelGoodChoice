@@ -28,7 +28,7 @@ function start() {
 function search_filter() {
 
   var item = document.querySelectorAll(".card_filter")
-  var searchbox = document.querySelectorAll(".search_input")
+  var searchbox = document.querySelector(".search_input")
 
   searchbox = document.addEventListener("keyup", (e) => {
     const searchfilter = e.target.value.toLowerCase().trim()

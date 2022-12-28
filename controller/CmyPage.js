@@ -30,28 +30,6 @@ exports.mypage_index = (req, res) => {
         res.render("modify", {id: req.session.kakao.id, name: req.session.kakao.id});
     }
 }
-  
-//   exports.post_update = (req, res) => {
-//     let data;
-//     if (req.session.user) {
-//         data = {
-//             id: req.session.user.id,
-//             pw: req.session.user.pw
-//         }
-//     } else if (req.session.kakao) {
-//         data = {
-//             id: req.session.kakao.id,
-//             pw: req.session.kakao.pw
-//         }
-//     }
-//     let newObj = {
-//         pw : data.pw
-//     };
-//     Models.User.update( newObj, {where: {id: data.id}})
-//     .then((result) => {
-//         res.send('비밀번호 수정 성공!');
-//     });
-// }
 
 exports.post_update = async (req, res) => {
     let data;
@@ -66,6 +44,9 @@ exports.post_update = async (req, res) => {
             id: req.session.kakao.id,
             pw: req.session.kakao.pw
         }
+        Models.User.findOne({
+            where: { id: data.id },  
+          })
         .then(()=>{
         Models.User.update( data, {where: {id: data.id}})
         })

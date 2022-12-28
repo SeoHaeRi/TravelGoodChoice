@@ -15,23 +15,23 @@
     <link rel="stylesheet" href="../static/css/mypage.css" />
 
     <script>
-         function uploadFile( obj ){
-            var formData = new FormData();
-            formData.append("name", uploadedFile);
-            formData.append('profileImg', obj.files[0]);
+        //  function uploadFile( obj ){
+        //     var formData = new FormData();
+        //     formData.append("name", uploadedFile);
+        //     formData.append('profileImg', obj.files[0]);
 
-            axios({
-                method:'post',
-                url: "/user/upload",
-                data: formData,
-            })
-            .then((req) => { return req.data;})
-            .then((data) => {
-                uploadedFile = data.fileName;
-                $("#uploadedProfile").css({"background-image":`url(/static/upload_img/${data.fileName})`}); 
-                $("#uploadedProfile").css({"background-size":`70px 70px`}); 
-            })
-        }
+        //     axios({
+        //         method:'post',
+        //         url: "/user/upload",
+        //         data: formData,
+        //     })
+        //     .then((req) => { return req.data;})
+        //     .then((data) => {
+        //         uploadedFile = data.fileName;
+        //         $("#uploadedProfile").css({"background-image":`url(/static/upload_img/${data.fileName})`}); 
+        //         $("#uploadedProfile").css({"background-size":`70px 70px`}); 
+        //     })
+        // }
             function goModify() {
                 document.location.href="http://localhost:8000/user/mypage";
             }
@@ -77,34 +77,6 @@
                     }
                 }
             }
-
-            /* 회원정보 수정 */
-            function info_modify() {
-                var form = document.getElementById('modify_info');
-
-                var flag = checkData();
-                if (flag) {
-                    axios({
-                        method:'post',
-                        url: "/user/mypage",
-                        data: {
-                            name : form.name.value,
-                            pw : form.pw.value,
-                        }
-                    })
-                    .then((req) => { return req.data;})
-                    .then((data) => {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: '수정되었습니다.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    });
-                }
-            }
-
             /* 데이터 유효성 검사 alert */
             function checkData () {
                 var form = document.getElementById("modify_info");

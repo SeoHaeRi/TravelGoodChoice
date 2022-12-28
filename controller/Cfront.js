@@ -43,21 +43,21 @@ exports.train_list = async (req, res) => {
     url: url,
     method: 'GET',
     params: {
-      serviceKey: 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw/dvXENngYfoOq09Gj3w==',
+      serviceKey: 'hwuYzDgihaQI7HHmtDqfRtOBDGkg7phhDDFj8d2GtNWiTm4GgvmHeq1dPQbkeJqNuRw%2FdvXENngYfoOq09Gj3w%3D%3D',
       // pageNo : '1' ,
       // numOfRows : '10',
       _type: 'json',
-      depPlaceId: 'NAT010000',
-      arrPlaceId: 'NAT011668',
-      depPlandTime: '20221201',
-      trainGradeCode: '00'
+      depPlaceId: req.query.departure,
+      arrPlaceId: req.query.arrival,
+      depPlandTime: req.query.time,
+      trainGradeCode: req.query.train_code
     }
   }).then((result) => {
-    console.log("result : ", result.data.response.body.items.item);
+    console.log("result : ", result);
     //console.log('Status', response.statusCode);
     //console.log('Headers', JSON.stringify(response.headers));
     //console.log('Reponse received', body);
-    res.send(true);
+    res.send(result);
   });
   // res.header("Access-Control-Allow-Origin", "*");
 

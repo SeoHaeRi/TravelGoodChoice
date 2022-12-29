@@ -34,6 +34,7 @@
       <button class="cho-btn" onclick="showList(this);" value="inputArr">도착지 선택</button>
       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     </div>
+
     <form style="text-align: center;">
       <input type="text" id="start" name="departure" readonly>
       <input type="text" id="end" name="arrival" readonly>
@@ -41,7 +42,7 @@
       <br>
       여행날짜
       <input type="text" id="time" name="time" placeholder="(ex.20221225)">
-      <button type="search-btn" onclick="searchTrain()">검색</button>
+      <button type="button" class="search-btn" onclick="searchTrain()">검색</button>
       <br>
       *여행일정이 없는 경우, 여행 정보가 검색되지 않습니다.
     </form>
@@ -61,6 +62,7 @@
       <button class="train-btn" id="region" type="button" value="24" onclick="showStation(this)">광주광역시</button>
       <button class="train-btn" id="region" type="button" value="35" onclick="showStation(this)">전라북도</button>
       <button class="train-btn" id="region" type="button" value="36" onclick="showStation(this)">전라남도</button>
+      <button class="train-btn" id="region" type="button" value="21" onclick="showStation(this)">부산광역시</button>
       <button class="train-btn" id="region" type="button" value="22" onclick="showStation(this)">대구광역시</button>
       <button class="train-btn" id="region" type="button" value="37" onclick="showStation(this)">경상북도</button>
       <button class="train-btn" id="region" type="button" value="38" onclick="showStation(this)">경상남도</button>

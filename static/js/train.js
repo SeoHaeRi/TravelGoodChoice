@@ -136,7 +136,7 @@ function showList(obj) {
           arr_time.innerText = splarr[8]  + splarr[9]  + ':' +splarr[10]  + splarr[11];
           
           var charge = document.createElement("td");
-          if (res.data.item[0].adultcharge == '0'){charge.innerText = 'KORAIL에서 확인'}
+          if (res.data.item[0].adultcharge == '0'){charge.innerHTML = '<a href="https://www.letskorail.com/">KORAIL에서 확인</a>'}
           else {charge.innerText = res.data.item[0].adultcharge};
           
           

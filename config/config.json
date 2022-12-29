@@ -1,9 +1,9 @@
 {
   "development": {
-      "host": "localhost",
+      "host": "27.96.135.104",
       "database": "travel",
       "username": "user",
-      "password": "000000",
+      "password": "1234",
       "dialect": "mysql",
       "timezone": "Asia/Seoul"
       

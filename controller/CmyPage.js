@@ -1,4 +1,4 @@
-const e = require('express');
+const exp = require('express');
 const Models = require('../model');
 
 exports.mypage_index = (req, res) => {
@@ -42,3 +42,12 @@ exports.post_update = (req, res) => {
       res.send(true);
     })
 };
+// exports.post_delete = (req,res) =>{
+// let data = {
+//   id:req.body.id
+// }
+// Models.User.destroy({ where: { id: data } })
+// .then(()=>{
+//   res.send(true)
+// })
+// }

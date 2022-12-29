@@ -33,6 +33,7 @@ router.get('/kakao/logout', controller.kakaoLogout);
 router.get('/modify', mypage.post_modify);
 router.patch('/update', mypage.post_update);
 
+
 router.get('/mypage', checkSession, mypage.mypage_index);
 /* 로그인 확인 미들웨어 */
 function checkSession(req, res, next) {

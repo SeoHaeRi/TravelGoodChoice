@@ -12,7 +12,7 @@
       "host": "localhost",
       "database": "travel",
       "username": "user",
-      "password": "000000",
+      "password": "1234",
       "dialect": "mysql"
   }
 }

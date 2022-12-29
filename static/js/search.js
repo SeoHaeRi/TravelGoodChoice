@@ -117,7 +117,7 @@ function writeOn(){
       tr.appendChild(id);
       tr.appendChild(date);
       tr.style.cssText = "cursor:pointer;" 
-      tr.setAttribute(onclick,location.href="/post/"+ cnt)
+      tr.setAttribute(onclick,location.href="http://27.96.135.104:8000/post/"+ cnt)
       //tr.click(function(){
      //     tr.css("cursor:pointer;", location.href='http://localhost:8000/post/response.data.result.index_number');
      // });

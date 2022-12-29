@@ -3,7 +3,8 @@ const Post = (Sequelize, DataTypes) => {
   return Sequelize.define(
     // table name
     "post",
-    {
+    { 
+      
       index_number: {
         type: DataTypes.INTEGER,
         allowNull: false,

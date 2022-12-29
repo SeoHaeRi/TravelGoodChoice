@@ -12,7 +12,7 @@ const io = socket(server)
 const dotenv = require("dotenv");
 dotenv.config({ path: './controller/.env' })
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 
 app.set("view engine", "ejs");
 app.use("/static", express.static("static"));

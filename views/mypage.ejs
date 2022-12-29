@@ -35,10 +35,10 @@
         //     })
         // }
             function goModify() {
-                document.location.href="http://localhost:8000/user/mypage";
+                document.location.href="/user/mypage";
             }
             function goHome() {
-            document.location.href="http://localhost:8000";
+            document.location.href="/";
             }
             
 
@@ -117,14 +117,16 @@
 <body>
     <div class="login-div">
         <div onclick="goHome()">
-            <a href="http://localhost:8000/" class="login-logo" title="여행어때">여행어때</a>
+            <a href="/" class="login-logo" title="여행어때">여행어때</a>
         </div>
         <div onclick="goModify()">
             <i class="fa-solid fa-user">&nbsp;&nbsp;
-                <a href="http://localhost:8000/user/modify">비밀번호수정</a>
+                <a href="/user/modify">비밀번호수정</a>
             </i>
         </div>
+
     </div>
+
         
 </body>
 </html>

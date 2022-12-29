@@ -250,6 +250,15 @@ li {
 #worldCup {
     position: fixed;
     top: 65px;
+    right: 295px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+#openchat {
+    position: fixed;
+    top: 65px;
     right: 220px;
     text-decoration-line: none;
     color: white;
@@ -260,7 +269,7 @@ li {
 #train {
     position: fixed;
     top: 65px;
-    right: 335px;
+    right: 410px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;
@@ -269,7 +278,7 @@ li {
 #community {
     position: fixed;
     top: 65px;
-    right: 430px;
+    right: 500px;
     text-decoration-line: none;
     color: white;
     font-weight: bold;
@@ -323,14 +332,14 @@ li {
     display: none;
     text-align: center;
 }
-@media all and (max-width:1300px) {
+@media all and (max-width:1480px) {
     .toggle {
         display: block;
     }
     .gnb {
         text-align: center;
     }
-    #header, #community, #worldCup, #login, #logout, #mypage {
+    #header, #community, #worldCup, #login, #logout, #mypage, #openchat {
         display: none;
     }
     #header {
@@ -345,7 +354,7 @@ li {
         display: grid !important;
         grid-template-rows: 30px 30px 30px 30px;
       } */
-    #community, #worldCup, #login, #logout, #mypage , a {
+    #community, #worldCup, #login, #logout, #mypage, #openchat, a {
         position: static !important;
     }
 }

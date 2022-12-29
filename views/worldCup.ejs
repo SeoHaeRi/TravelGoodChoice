@@ -23,7 +23,14 @@
 </head>
 
 <body onload="preLoaingImg()">
-  <%-include('./header.ejs', {islogin, iskakao})%>
+  <div class="banner2">
+    <img src="../static/img/avatar2.png" class="ski" alt="">
+  </div>
+  <div class=" banner">
+    
+    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+    <a href="/" class="logo" title="여행어때">여행어때</a>
+  </div>
   
     <div id="div-padding"></div>
     <div class="wrap">
@@ -47,24 +54,24 @@
     </div>
     <%-include('./footer.ejs')%>
     <script src="../static/js/worldCup.js" async defer></script>
-    <script>
-      function start() {
-        worldCup.start();
+  <script>
+    function start() {
+      worldCup.start();
+    }
+    function preLoaingImg() {
+      const preLoadingList = [
+        "../static/img/seoul.jpg", "../static/img/incheon.jpg",  "../static/img/gapyeong.jpg", "../static/img/Jeju.jpg","../static/img/chuncheon.jpg",  "../static/img/Gangneung.jpg",  "../static/img/Jeongseon.jpg", "../static/img/Daejeon.jpg", "../static/img/Buyeo.jpg", "../static/img/Taean.jpg", "../static/img/sejong.jpg", "../static/img/Cheongju.jpg" ,"../static/img/Danyang.jpg", "../static/img/Gwangju.jpg", "../static/img/Jeonju.jpg", "../static/img/Yeosu.jpg"
+      ], length = preLoadingList.length, tObj = document.getElementsByTagName("BODY")[0];
+      let i = 0, imgNode;
+      const hiddenNode = document.createElement('DIV');
+      hiddenNode.className = 'pre_load soff';
+      for(i; i < length; i++) {
+        imgNode = document.createElement('IMG');
+        imgNode.setAttribute('src', preLoadingList[i]);
+        hiddenNode.appendChild(imgNode);
       }
-      function preLoaingImg() {
-        const preLoadingList = [
-          "../static/img/seoul.jpg", "../static/img/incheon.jpg",  "../static/img/gapyeong.jpg", "../static/img/Jeju.jpg","../static/img/chuncheon.jpg",  "../static/img/Gangneung.jpg",  "../static/img/Jeongseon.jpg", "../static/img/Daejeon.jpg", "../static/img/Buyeo.jpg", "../static/img/Taean.jpg", "../static/img/sejong.jpg", "../static/img/Cheongju.jpg" ,"../static/img/Danyang.jpg", "../static/img/Gwangju.jpg", "../static/img/Jeonju.jpg", "../static/img/Yeosu.jpg"
-        ], length = preLoadingList.length, tObj = document.getElementsByTagName("BODY")[0];
-        let i = 0, imgNode;
-        const hiddenNode = document.createElement('DIV');
-        hiddenNode.className = 'pre_load soff';
-        for(i; i < length; i++) {
-          imgNode = document.createElement('IMG');
-          imgNode.setAttribute('src', preLoadingList[i]);
-          hiddenNode.appendChild(imgNode);
-        }
-        tObj.appendChild(hiddenNode);
-      }
-    </script>
+      tObj.appendChild(hiddenNode);
+    }
+  </script>
   </body>
 </html>

@@ -68,7 +68,7 @@
     // function delete_user() {
     //   const form = document.getElementById('del_form');
     //   var flag = checkData();
-     
+
     //     axios({
     //       method:'delete',
     //       url:"/user/delete",
@@ -83,7 +83,7 @@
     //       }
     //     })
     // }
-  
+
 
 
     /* 비밀번호 확인 */
@@ -139,20 +139,23 @@
 <body>
   <div class="login-div">
     <div onclick="goHome()">
-        <a href="http://localhost:8000/" class="login-logo" title="여행어때">여행어때</a>
+      <a href="/" class="login-logo" title="여행어때">여행어때</a>
     </div>
     <form id="modify_password">
       <h5 class="password_modify">
         <%=name%>님의 My Page
       </h5>
       <br>
-      <input class="login-input check_input" type="text" id="id" name="nickname" required onkeyup="checkNickname( this );" value="아이디 : <%=id%>" readonly>
+      <input class="login-input check_input" type="text" id="id" name="nickname" required
+        onkeyup="checkNickname( this );" value="아이디 : <%=id%>" readonly>
       <br>
       <br>
-      <input class="login-input checkPw" type="password" name="password" onchange="pwCheck()" id="pw" placeholder="비밀번호" required>
+      <input class="login-input checkPw" type="password" name="password" onchange="pwCheck()" id="pw" placeholder="비밀번호"
+        required>
       <br>
       <br>
-      <input class="login-input checkPw" type="password" name="password2" onchange="pwCheck()" id="pwd" placeholder="비밀번호 확인" required>
+      <input class="login-input checkPw" type="password" name="password2" onchange="pwCheck()" id="pwd"
+        placeholder="비밀번호 확인" required>
       <div id="checkPw" class="checkPw"></div>
       <br>
       <span id="check"></span>

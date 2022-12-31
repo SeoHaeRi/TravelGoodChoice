@@ -1,18 +1,17 @@
 {
   "development": {
-      "host": "27.96.135.104",
-      "database": "travel",
-      "username": "user",
-      "password": "1234",
-      "dialect": "mysql",
-      "timezone": "Asia/Seoul"
-      
+    "host": "localhost",
+    "database": "travel",
+    "username": "user",
+    "password": "1234",
+    "dialect": "mysql",
+    "timezone": "Asia/Seoul"
   },
   "production": {
-      "host": "localhost",
-      "database": "travel",
-      "username": "user",
-      "password": "1234",
-      "dialect": "mysql"
+    "host": "localhost",
+    "database": "travel",
+    "username": "user",
+    "password": "1234",
+    "dialect": "mysql"
   }
 }

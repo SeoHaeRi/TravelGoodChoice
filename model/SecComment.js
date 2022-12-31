@@ -41,7 +41,7 @@ const SecComment = (Sequelize, DataTypes) => {
       }
     },
     {
-      tablename: "secComment",
+      tablename: "seccomment",
       freezeTableName: true,
       timestamps: true
     }

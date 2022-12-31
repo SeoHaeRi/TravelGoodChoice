@@ -225,6 +225,10 @@ body {
 
 }
 .banner2 {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+
     height:200px; width : 100px !important;
     z-index: 3 !important;
     position: fixed !important;
@@ -232,6 +236,11 @@ body {
     right: 0 !important;
     bottom: 0 !important;
     left: 0 !important;
+}
+.index-padding {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
 }
 li {
     list-style-type: none;
@@ -376,8 +385,13 @@ li {
     border-radius: 10px;
     border: none;
 }
+html, body {
+    height: 100%;
+}
 
 .copyright {
+    position: relative;
+    transform: translatY(-100%);
     width: 100%;
     background-color:rgb(0, 0, 0);
     font-size: 15px;

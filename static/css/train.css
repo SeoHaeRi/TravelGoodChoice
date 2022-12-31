@@ -37,7 +37,12 @@
     padding: 50px 100px 50px 100px;
 }
 .index-padding {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+
     padding: 200px 100px 2px 100px;
+
 }
 #regionlist {
     padding: 0px 0px 10px 0px;

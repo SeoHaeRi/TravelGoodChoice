@@ -25,13 +25,7 @@
 </head>
 
 <body onload="preLoaingImg()">
-  <div class="banner2">
-    <img src="../static/img/avatar2.png" class="ski" alt="">
-  </div>
-  <div class=" banner">
-    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
-    <a href="/" class="logo" title="여행어때">여행어때</a>
-  </div>
+  <%-include( './header.ejs' , {islogin, iskakao})%>
 
   <div id="div-padding"></div>
   <div class="wrap">

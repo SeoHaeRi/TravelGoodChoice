@@ -3,7 +3,7 @@
     "host": "localhost",
     "database": "travel",
     "username": "user",
-    "password": "1234",
+    "password": "sba123$",
     "dialect": "mysql",
     "timezone": "Asia/Seoul"
   },
@@ -11,7 +11,7 @@
     "host": "localhost",
     "database": "travel",
     "username": "user",
-    "password": "1234",
+    "password": "sba123",
     "dialect": "mysql"
   }
 }

@@ -1,4 +1,4 @@
-const { Comment, SecComment, sequelize } = require("../model");
+const { Comment, SecComment } = require("../model");
 
 exports.addComment = async (req, res) => {
   let data;
@@ -8,19 +8,19 @@ exports.addComment = async (req, res) => {
       name: req.session.user.name,
       content: req.body.content,
       img: req.session.user.profile_img,
-    }
+    };
   } else {
     data = {
       post_id: req.body.post_id,
       name: req.session.kakao.name,
       content: req.body.content,
       img: req.session.kakao.profile_img,
-    }
+    };
   }
 
   let result = await Comment.create(data);
-  res.send(result)
-}
+  res.send(result);
+};
 
 exports.addSecComment = async (req, res) => {
   let data;
@@ -31,7 +31,7 @@ exports.addSecComment = async (req, res) => {
       name: req.session.user.name,
       content: req.body.content,
       img: req.session.user.profile_img,
-    }
+    };
   } else {
     data = {
       foreign_comment_id: req.body.comment_id,
@@ -39,9 +39,9 @@ exports.addSecComment = async (req, res) => {
       name: req.session.kakao.name,
       content: req.body.content,
       img: req.session.kakao.profile_img,
-    }
+    };
   }
 
   let result = await SecComment.create(data);
-  res.send(result)
-}
+  res.send(result);
+};
